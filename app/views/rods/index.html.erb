@@ -1,3 +1,5 @@
-<% content_for :title, "Rods" %>
+<%= turbo_frame_tag "rods_list" do %>
+  <% content_for :title, "Rods" %>
 
-<%= render 'rods_list', search: @search, rods: @rods %>
+  <%= render 'rods_list', search: @search, rods: @rods %>
+<% end %>

@@ -5,7 +5,7 @@
 
     <div class="flex justify-between items-center">
       <h1 class="font-bold text-4xl">Rods</h1>
-      <%= link_to "New rod", new_rod_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+      <%= link_to "New rod", new_rod_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium", data: { turbo_frame: "rods_list" } %>
     </div>
 
     <%= search_form_for search do |f| %>

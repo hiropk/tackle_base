@@ -35,7 +35,9 @@
 
   <section id="rod">
     <h2>ロッド</h2>
-    <%= render 'rods/rods_list', search: @search, rods: @rods %>
+    <%= turbo_frame_tag "rods_list" do %>
+      <%= render 'rods/rods_list', search: @search, rods: @rods %>
+    <% end %>
   </section>
 
   <section id="reel">

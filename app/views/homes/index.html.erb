@@ -35,12 +35,7 @@
 
   <section id="rod">
     <h2>ロッド</h2>
-    <p>使用中のフィッシングロッドは以下の通りです。</p>
-    <ul>
-      <li>シマノ - ストラディック</li>
-      <li>ダイワ - タイガースペシャル</li>
-      <li>アブガルシア - ベイトキャスティング</li>
-    </ul>
+    <%= render 'rods/rods_list', search: @search, rods: @rods %>
   </section>
 
   <section id="reel">

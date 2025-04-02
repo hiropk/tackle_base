@@ -1,0 +1,50 @@
+ja:
+  date:
+    formats:
+      default: "%Y年%m月%d日"
+    month_names:
+      - "不明"
+      - "1月"
+      - "2月"
+      - "3月"
+      - "4月"
+      - "5月"
+      - "6月"
+      - "7月"
+      - "8月"
+      - "9月"
+      - "10月"
+      - "11月"
+      - "12月"
+    abbr_day_names:
+      - "日"
+      - "月"
+      - "火"
+      - "水"
+      - "木"
+      - "金"
+      - "土"
+  dictionary:
+    title:
+      create: "新規作成"
+      update: "更新"
+      destory:
+        confirm: "削除確認"
+      display_now: "現在の表示"
+    message:
+      create:
+        complete: "登録しました"
+      update:
+        complete: "更新しました"
+      destory:
+        confirm: "削除しますか？"
+        complete: "削除しました"
+    button:
+      create: "新規作成"
+      search: "検索"
+      clear: "クリア"
+      update: "更新"
+      destory: "削除"
+      cancel: "キャンセル"
+    login: "ログイン"
+    logout: "ログアウト"

@@ -28,12 +28,9 @@
 <main>
   <section id="schedule">
     <h2>スケジュール</h2>
-    <p>あなたのフィッシングスケジュールを管理します。</p>
-    <ul>
-      <li>2025年5月1日 - 沖合での釣り</li>
-      <li>2025年5月15日 - 湖での釣り</li>
-      <li>2025年6月1日 - 釣り大会参加</li>
-    </ul>
+    <%= month_calendar do |date| %>
+      <%= date.day %>
+    <% end %>
   </section>
 
   <section id="rod">

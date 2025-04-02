@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rods
   get "homes/index"
   resource :session
   resources :passwords, param: :token

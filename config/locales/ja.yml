@@ -24,27 +24,18 @@ ja:
       - "木"
       - "金"
       - "土"
-  dictionary:
-    title:
-      create: "新規作成"
-      update: "更新"
-      destory:
-        confirm: "削除確認"
-      display_now: "現在の表示"
-    message:
-      create:
-        complete: "登録しました"
-      update:
-        complete: "更新しました"
-      destory:
-        confirm: "削除しますか？"
-        complete: "削除しました"
-    button:
-      create: "新規作成"
-      search: "検索"
-      clear: "クリア"
-      update: "更新"
-      destory: "削除"
-      cancel: "キャンセル"
-    login: "ログイン"
-    logout: "ログアウト"
+  activerecord:
+    models:
+      cat: ロッド
+    attributes:
+      cat:
+        name: 名前
+        brand: ブランド名
+        length: 長さ
+        fishing_type: 釣法
+        power: 硬さ
+        reel_type: リールタイプ
+        min_weight: 最大ルアーウェイト
+        max_weight: 最小ルアーウェイト
+        purchase_date: 購入日
+        notes: ノート

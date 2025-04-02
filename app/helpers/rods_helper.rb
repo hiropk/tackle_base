@@ -1,0 +1,2 @@
+module RodsHelper
+end

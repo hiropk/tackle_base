@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    attributes:
+      rod:
+        name: 名前
+        brand: ブランド
+        length: 長さ(単位:ft)
+        fishing_type: 釣法
+        fishing_type_values:
+          one: fishing_type
+          fishing_type_none: 指定無し
+          jiging: ジギング
+        power: 硬さ
+        power_values:
+          one: power
+          power_none: 指定無し
+          hevy: ヘビー
+          medium_hevy: ミディアムヘビー
+          medium: ミディアム
+          medium_light: ミディアムライト
+          light: ライト
+        reel_type: リールタイプ
+        reel_type_values:
+          one: reel_type
+          reel_type_none: 指定無し
+          bait: ベイト
+          spining: スピニング
+          other: その他
+        min_weight: 最小ルアーウェイト(単位:g)
+        max_weight: 最大ルアーウェイト(単位:g)
+        purchase_date: 購入日
+        notes: メモ

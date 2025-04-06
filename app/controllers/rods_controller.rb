@@ -29,10 +29,8 @@ class RodsController < ApplicationController
     respond_to do |format|
       if @rod.save
         format.html { redirect_to @rod, notice: "Rod was successfully created." }
-        format.json { render :show, status: :created, location: @rod }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @rod.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,10 +40,8 @@ class RodsController < ApplicationController
     respond_to do |format|
       if @rod.update(rod_params)
         format.html { redirect_to @rod, notice: "Rod was successfully updated." }
-        format.json { render :show, status: :ok, location: @rod }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @rod.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +52,6 @@ class RodsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to rods_path, status: :see_other, notice: "Rod was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

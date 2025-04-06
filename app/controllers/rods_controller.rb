@@ -24,7 +24,7 @@ class RodsController < ApplicationController
 
   # POST /rods or /rods.json
   def create
-    @rod = Rod.new(rod_params)
+    @rod = Rod.new(rod_params.merge({ user: @current_user }))
 
     respond_to do |format|
       if @rod.save

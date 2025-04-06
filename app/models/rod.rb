@@ -1,4 +1,6 @@
 class Rod < ApplicationRecord
+  belongs_to :user
+
   validates :name, presence: true, length: { maximum: 50 }
   validates :brand, presence: true, length: { maximum: 50 }
   validates :max_weight, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 700 }

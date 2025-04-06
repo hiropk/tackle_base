@@ -1,5 +1,6 @@
 class RodsController < ApplicationController
   before_action :set_rod, only: %i[ show edit update destroy ]
+  before_action :set_current_user
 
   # GET /rods or /rods.json
   def index

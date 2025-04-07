@@ -28,7 +28,7 @@ class RodsController < ApplicationController
 
     respond_to do |format|
       if @rod.save
-        format.html { redirect_to @rod, notice: "Rod was successfully created." }
+        format.html { redirect_to @rod, notice: "ロッドを作成しました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -39,7 +39,7 @@ class RodsController < ApplicationController
   def update
     respond_to do |format|
       if @rod.update(rod_params)
-        format.html { redirect_to @rod, notice: "Rod was successfully updated." }
+        format.html { redirect_to @rod, notice: "ロッドを更新しました。" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -51,7 +51,7 @@ class RodsController < ApplicationController
     @rod.destroy!
 
     respond_to do |format|
-      format.html { redirect_to rods_path, status: :see_other, notice: "Rod was successfully destroyed." }
+      format.html { redirect_to rods_path, status: :see_other, notice: "ロッドを削除しました。" }
     end
   end
 

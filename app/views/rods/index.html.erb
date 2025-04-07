@@ -1,5 +1,8 @@
-<%= turbo_frame_tag "rods_list" do %>
-  <% content_for :title, "Rods" %>
-
-  <%= render 'rods_list', search: @search, rods: @rods %>
-<% end %>
+<main>
+  <%= render 'homes/schedule' %>
+  <%= turbo_frame_tag "rods_view" do %>
+    <%= render 'rods/index', search: @search, rods: @rods%>
+  <% end %>
+  <%= render 'homes/reel' %>
+  <%= render 'homes/line' %>
+</main>

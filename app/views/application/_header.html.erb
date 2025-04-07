@@ -1,0 +1,28 @@
+<header>
+  <div class="container">
+    <h1>フィッシング管理</h1>
+    <nav class="desktop-nav">
+      <ul>
+        <li><a href="#schedule">スケジュール</a></li>
+        <li><a href="#rod">ロッド</a></li>
+        <li><a href="#reel">リール</a></li>
+        <li><a href="#line">ライン</a></li>
+        <li><%= link_to "ログアウト", session_path, data: { "turbo-method": :delete} %></li>
+      </ul>
+    </nav>
+    <div class="hamburger-menu" id="hamburger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="#schedule">スケジュール</a></li>
+      <li><a href="#rod">ロッド</a></li>
+      <li><a href="#reel">リール</a></li>
+      <li><a href="#line">ライン</a></li>
+      <li><%= link_to "ログアウト", session_path, data: { "turbo-method": :delete} %></li>
+    </ul>
+  </nav>
+</header>

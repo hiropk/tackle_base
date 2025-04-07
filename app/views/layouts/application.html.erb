@@ -24,7 +24,35 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5">
+      <%= render 'header' %>
       <%= yield %>
+      <%= render 'footer' %>
     </main>
   </body>
+  <script>
+    // ハンバーガーメニューを開閉するためのJavaScript
+    const hamburgerMenu = document.getElementById("hamburger-menu");
+    const mobileNav = document.getElementById("mobile-nav");
+    const menuLinks = document.querySelectorAll(".mobile-nav ul li a");  // メニューのリンクを取得
+
+    // ハンバーガーメニューを開閉
+    hamburgerMenu.addEventListener("click", (event) => {
+      event.stopPropagation();  // クリックイベントが親要素に伝播しないようにする
+      mobileNav.classList.toggle("show");
+    });
+
+    // リストアイテムがクリックされたときにメニューを閉じる
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("show");  // メニューを非表示にする
+      });
+    });
+
+    // メニューの外部をクリックしたときにメニューを閉じる
+    document.addEventListener("click", (event) => {
+      if (!mobileNav.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+        mobileNav.classList.remove("show");  // メニューを非表示にする
+      }
+    });
+  </script>
 </html>

@@ -5,27 +5,60 @@
       <p class="py-2 px-4 bg-green-100 text-green-700 font-semibold rounded-md text-center" id="notice"><%= notice %></p>
     <% end %>
 
-    <div class="bg-white rounded-lg p-1">
-      <%= search_form_for search, class: "grid grid-cols-1 sm:grid-cols-3 gap-4" do |f| %>
+    <div class="text-right mb-2">
+      <button id="toggle_search_form" class="font-bold text-blue-500">検索フォームをON</button>
+    </div>
+
+    <div id="rod_search_form" class="bg-white rounded-lg p-4 w-full hidden">
+      <div class="text-right">
+        <%= link_to "クリア", root_path, class: "font-bold text-black-500 w-4/5" %>
+      </div>
+      <%= search_form_for search, class: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" do |f| %>
+        
+        <div class="flex flex-col"><%= f.label :name_cont, "名前：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div><%= f.search_field :name_cont, class: "mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm" %></div>
+
+        <div class="flex flex-col">
+          <%= f.label :brand_eq, "ブランド：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
         <div>
-          <%= f.label :name_cont, "名前", class: "text-sm font-medium text-gray-700" %>
-          <%= f.search_field :name_cont, class: "mt-1 w-4/5 p-2 border border-gray-300 rounded-md shadow-sm" %>
-        </div>
-        <div>
-          <%= f.label :brand_eq, "ブランド", class: "text-sm font-medium text-gray-700" %>
-          <%= f.search_field :brand_eq, class: "mt-1 w-4/5 p-2 border border-gray-300 rounded-md shadow-sm" %>
-        </div>
-        <div class="flex flex-row sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
-          <%= f.submit "検索", class: "px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md shadow sm:w-auto text-center text-base h-10" %>
+          <%= f.search_field :brand_eq, class: "mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm" %>
         </div>
 
+        <div class="flex flex-col">
+          <%= f.label :fishing_type_eq, "釣法：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.select :fishing_type_eq,
+            Rod.fishing_types.map { |key, _| [I18n.t("activerecord.attributes.rod.fishing_type_values.#{key}"), key] },
+            { include_blank: true },
+            class: "mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300" %>
+        </div>
 
+        <div class="flex flex-col">
+          <%= f.label :power_eq, "硬さ：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.select :power_eq,
+            Rod.powers.map { |key, _| [I18n.t("activerecord.attributes.rod.power_values.#{key}"), key] },
+            { include_blank: true },
+            class: "mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300" %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.label :reel_type_eq, "リールタイプ：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.select :reel_type_eq,
+            Rod.reel_types.map { |key, _| [I18n.t("activerecord.attributes.rod.reel_type_values.#{key}"), key] },
+            { include_blank: true },
+            class: "mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300" %>
+        </div>
+
+        <div class="flex items-end">
+          <%= f.submit "検索", class: "w-full sm:w-auto px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md shadow text-base h-10" %>
+        </div>
       <% end %>
     </div>
 
     <div class="relative w-full">
-      <div class="text-right"><%= link_to "検索クリア", rods_path, class: "font-bold text-blue-500 w-4/5" %></div>
-      <div class="text-right"><%= link_to "新規作成", new_rod_path, class: "font-bold text-teal-500 w-4/5" %></div>
+      <div class="text-right"><%= link_to "+新規作成", new_rod_path, class: "font-bold text-teal-500 w-4/5" %></div>
       <table class="text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
         <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr class="bg-gray-200 text-gray-700">

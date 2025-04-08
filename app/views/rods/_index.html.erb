@@ -38,9 +38,9 @@
           <% if rods.any? %>
             <% rods.each do |rod| %>
               <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1"><%= rod.name %></td>
-                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1" ><%= rod.brand %></td>
-                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1">
+                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1 break-words whitespace-normal max-w-xs"><%= rod.name %></td>
+                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1 break-words whitespace-normal max-w-xs" ><%= rod.brand %></td>
+                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1 break-words whitespace-normal max-w-xs">
                   <div class="flex">
                     <%= link_to "詳細", rod, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 inline-block font-medium" %>
                     <%= link_to "編集", edit_rod_path(rod), class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 inline-block font-medium" %>

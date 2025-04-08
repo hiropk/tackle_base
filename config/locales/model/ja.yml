@@ -1,5 +1,15 @@
 ja:
   activerecord:
+    errors:
+      models:
+        rod:
+          attributes:
+            name:
+              blank: 入力してください
+            brand:
+              blank: 入力してください
+            length:
+              not_a_number: 値を入力してください
     attributes:
       rod:
         name: 名前

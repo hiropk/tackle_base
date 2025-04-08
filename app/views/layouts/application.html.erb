@@ -29,43 +29,4 @@
       <%= render 'footer' %>
     </main>
   </body>
-  <script>
-    // ハンバーガーメニューを開閉するためのJavaScript
-    const hamburgerMenu = document.getElementById("hamburger-menu");
-    const mobileNav = document.getElementById("mobile-nav");
-    const menuLinks = document.querySelectorAll(".mobile-nav ul li a");  // メニューのリンクを取得
-
-    // ハンバーガーメニューを開閉
-    hamburgerMenu.addEventListener("click", (event) => {
-      event.stopPropagation();  // クリックイベントが親要素に伝播しないようにする
-      mobileNav.classList.toggle("show");
-    });
-
-    // リストアイテムがクリックされたときにメニューを閉じる
-    menuLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        mobileNav.classList.remove("show");  // メニューを非表示にする
-      });
-    });
-
-    // メニューの外部をクリックしたときにメニューを閉じる
-    document.addEventListener("click", (event) => {
-      if (!mobileNav.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-        mobileNav.classList.remove("show");  // メニューを非表示にする
-      }
-    });
-
-    const toggleButton = document.getElementById('toggle_search_form');
-    const searchForm = document.getElementById('rod_search_form');
-
-    toggleButton.addEventListener('click', function () {
-      if (searchForm.classList.contains('hidden')) {
-        searchForm.classList.remove('hidden');
-        toggleButton.textContent = '検索フォームOFF'; // ボタンのテキストを変更
-      } else {
-        searchForm.classList.add('hidden');
-        toggleButton.textContent = '検索フォームON'; // ボタンのテキストを変更
-      }
-    });
-  </script>
 </html>

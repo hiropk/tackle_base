@@ -7,43 +7,43 @@
     </thead>
     <tbody>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">名前</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">名前</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= rod.name %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">ブランド</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ブランド</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= rod.brand %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">長さ(単位:ft)</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">長さ<br>(単位:ft)</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= rod.length %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">釣法</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">釣法</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.rod.fishing_type_values.#{rod.fishing_type}") %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">硬さ</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">硬さ</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.rod.power_values.#{rod.power}") %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">リールタイプ</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">リール<br>タイプ</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.rod.reel_type_values.#{rod.reel_type}") %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">最小ルアーウェイト(単位:g)</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">最小ルアー<br>ウェイト<br>(単位:g)</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= rod.min_weight %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">最大ルアーウェイト(単位:g)</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">最大ルアー<br>ウェイト<br>(単位:g)</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= rod.max_weight%></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">購入日</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">購入日</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= l(rod.purchase_date) %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">メモ</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">メモ</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= rod.notes %></td>
       </tr>
     </tbody>

@@ -34,10 +34,8 @@ function toggleRodSearchForm() {
   toggleButton.addEventListener("click", function () {
     if (searchForm.classList.contains("hidden")) {
       searchForm.classList.remove("hidden");
-      toggleButton.textContent = "検索フォームOFF";
     } else {
       searchForm.classList.add("hidden");
-      toggleButton.textContent = "検索フォームON";
     }
   });
 }

@@ -6,6 +6,7 @@ class Rod < ApplicationRecord
   validates :max_weight, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 700 }
   validates :min_weight, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 300 }
   validates :length, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 20 }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :notes, length: { maximum: 500 }
 
   enum :fishing_type, {

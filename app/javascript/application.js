@@ -46,6 +46,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("turbo:frame-load", function () {
-  handleHamburgerMenu();
   toggleRodSearchForm();
 });

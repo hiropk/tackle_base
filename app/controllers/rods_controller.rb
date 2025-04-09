@@ -63,6 +63,6 @@ class RodsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rod_params
-      params.expect(rod: [ :name, :brand, :length, :fishing_type, :power, :reel_type, :min_weight, :max_weight, :purchase_date, :notes ])
+      params.expect(rod: [ :name, :brand, :length, :fishing_type, :power, :reel_type, :min_weight, :max_weight, :purchase_date, :price, :notes ])
     end
 end

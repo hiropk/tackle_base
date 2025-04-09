@@ -81,4 +81,5 @@ ja:
         min_weight: 最小ルアーウェイト(単位:g)
         max_weight: 最大ルアーウェイト(単位:g)
         purchase_date: 購入日
+        price: 購入金額（単位:円）
         notes: メモ

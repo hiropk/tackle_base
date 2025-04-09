@@ -1,8 +1,10 @@
 <main>
   <%= render 'homes/schedule' %>
+  <%= render 'homes/tackle' %>
   <%= turbo_frame_tag "rods_view" do %>
     <%= render 'rods/index', search: @search, rods: @rods%>
   <% end %>
   <%= render 'homes/reel' %>
   <%= render 'homes/line' %>
+  <%= render 'homes/leader' %>
 </main>

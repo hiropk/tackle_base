@@ -5,6 +5,8 @@
     <%= render 'rods/index', search: @search, rods: @rods%>
   <% end %>
   <%= render 'homes/reel' %>
-  <%= render 'homes/line' %>
+  <%= turbo_frame_tag "lines_view" do %>
+    <%= render 'lines/index', lines: @lines%>
+  <% end %>
   <%= render 'homes/leader' %>
 </main>

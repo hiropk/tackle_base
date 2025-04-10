@@ -2,11 +2,6 @@ class LinesController < ApplicationController
   before_action :reject_direct_access
   before_action :set_line, only: %i[ show edit update destroy ]
 
-  # GET /lines or /lines.json
-  def index
-    @lines = Line.all
-  end
-
   # GET /lines/1 or /lines/1.json
   def show
   end

@@ -1,4 +1,5 @@
 class RodsController < ApplicationController
+  before_action :reject_direct_access
   before_action :set_rod, only: %i[ show edit update destroy ]
   before_action :set_current_user
 

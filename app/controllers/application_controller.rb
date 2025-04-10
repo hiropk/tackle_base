@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
   def set_current_user
     @current_user = Current.user
   end
+
+  def reject_direct_access
+    unless request.referer.present?
+      redirect_to new_session_path, alert: "直接アクセスは禁止されています。"
+    end
+  end
 end

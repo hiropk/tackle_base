@@ -1,4 +1,5 @@
 class LinesController < ApplicationController
+  before_action :reject_direct_access
   before_action :set_line, only: %i[ show edit update destroy ]
 
   # GET /lines or /lines.json

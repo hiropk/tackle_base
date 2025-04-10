@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :lines
-  resources :rods
+  resources :rods, except: [ :index ]
   get "homes/index"
   resource :session
   resources :passwords, param: :token

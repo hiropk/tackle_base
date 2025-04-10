@@ -1,7 +1,4 @@
-<main>
-  <%= render 'homes/schedule' %>
-  <%= render 'homes/tackle' %>
-  <%= turbo_frame_tag "rods_view" do %>
+<%= turbo_frame_tag "rods_view" do %>
     <section id="rod">
       <h2>ロッド | 新規作成</h2>
       <div class="md:w-2/3 w-full">
@@ -12,7 +9,3 @@
       </div>
     </section>
   <% end %>
-  <%= render 'homes/reel' %>
-  <%= render 'homes/line' %>
-  <%= render 'homes/leader' %>
-</main>

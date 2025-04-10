@@ -45,6 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
   toggleRodSearchForm();
 });
 
+document.addEventListener("turbo:load", function () {
+  toggleRodSearchForm();
+});
+
 document.addEventListener("turbo:frame-load", function () {
   toggleRodSearchForm();
 });

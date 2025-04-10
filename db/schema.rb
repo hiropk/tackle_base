@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_09_130943) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_10_125257) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "lines", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", default: "指定なし", null: false
+    t.string "brand", default: "指定なし", null: false
+    t.decimal "pe_rating", null: false
+    t.integer "length", null: false
+    t.integer "strand_count", null: false
+    t.boolean "marker", default: true, null: false
+    t.integer "price", default: 0
+    t.date "purchase_date", default: -> { "CURRENT_DATE" }, null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lines_on_user_id"
+  end
 
   create_table "rods", force: :cascade do |t|
     t.string "name"
@@ -50,6 +66,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_09_130943) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "lines", "users"
   add_foreign_key "rods", "users"
   add_foreign_key "sessions", "users"
 end

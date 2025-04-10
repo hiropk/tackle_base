@@ -3,6 +3,13 @@ class RodsController < ApplicationController
   before_action :set_rod, only: %i[ show edit update destroy ]
   before_action :set_current_user
 
+  def index
+    @search = Rod.ransack(params[:q])
+    @search.sorts = "id desc" if @search.sorts.empty?
+    @rods = @search.result.page(params[:page])
+    @rods.where(user: @current_user)
+  end
+
   # GET /rods/1 or /rods/1.json
   def show
   end

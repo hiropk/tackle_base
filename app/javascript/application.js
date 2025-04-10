@@ -40,12 +40,8 @@ function toggleRodSearchForm() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  handleHamburgerMenu();
-  toggleRodSearchForm();
-});
-
 document.addEventListener("turbo:load", function () {
+  handleHamburgerMenu();
   toggleRodSearchForm();
 });
 

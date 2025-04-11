@@ -1,42 +1,47 @@
 <div id="<%= dom_id line %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= line.user_id %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= line.name %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Brand:</strong>
-    <%= line.brand %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Pe rating:</strong>
-    <%= line.pe_rating %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Length:</strong>
-    <%= line.length %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Strand count:</strong>
-    <%= line.strand_count %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Marker:</strong>
-    <%= line.marker? ? "Yes" : "No" %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Price:</strong>
-    <%= line.price %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Purchase date:</strong>
-    <%= line.purchase_date %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Notes:</strong>
-    <%= line.notes %>
-  </div>
+  <table class="text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
+    <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr class="bg-gray-200 text-gray-700">
+        <th scope="col" class="px-6 py-3">項目</th><th scope="col" class="px-6 py-3">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">名前</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= line.name %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ブランド</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= line.brand %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">長さ<br>(単位:m)</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= line.length %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">太さ<br>(単位:号)</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= line.pe_rating %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">編み数</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.line.strand_count_values.#{line.strand_count}") %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ラインマーキング</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= line.marker? ? "あり" : "なし" %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">購入日</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= l(line.purchase_date) %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">購入金額<br>(単位:円)</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= number_with_delimiter(line.price) %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">メモ</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= line.notes %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

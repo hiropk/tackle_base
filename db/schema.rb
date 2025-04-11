@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_10_125257) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_11_134526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "lines", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "name", default: "指定なし", null: false
-    t.string "brand", default: "指定なし", null: false
+    t.string "name", null: false
+    t.string "brand", null: false
     t.decimal "pe_rating", null: false
     t.integer "length", null: false
     t.integer "strand_count", null: false

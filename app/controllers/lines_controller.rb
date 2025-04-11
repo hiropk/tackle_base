@@ -22,7 +22,7 @@ class LinesController < ApplicationController
 
   # POST /lines or /lines.json
   def create
-    @line = Line.new(line_params)
+    @line = Line.new(line_params.merge({ user: @current_user }))
 
     respond_to do |format|
       if @line.save

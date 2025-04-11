@@ -83,3 +83,19 @@ ja:
         purchase_date: 購入日
         price: 購入金額（単位:円）
         notes: メモ
+      line:
+        name: 名前
+        brand: ブランド
+        pe_rating: 太さ(単位:号)
+        length: 長さ(単位:m)
+        strand_count: 編み数
+        strand_count_values:
+          strand_count_none: 指定なし
+          four: ４つ編み
+          eight: 8つ編み
+          twelve: 12編み
+          other: その他
+        marker: ラインマーキング
+        price: 購入金額（単位:円）
+        purchase_date: 購入日
+        notes: メモ

@@ -3,7 +3,7 @@ class LinesController < ApplicationController
   before_action :set_line, only: %i[ show edit update destroy ]
 
   def index
-    @lines = Line.all
+    @lines = Line.page(params[:page])
     @lines.where(user: @current_user)
   end
 

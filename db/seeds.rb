@@ -1,12 +1,28 @@
 
-unless admin = User.find_by(is_admin: true)
+admin = User.find_by(is_admin: true)
+if admin.nil?
   admin = User.new(email_address: "admin@example.com", password: "password", password_confirmation: "password")
   admin.save
 end
 
-rods = []
-100.times do |i|
-  rods << { user: admin, name: "ロッド#{i+1}", brand: "ブランド#{i+1}", length: 6.5, fishing_type: 0, power: 0, reel_type: 0, min_weight: 100, max_weight: 200, purchase_date: Date.current, price: 12345,  notes: "メモ#{i+1}" }
+rods_num = Rod.count
+if Rod.count <= 100
+  add_rods_num = 100 - rods_num
+  suffix = Time.current.strftime("%Y-%m-%d_%H:%M:%S")
+  rods = []
+  add_rods_num.times do
+    rods << { user: admin, name: "ロッド#{i}_#{suffix}", brand: "#{i}_ブランド#{suffix}", length: 6.5, fishing_type: 0, power: 0, reel_type: 0, min_weight: 100, max_weight: 200, purchase_date: Date.current, price: 12345,  notes: "メモ#{suffix}" }
+  end
+  Rod.create!(rods)
 end
 
-Rod.create(rods)
+lines_num = Line.count
+if Line.count <= 100
+  add_lines_num = 100 - lines_num
+  suffix = Time.current.strftime("%Y-%m-%d_%H:%M:%S")
+  lines = []
+  add_lines_num.times do |i|
+    lines << { user: admin, name: "ライン#{i}_#{suffix}", brand: "ブランド#{i}_#{suffix}", pe_rating: 1.5, length: 700, strand_count: 2, marker: true, purchase_date: Date.current, price: 12345,  notes: "メモ#{suffix}" }
+  end
+  Line.create!(lines)
+end

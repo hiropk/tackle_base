@@ -5,7 +5,7 @@ class HomesController < ApplicationController
     @rods = @search.result.page(params[:page])
     @rods.where(user: @current_user)
 
-    @lines = Line.all
+    @lines = Line.page(params[:page])
     @lines.where(user: @current_user)
   end
 end

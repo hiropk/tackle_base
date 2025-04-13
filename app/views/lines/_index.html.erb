@@ -28,7 +28,7 @@
                   <div class="flex">
                     <%= link_to "詳細", line, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 inline-block font-medium" %>
                     <%= link_to "編集", edit_line_path(line), class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 inline-block font-medium" %>
-                    <%= button_to "削除", line, method: :delete, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-blue-100 inline-block font-medium", data: { turbo_confirm: "Are you sure?" } %>
+                    <%= button_to "削除", line, method: :delete, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-blue-100 inline-block font-medium", data: { turbo_confirm: "削除削除してもよろしいですか?" } %>
                   </div>
                 </td>
               </tr>

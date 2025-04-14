@@ -9,4 +9,8 @@ class Line < ApplicationRecord
   validates :notes, length: { maximum: 1000 }
 
   enum :strand_count, { strand_count_none: 0, four: 1, eight: 2, twelve: 3, other: 4 }
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "brand", "created_at", "id", "length", "marker", "name", "notes", "pe_rating", "price", "purchase_date", "strand_count", "updated_at", "user_id" ]
+  end
 end

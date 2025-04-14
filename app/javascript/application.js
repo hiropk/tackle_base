@@ -27,9 +27,9 @@ function handleHamburgerMenu() {
   });
 }
 
-function toggleRodSearchForm() {
-  const toggleButton = document.getElementById("toggle_search_form");
-  const searchForm = document.getElementById("rod_search_form");
+function toggleSearchForm(items) {
+  const toggleButton = document.getElementById(`toggle_search_${items}_form`);
+  const searchForm = document.getElementById(`search_${items}_form`);
 
   toggleButton.addEventListener("click", function () {
     if (searchForm.classList.contains("hidden")) {
@@ -42,9 +42,11 @@ function toggleRodSearchForm() {
 
 document.addEventListener("turbo:load", function () {
   handleHamburgerMenu();
-  toggleRodSearchForm();
+  toggleSearchForm("rods");
+  toggleSearchForm("lines");
 });
 
 document.addEventListener("turbo:frame-load", function () {
-  toggleRodSearchForm();
+  toggleSearchForm("rods");
+  toggleSearchForm("lines");
 });

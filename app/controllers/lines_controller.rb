@@ -1,10 +1,9 @@
 class LinesController < ApplicationController
   before_action :reject_direct_access
+  before_action :set_lines, only: :index
   before_action :set_line, only: %i[ show edit update destroy ]
 
   def index
-    @lines = Line.page(params[:page])
-    @lines.where(user: @current_user)
   end
 
   # GET /lines/1 or /lines/1.json

@@ -19,6 +19,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_14_124350) do
     t.string "name", null: false
     t.string "brand", null: false
     t.decimal "leader_rating", null: false
+    t.integer "length", null: false
     t.integer "material", null: false
     t.integer "price", default: 0
     t.date "purchase_date", default: -> { "CURRENT_DATE" }, null: false

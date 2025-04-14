@@ -26,3 +26,14 @@ if Line.count <= 100
   end
   Line.create!(lines)
 end
+
+leaders_num = Leader.count
+if Leader.count <= 100
+  add_leaders_num = 100 - leaders_num
+  suffix = Time.current.strftime("%Y-%m-%d_%H:%M:%S")
+  leaders = []
+  add_leaders_num.times do |i|
+    leaders << { user: admin, name: "リーダー#{i}_#{suffix}", brand: "リーダー#{i}_#{suffix}", leader_rating: 1.5, length: 700, material: 1, purchase_date: Date.current, price: 12345,  notes: "メモ#{suffix}" }
+  end
+  Leader.create!(leaders)
+end

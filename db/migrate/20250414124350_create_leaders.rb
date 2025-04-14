@@ -5,6 +5,7 @@ class CreateLeaders < ActiveRecord::Migration[8.0]
       t.string :name, null: false
       t.string :brand, null: false
       t.decimal :leader_rating, null: false
+      t.integer :length, null: false
       t.integer :material, null: false
       t.integer :price, default: 0
       t.date :purchase_date, null: false, default: -> { 'CURRENT_DATE' }

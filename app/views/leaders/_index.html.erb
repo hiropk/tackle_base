@@ -5,27 +5,89 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <div class="flex justify-between items-center">
-      <%= link_to "New leader", new_leader_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <div class="text-right mb-0">
+      <%= link_to "新規作成", new_leader_path, class: "px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
     </div>
 
-    <div id="leaders" class="min-w-full divide-y divide-gray-200 space-y-5">
-      <% if leaders.any? %>
-        <% leaders.each do |leader| %>
-          <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
-            <%= render leader %>
-            <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-              <%= link_to "Show", leader, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-              <%= link_to "Edit", edit_leader_path(leader), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-              <div class="sm:inline-block">
-                <%= button_to "Destroy", leader, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <p class="text-center my-10">No leaders found.</p>
+    <button id="toggle_search_leaders_form" class="flex items-center px-4 py-2 mb-1 hover:bg-gray-200 rounded-md text-gray-800">
+      <span class="material-symbols-outlined mr-2">search</span>
+      フィルタ
+    </button>
+
+    <div id="search_leaders_form" class="bg-white rounded-lg p-4 w-full hidden">
+      <div class="text-right">
+        <%= link_to "クリア", root_path, class: "text-blue-600 items-center px-4 py-2 hover:bg-gray-200 rounded-md text-gray-800" %>
+      </div>
+
+      <%= search_form_for search_leaders, class: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" do |f| %>
+        <div class="flex flex-col"><%= f.label :name_cont, "名前：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div><%= f.search_field :name_cont, class: "mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm" %></div>
+
+        <div class="flex flex-col">
+          <%= f.label :brand_eq, "ブランド：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.search_field :brand_cont, class: "mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm" %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.label :length_eq, "長さ(単位:m)：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.search_field :length_eq, class: "mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm" %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.label :leader_rating_eq, "太さ(単位:号)：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.search_field :leader_rating_eq, class: "mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm" %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.label :material_eq, "素材：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.select :material_eq,
+            Leader.materials.map { |key, _| [I18n.t("activerecord.attributes.leader.material_values.#{key}"), Leader.materials[key]] },
+            { include_blank: true },
+            class: "mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300" %>
+        </div>
+
+        <div id="leaders_search_button" class="flex items-end">
+          <%= f.submit "検索", class: "w-full sm:w-auto px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md shadow text-base h-10" %>
+        </div>
       <% end %>
     </div>
+
+    <div class="relative w-full mb-2">
+      <table class="text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
+        <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr class="bg-gray-200 text-gray-700">
+            <th scope="col" class="px-6 py-3 pl-1 pr-1">名前</th>
+            <th scope="col" class="px-6 py-3 pl-1 pr-1">ブランド</th>
+            <th scope="col" class="px-6 py-3 pl-1 pr-1">アクション</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if leaders.any? %>
+            <% leaders.each do |leader| %>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1 break-words whitespace-normal max-w-xs"><%= leader.name %></td>
+                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1 break-words whitespace-normal max-w-xs" ><%= leader.brand %></td>
+                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1 break-words whitespace-normal max-w-xs">
+                  <div class="flex">
+                    <%= link_to "詳細", leader, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 inline-block font-medium" %>
+                    <%= link_to "編集", edit_leader_path(leader), class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 inline-block font-medium" %>
+                    <%= button_to "削除", leader, method: :delete, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-blue-100 inline-block font-medium", data: { turbo_confirm: "削除削除してもよろしいですか?" } %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="3" class="text-center text-gray-500 py-4 border-t border-gray-300">No rods found.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center mt-0"><%= paginate leaders, class: "mt-0" %></div>
   </div>
 </section>

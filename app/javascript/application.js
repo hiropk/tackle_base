@@ -31,6 +31,10 @@ function toggleSearchForm(items) {
   const toggleButton = document.getElementById(`toggle_search_${items}_form`);
   const searchForm = document.getElementById(`search_${items}_form`);
 
+  if (toggleButton == null) {
+    return;
+  }
+
   toggleButton.addEventListener("click", function () {
     if (searchForm.classList.contains("hidden")) {
       searchForm.classList.remove("hidden");
@@ -44,9 +48,11 @@ document.addEventListener("turbo:load", function () {
   handleHamburgerMenu();
   toggleSearchForm("rods");
   toggleSearchForm("lines");
+  toggleSearchForm("leaders");
 });
 
 document.addEventListener("turbo:frame-load", function () {
   toggleSearchForm("rods");
   toggleSearchForm("lines");
+  toggleSearchForm("leaders");
 });

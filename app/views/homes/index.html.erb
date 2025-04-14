@@ -9,6 +9,6 @@
     <%= render 'lines/index', search_lines: @search_lines, lines: @lines%>
   <% end %>
   <%= turbo_frame_tag "leader_view" do %>
-    <%= render 'leaders/index', leaders: @leaders%>
+    <%= render 'leaders/index', search_leaders: @search_leaders, leaders: @leaders%>
   <% end %>
 </main>

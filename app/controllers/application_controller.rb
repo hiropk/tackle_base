@@ -31,6 +31,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_leaders
-    @leaders = Leader.all
+    @search_leaders = Leader.ransack(params[:q])
+    @search_leaders.sorts = "id desc" if @search_leaders.sorts.empty?
+    @leaders = @search_leaders.result.page(params[:page])
+    @leaders.where(user: @current_user)
   end
 end

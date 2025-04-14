@@ -10,6 +10,28 @@ ja:
               blank: 入力してください
             length:
               not_a_number: 値を入力してください
+        line:
+          attributes:
+            name:
+              blank: 入力してください
+            brand:
+              blank: 入力してください
+            length:
+              not_a_number: 値を入力してください
+            pe_rating:
+              blank: 入力してください
+              not_a_number: 値を入力してください
+        leader:
+          attributes:
+            name:
+              blank: 入力してください
+            brand:
+              blank: 入力してください
+            length:
+              not_a_number: 値を入力してください
+            leader_rating:
+              blank: 入力してください
+              not_a_number: 値を入力してください
     attributes:
       rod:
         name: 名前
@@ -107,7 +129,7 @@ ja:
         material: 素材
         material_values:
           material_none: 指定なし
-          luorocarbon: フロロカーボン
+          fluorocarbon: フロロカーボン
           nylon: ナイロン
           other: その他
         price: 購入金額（単位:円）

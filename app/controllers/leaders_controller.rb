@@ -22,7 +22,7 @@ class LeadersController < ApplicationController
 
   # POST /leaders or /leaders.json
   def create
-    @line = Line.new(leader_params.merge({ user: @current_user }))
+    @leader = Leader.new(leader_params.merge({ user: @current_user }))
 
     respond_to do |format|
       if @leader.save
@@ -61,6 +61,6 @@ class LeadersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def leader_params
-      params.expect(leader: [ :user_id, :name, :brand, :leader_rating, :material, :price, :purchase_date, :notes ])
+      params.expect(leader: [ :user_id, :name, :brand, :leader_rating, :length, :material, :price, :purchase_date, :notes ])
     end
 end

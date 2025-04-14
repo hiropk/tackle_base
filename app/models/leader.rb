@@ -9,4 +9,8 @@ class Leader < ApplicationRecord
   validates :notes, length: { maximum: 1000 }
 
   enum :material, { material_none: 0, fluorocarbon: 1, nylon: 2, other: 3 }
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "brand", "created_at", "id", "leader_rating", "length", "material", "name", "notes", "price", "purchase_date", "updated_at", "user_id" ]
+  end
 end

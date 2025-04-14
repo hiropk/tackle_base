@@ -21,15 +21,13 @@ class LeadersController < ApplicationController
 
   # POST /leaders or /leaders.json
   def create
-    @leader = Leader.new(leader_params)
+    @line = Line.new(leader_params.merge({ user: @current_user }))
 
     respond_to do |format|
       if @leader.save
         format.html { redirect_to @leader, notice: "Leader was successfully created." }
-        format.json { render :show, status: :created, location: @leader }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @leader.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +37,8 @@ class LeadersController < ApplicationController
     respond_to do |format|
       if @leader.update(leader_params)
         format.html { redirect_to @leader, notice: "Leader was successfully updated." }
-        format.json { render :show, status: :ok, location: @leader }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @leader.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +49,6 @@ class LeadersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to leaders_path, status: :see_other, notice: "Leader was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

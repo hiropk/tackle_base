@@ -99,3 +99,17 @@ ja:
         price: 購入金額（単位:円）
         purchase_date: 購入日
         notes: メモ
+      leader:
+        name: 名前
+        brand: ブランド
+        leader_rating: 太さ(単位:号)
+        length: 長さ(単位:m)
+        material: 素材
+        material_values:
+          material_none: 指定なし
+          luorocarbon: フロロカーボン
+          nylon: ナイロン
+          other: その他
+        price: 購入金額（単位:円）
+        purchase_date: 購入日
+        notes: メモ

@@ -1,0 +1,16 @@
+class CreateLeaders < ActiveRecord::Migration[8.0]
+  def change
+    create_table :leaders do |t|
+      t.references :user, null: false, foreign_key: true
+      t.string :name, null: false
+      t.string :brand, null: false
+      t.decimal :leader_rating, null: false
+      t.integer :material, null: false
+      t.integer :price, default: 0
+      t.date :purchase_date, null: false, default: -> { 'CURRENT_DATE' }
+      t.text :notes
+
+      t.timestamps
+    end
+  end
+end

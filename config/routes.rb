@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :leaders
   resources :lines
   resources :rods
   get "homes/index"

@@ -29,4 +29,8 @@ class ApplicationController < ActionController::Base
     @lines = @search_lines.result.page(params[:page])
     @lines.where(user: @current_user)
   end
+
+  def set_leaders
+    @leaders = Leader.all
+  end
 end

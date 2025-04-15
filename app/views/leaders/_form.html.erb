@@ -1,7 +1,7 @@
 <%= form_with(model: leader, class: "contents") do |form| %>
   <% if leader.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(leader.errors.count, "error") %> prohibited this leader from being saved:</h2>
+      <h2><%= pluralize(leader.errors.count, "件のエラー：") %></h2>
 
       <ul class="list-disc ml-6">
         <% leader.errors.each do |error| %>

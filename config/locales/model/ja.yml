@@ -16,7 +16,7 @@ ja:
               blank: 入力してください
             brand:
               blank: 入力してください
-            line:
+            line_id:
               required: 選択してください
 
         line:
@@ -133,7 +133,7 @@ ja:
           high_gear: ハイギヤ
           extra_high_gear: エクストラハイギヤ
           gear_type_other: その他
-        line: PEライン
+        line_id: PEライン
         price: 購入金額（単位:円）
         purchase_date: 購入日
         notes: メモ

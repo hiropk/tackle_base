@@ -1,0 +1,89 @@
+<section id="reel">
+  <h2>リール</h2>
+  <div class="w-full">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <div class="text-right mb-0">
+      <%= link_to "新規作成", new_reel_path, class: "px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
+    </div>
+    <button id="toggle_search_reels_form" class="flex items-center px-4 py-2 mb-1 hover:bg-gray-200 rounded-md text-gray-800">
+      <span class="material-symbols-outlined mr-2">search</span>
+      フィルタ
+    </button>
+
+    <div id="search_reels_form" class="bg-white rounded-lg p-4 w-full hidden">
+      <div class="text-right">
+        <%= link_to "クリア", root_path, class: "text-blue-600 items-center px-4 py-2 hover:bg-gray-200 rounded-md text-gray-800" %>
+      </div>
+      <%= search_form_for search_reels, class: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" do |f| %>
+        
+        <div class="flex flex-col"><%= f.label :name_cont, "名前：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div><%= f.search_field :name_cont, class: "mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm" %></div>
+
+        <div class="flex flex-col">
+          <%= f.label :brand_eq, "ブランド：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.search_field :brand_cont, class: "mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm" %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.label :reel_type_eq, "リールタイプ：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.select :reel_type_eq,
+            Reel.reel_types.map { |key, _| [I18n.t("activerecord.attributes.reel.reel_type_values.#{key}"), Reel.reel_types[key]] },
+            { include_blank: true },
+            class: "mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300" %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.label :gear_type_eq, "ギヤタイプ：", class: "text-sm font-medium text-gray-700 whitespace-nowrap" %></div>
+        <div>
+          <%= f.select :gear_type_eq,
+            Reel.gear_types.map { |key, _| [I18n.t("activerecord.attributes.reel.gear_type_values.#{key}"), Reel.gear_types[key]] },
+            { include_blank: true },
+            class: "mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300" %>
+        </div>
+
+        <div id="reels_search_button" class="flex items-end">
+          <%= f.submit "検索", class: "w-full sm:w-auto px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md shadow text-base h-10" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="relative w-full mb-2">
+      <table class="text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
+        <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr class="bg-blue-500 text-white">
+            <th scope="col" class="font-normal px-6 py-3 pl-1 pr-1">名前</th>
+            <th scope="col" class="font-normal px-6 py-3 pl-1 pr-1">ブランド</th>
+            <th scope="col" class="font-normal px-6 py-3 pl-1 pr-1">アクション</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if reels.any? %>
+            <% reels.each do |reel| %>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1 break-words whitespace-normal max-w-xs"><%= reel.name %></td>
+                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1 break-words whitespace-normal max-w-xs" ><%= reel.brand %></td>
+                <td class="px-6 py-4 pl-1 pt-1 pb-1 pr-1 break-words whitespace-normal max-w-xs">
+                  <div class="flex">
+                    <%= link_to "詳細", reel, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 inline-block font-medium" %>
+                    <%= link_to "編集", edit_reel_path(reel), class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 inline-block font-medium" %>
+                    <%= button_to "削除", reel, method: :delete, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-blue-100 inline-block font-medium", data: { turbo_confirm: "削除削除してもよろしいですか?" } %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="3" class="text-center text-gray-500 py-4 border-t border-gray-300">No rods found.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center mt-0"><%= paginate reels, class: "mt-0" %></div>
+  </div>
+</section>

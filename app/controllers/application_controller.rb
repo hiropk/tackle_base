@@ -23,6 +23,13 @@ class ApplicationController < ActionController::Base
     @rods.where(user: @current_user)
   end
 
+  def set_reels
+    @search_reels = Reel.ransack(params[:q])
+    @search_reels.sorts = "id desc" if @search_reels.sorts.empty?
+    @reels = @search_reels.result.page(params[:page])
+    @reels.where(user: @current_user)
+  end
+
   def set_lines
     @search_lines = Line.ransack(params[:q])
     @search_lines.sorts = "id desc" if @search_lines.sorts.empty?

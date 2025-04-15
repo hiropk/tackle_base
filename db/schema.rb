@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_14_124350) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_15_124608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -43,6 +43,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_14_124350) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lines_on_user_id"
+  end
+
+  create_table "reels", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.string "brand", null: false
+    t.integer "reel_type", null: false
+    t.integer "gear_type", null: false
+    t.bigint "line_id", null: false
+    t.integer "price", default: 0, null: false
+    t.date "purchase_date", default: -> { "CURRENT_DATE" }, null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["line_id"], name: "index_reels_on_line_id"
+    t.index ["user_id"], name: "index_reels_on_user_id"
   end
 
   create_table "rods", force: :cascade do |t|
@@ -83,6 +99,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_14_124350) do
 
   add_foreign_key "leaders", "users"
   add_foreign_key "lines", "users"
+  add_foreign_key "reels", "lines"
+  add_foreign_key "reels", "users"
   add_foreign_key "rods", "users"
   add_foreign_key "sessions", "users"
 end

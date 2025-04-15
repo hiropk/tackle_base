@@ -4,7 +4,9 @@
   <%= turbo_frame_tag "rods_view" do %>
     <%= render 'rods/index', search_rods: @search_rods, rods: @rods%>
   <% end %>
-  <%= render 'homes/reel' %>
+  <%= turbo_frame_tag "reels_view" do %>
+    <%= render 'reels/index', search_reels: @search_reels, reels: @reels%>
+  <% end %>
   <%= turbo_frame_tag "lines_view" do %>
     <%= render 'lines/index', search_lines: @search_lines, lines: @lines%>
   <% end %>

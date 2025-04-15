@@ -10,6 +10,15 @@ ja:
               blank: 入力してください
             length:
               not_a_number: 値を入力してください
+        reel:
+          attributes:
+            name:
+              blank: 入力してください
+            brand:
+              blank: 入力してください
+            line:
+              required: 選択してください
+
         line:
           attributes:
             name:
@@ -104,6 +113,29 @@ ja:
         max_weight: 最大ルアーウェイト(単位:g)
         purchase_date: 購入日
         price: 購入金額（単位:円）
+        notes: メモ
+      reel:
+        name: 名前
+        brand: ブランド
+        reel_type: リールタイプ
+        reel_type_values:
+          one: reel_type
+          reel_type_none: 指定無し
+          bait: ベイト
+          spining: スピニング
+          reel_type_other: その他
+        gear_type: ギヤタイプ
+        gear_type_values:
+          one: gear_type
+          gear_type_none: 指定なし
+          power_gear: パワーギヤ
+          normal_gear: ノーマルギヤ
+          high_gear: ハイギヤ
+          extra_high_gear: エクストラハイギヤ
+          gear_type_other: その他
+        line: PEライン
+        price: 購入金額（単位:円）
+        purchase_date: 購入日
         notes: メモ
       line:
         name: 名前

@@ -47,12 +47,14 @@ function toggleSearchForm(items) {
 document.addEventListener("turbo:load", function () {
   handleHamburgerMenu();
   toggleSearchForm("rods");
+  toggleSearchForm("reels");
   toggleSearchForm("lines");
   toggleSearchForm("leaders");
 });
 
 document.addEventListener("turbo:frame-load", function () {
   toggleSearchForm("rods");
+  toggleSearchForm("reels");
   toggleSearchForm("lines");
   toggleSearchForm("leaders");
 });

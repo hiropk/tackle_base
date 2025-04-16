@@ -27,6 +27,36 @@ function handleHamburgerMenu() {
   });
 }
 
+function toggleSection(head) {
+  const toggleSectionAddIcon = document.getElementById(
+    `toggle_${head}_add_icon`
+  );
+  const toggleSectionRemoveIcon = document.getElementById(
+    `toggle_${head}_remove_icon`
+  );
+  const section = document.getElementById(`toggle_${head}`);
+
+  if (toggleSectionAddIcon == null || toggleSectionRemoveIcon == null) {
+    return;
+  }
+
+  toggleSectionAddIcon.addEventListener("click", function () {
+    if (section.classList.contains("hidden")) {
+      section.classList.remove("hidden");
+      toggleSectionAddIcon.classList.add("hidden");
+      toggleSectionRemoveIcon.classList.remove("hidden");
+    }
+  });
+
+  toggleSectionRemoveIcon.addEventListener("click", function () {
+    if (!section.classList.contains("hidden")) {
+      section.classList.add("hidden");
+      toggleSectionAddIcon.classList.remove("hidden");
+      toggleSectionRemoveIcon.classList.add("hidden");
+    }
+  });
+}
+
 function toggleSearchForm(items) {
   const toggleButton = document.getElementById(`toggle_search_${items}_form`);
   const searchForm = document.getElementById(`search_${items}_form`);
@@ -46,6 +76,12 @@ function toggleSearchForm(items) {
 
 document.addEventListener("turbo:load", function () {
   handleHamburgerMenu();
+  toggleSection("tackle");
+  toggleSection("rod");
+  toggleSection("reel");
+  toggleSection("line");
+  toggleSection("leader");
+
   toggleSearchForm("tackles");
   toggleSearchForm("rods");
   toggleSearchForm("reels");
@@ -54,6 +90,12 @@ document.addEventListener("turbo:load", function () {
 });
 
 document.addEventListener("turbo:frame-load", function () {
+  toggleSection("tackle");
+  toggleSection("rod");
+  toggleSection("reel");
+  toggleSection("line");
+  toggleSection("leader");
+
   toggleSearchForm("tackles");
   toggleSearchForm("rods");
   toggleSearchForm("reels");

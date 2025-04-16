@@ -17,6 +17,17 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100&icon_names=favorite,home,search,settings" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .kiwi-maru-regular {
+        font-family: "Kiwi Maru", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+    </style>
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -24,7 +35,7 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5">
+    <main class="container mx-auto mt-28 px-5 kiwi-maru-regular">
       <%= render 'header' %>
       <%= yield %>
       <%= render 'footer' %>

@@ -1,38 +1,39 @@
 <div id="<%= dom_id reel %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= reel.user_id %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= reel.name %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Brand:</strong>
-    <%= reel.brand %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Reel type:</strong>
-    <%= reel.reel_type %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Gear type:</strong>
-    <%= reel.gear_type %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Line:</strong>
-    <%= reel.line_id %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Price:</strong>
-    <%= reel.price %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Purchase date:</strong>
-    <%= reel.purchase_date %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Notes:</strong>
-    <%= reel.notes %>
-  </div>
+  <table class="text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
+    <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr class="bg-gray-200 text-gray-700">
+        <th scope="col" class="px-6 py-3">項目</th><th scope="col" class="px-6 py-3">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">名前</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= reel.name %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ブランド</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= reel.brand %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ギヤ</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.reel.reel_type_values.#{reel.reel_type}") %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ギヤ</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.reel.gear_type_values.#{reel.gear_type}") %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">購入日</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= l(reel.purchase_date) %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">購入金額<br>(単位:円)</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= number_with_delimiter(reel.price) %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">メモ</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= reel.notes %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -16,6 +16,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_tackles
+    @search_tackles = Tackle.ransack(params[:q])
+    @search_tackles.sorts = "id desc" if @search_tackles.sorts.empty?
+    @tackles = @search_tackles.result.page(params[:page])
+    @tackles.where(user: @current_user)
+  end
+
   def set_rods
     @search_rods = Rod.ransack(params[:q])
     @search_rods.sorts = "id desc" if @search_rods.sorts.empty?

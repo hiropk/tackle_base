@@ -1,0 +1,70 @@
+<%= form_with(model: tackle, class: "contents") do |form| %>
+  <% if tackle.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(tackle.errors.count, "error") %> prohibited this tackle from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% tackle.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tackle.errors[:name].none?, "border-red-400 focus:outline-red-600": tackle.errors[:name].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :rod_id %>
+    <%= form.select :rod_id,
+      options_from_collection_for_select(Rod.where(user: @current_user), :id, ->(rod) { "#{rod.name} / #{rod.brand} / #{t("activerecord.attributes.rod.fishing_type_values.#{rod.fishing_type}")}" }),
+      prompt: "選択してください",
+      class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", 
+             { "border-gray-400 focus:outline-blue-600": tackle.errors[:rod_id].none?, 
+               "border-red-400 focus:outline-red-600": tackle.errors[:rod_id].any? }]
+    %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :reel_id %>
+    <%= form.select :reel_id,
+      options_from_collection_for_select(Reel.where(user: @current_user), :id, ->(reel) { "#{reel.name} / #{reel.brand} / #{t("activerecord.attributes.reel.reel_type_values.#{reel.reel_type}")}" }),
+      prompt: "選択してください",
+      class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", 
+             { "border-gray-400 focus:outline-blue-600": tackle.errors[:reel_id].none?, 
+               "border-red-400 focus:outline-red-600": tackle.errors[:reel_id].any? }]
+    %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :knot %>
+    <%= form.select :knot, 
+      Tackle.knots.keys.map { |key| [t("activerecord.attributes.tackle.knot_values.#{key}"), key] }, 
+      {}, 
+      class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", 
+             { "border-gray-400 focus:outline-blue-600": tackle.errors[:knot].none?, 
+               "border-red-400 focus:outline-red-600": tackle.errors[:knot].any? }] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :leader_id %>
+    <%= form.select :leader_id,
+      options_from_collection_for_select(Leader.where(user: @current_user), :id, ->(leader) { "#{leader.name} / #{leader.brand} / #{t("activerecord.attributes.leader.material_values.#{leader.material}")}" }),
+      prompt: "選択してください",
+      class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", 
+             { "border-gray-400 focus:outline-blue-600": tackle.errors[:leader_id].none?, 
+               "border-red-400 focus:outline-red-600": tackle.errors[:leader_id].any? }]
+    %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :notes %>
+    <%= form.textarea :notes, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tackle.errors[:notes].none?, "border-red-400 focus:outline-red-600": tackle.errors[:notes].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit "作成", class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

@@ -2,6 +2,18 @@ ja:
   activerecord:
     errors:
       models:
+        tackle:
+          attributes:
+            name:
+              blank: 入力してください
+            brand:
+              blank: 入力してください
+            rod_id:
+              required: 選択してください
+            reel_id:
+              required: 選択してください
+            leader_id:
+              required: 選択してください
         rod:
           attributes:
             name:
@@ -42,6 +54,41 @@ ja:
               blank: 入力してください
               not_a_number: 値を入力してください
     attributes:
+      tackle:
+        name: 名前
+        rod_id: ロッド
+        reel_id: リール
+        knot: ノット
+        knot_values:
+          knot_none: 指定なし
+          uni_knot: ユニノット
+          improved_clinch_knot: インプルーブドクリンチノット
+          palomar_knot: パロマーノット
+          fg_knot: FGノット
+          albright_knot: アルブライトノット
+          double_uni_knot: ダブルユニノット
+          blood_knot: ブラッドノット
+          surgeon_knot: サージョンノット
+          loop_knot: ループノット
+          perfection_loop: パーフェクションループ
+          dropper_loop: ドロッパーループ
+          snell_knot: スネルノット
+          nail_knot: ネイルノット
+          davy_knot: デイビーノット
+          trilene_knot: トリリンノット
+          arbour_knot: アーバーノット
+          spider_hitch: スパイダーヒッチ
+          bimini_twist: ビミニツイスト
+          haywire_twist: ヘイワイヤーツイスト
+          san_diego_jam: サンディエゴジャムノット
+          rapala_knot: ラパラノット
+          yucatan_knot: ユカタンノット
+          king_sling: キングスリング
+          non_slip_loop: ノンスリップループノット
+          offshore_swivel_knot: オフショアスイベルノット
+          tokyo_rig_knot: 東京リグノット
+        leader_id: リーダー
+        notes: メモ
       rod:
         name: 名前
         brand: ブランド
@@ -49,50 +96,50 @@ ja:
         fishing_type: 釣法
         fishing_type_values:
           one: fishing_type
-          fishing_type_none: "指定なし"
-          jigging_offshore: "ジギング系 - オフショア"
-          light_jigging_slj: "ジギング系 - ライトジギング (SLJ)"
-          deep_jigging: "ジギング系 - ディープジギング"
-          shore_jigging: "ジギング系 - ショアジギング"
-          worm_fishing: "ソフトルアー系 - ワームフィッシング"
-          no_sinker: "ソフトルアー系 - ノーシンカー"
-          texas_rig: "ソフトルアー系 - テキサスリグ"
-          down_shot_rig: "ソフトルアー系 - ダウンショットリグ"
-          carolina_rig: "ソフトルアー系 - キャロライナリグ"
-          split_shot_rig: "ソフトルアー系 - スプリットショットリグ"
-          jig_head_rig: "ソフトルアー系 - ジグヘッドリグ"
-          pencil_bait: "トップウォーター系 - ペンシルベイト"
-          popper: "トップウォーター系 - ポッパー"
-          frog: "トップウォーター系 - フロッグ"
-          spisher: "トップウォーター系 - スイッシャー"
-          crankbait: "ハードルアー系 - クランクベイト"
-          minnow_floating: "ハードルアー系 - ミノー (フローティング)"
-          minnow_sinking: "ハードルアー系 - ミノー (シンキング)"
-          shad: "ハードルアー系 - シャッド"
-          vibration: "ハードルアー系 - バイブレーション"
-          spinnerbait: "ハードルアー系 - スピナーベイト"
-          chatterbait: "ハードルアー系 - チャターベイト"
-          swim_bait: "ハードルアー系 - スイムベイト"
-          sinking_pencil: "シーバス系 - シンキングペンシル"
-          sea_bass_vibration: "シーバス系 - バイブレーション"
-          sea_bass_minnow: "シーバス系 - ミノー"
-          sea_bass_worm: "シーバス系 - ワーム"
-          sea_bass_big_bait: "シーバス系 - ビッグベイト"
-          eging_aoiri: "エギング系 - アオリイカ"
-          light_eging: "エギング系 - ライトエギング（ヤリイカ・ヒイカ）"
-          ikametal: "エギング系 - イカメタル"
-          omorig: "エギング系 - オモリグ"
-          mebaru_fishing: "その他ターゲット別 - メバリング"
-          ajing: "その他ターゲット別 - アジング"
-          rockfish: "その他ターゲット別 - ロックフィッシュ（アイナメ・ソイ・カサゴ）"
-          chining: "その他ターゲット別 - チニング（クロダイ）"
-          bass_fishing: "その他ターゲット別 - バスフィッシング（ラージ・スモール）"
-          trout_fishing: "その他ターゲット別 - トラウト（エリア・ネイティブ）"
-          catfish_fishing: "その他ターゲット別 - ナマズゲーム"
-          gar_fishing: "その他ターゲット別 - 雷魚（ライギョ）フィッシング"
-          trolling: "海外・ビッグゲーム系 - トローリング"
-          gt_fishing: "海外・ビッグゲーム系 - GTフィッシング"
-          tuna_casting: "海外・ビッグゲーム系 - マグロキャスティング"
+          fishing_type_none: 指定なし
+          jigging_offshore: ジギング系 - オフショア
+          light_jigging_slj: ジギング系 - ライトジギング (SLJ)
+          deep_jigging: ジギング系 - ディープジギング
+          shore_jigging: ジギング系 - ショアジギング
+          worm_fishing: ソフトルアー系 - ワームフィッシング
+          no_sinker: ソフトルアー系 - ノーシンカー
+          texas_rig: ソフトルアー系 - テキサスリグ
+          down_shot_rig: ソフトルアー系 - ダウンショットリグ
+          carolina_rig: ソフトルアー系 - キャロライナリグ
+          split_shot_rig: ソフトルアー系 - スプリットショットリグ
+          jig_head_rig: ソフトルアー系 - ジグヘッドリグ
+          pencil_bait: トップウォーター系 - ペンシルベイト
+          popper: トップウォーター系 - ポッパー
+          frog: トップウォーター系 - フロッグ
+          spisher: トップウォーター系 - スイッシャー
+          crankbait: ハードルアー系 - クランクベイト
+          minnow_floating: ハードルアー系 - ミノー (フローティング)
+          minnow_sinking: ハードルアー系 - ミノー (シンキング)
+          shad: ハードルアー系 - シャッド
+          vibration: ハードルアー系 - バイブレーション
+          spinnerbait: ハードルアー系 - スピナーベイト
+          chatterbait: ハードルアー系 - チャターベイト
+          swim_bait: ハードルアー系 - スイムベイト
+          sinking_pencil: シーバス系 - シンキングペンシル
+          sea_bass_vibration: シーバス系 - バイブレーション
+          sea_bass_minnow: シーバス系 - ミノー
+          sea_bass_worm: シーバス系 - ワーム
+          sea_bass_big_bait: シーバス系 - ビッグベイト
+          eging_aoiri: エギング系 - アオリイカ
+          light_eging: エギング系 - ライトエギング（ヤリイカ・ヒイカ）
+          ikametal: エギング系 - イカメタル
+          omorig: エギング系 - オモリグ
+          mebaru_fishing: その他ターゲット別 - メバリング
+          ajing: その他ターゲット別 - アジング
+          rockfish: その他ターゲット別 - ロックフィッシュ（アイナメ・ソイ・カサゴ）
+          chining: その他ターゲット別 - チニング（クロダイ）
+          bass_fishing: その他ターゲット別 - バスフィッシング（ラージ・スモール）
+          trout_fishing: その他ターゲット別 - トラウト（エリア・ネイティブ）
+          catfish_fishing: その他ターゲット別 - ナマズゲーム
+          gar_fishing: その他ターゲット別 - 雷魚（ライギョ）フィッシング
+          trolling: 海外・ビッグゲーム系 - トローリング
+          gt_fishing: 海外・ビッグゲーム系 - GTフィッシング
+          tuna_casting: 海外・ビッグゲーム系 - マグロキャスティング
         power: 硬さ
         power_values:
           one: power

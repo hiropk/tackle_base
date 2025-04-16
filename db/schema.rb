@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_15_124608) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_16_060109) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -88,6 +88,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_15_124608) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "tackles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.bigint "rod_id", null: false
+    t.bigint "reel_id", null: false
+    t.integer "knot", null: false
+    t.bigint "leader_id", null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["leader_id"], name: "index_tackles_on_leader_id"
+    t.index ["reel_id"], name: "index_tackles_on_reel_id"
+    t.index ["rod_id"], name: "index_tackles_on_rod_id"
+    t.index ["user_id"], name: "index_tackles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
@@ -103,4 +119,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_15_124608) do
   add_foreign_key "reels", "users"
   add_foreign_key "rods", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "tackles", "leaders"
+  add_foreign_key "tackles", "reels"
+  add_foreign_key "tackles", "rods"
+  add_foreign_key "tackles", "users"
 end

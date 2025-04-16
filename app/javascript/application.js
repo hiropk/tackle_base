@@ -46,6 +46,7 @@ function toggleSearchForm(items) {
 
 document.addEventListener("turbo:load", function () {
   handleHamburgerMenu();
+  toggleSearchForm("tackles");
   toggleSearchForm("rods");
   toggleSearchForm("reels");
   toggleSearchForm("lines");
@@ -53,6 +54,7 @@ document.addEventListener("turbo:load", function () {
 });
 
 document.addEventListener("turbo:frame-load", function () {
+  toggleSearchForm("tackles");
   toggleSearchForm("rods");
   toggleSearchForm("reels");
   toggleSearchForm("lines");

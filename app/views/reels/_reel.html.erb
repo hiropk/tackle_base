@@ -15,12 +15,16 @@
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= reel.brand %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ギヤ</th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">リールタイプ</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.reel.reel_type_values.#{reel.reel_type}") %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ギヤ</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.reel.gear_type_values.#{reel.gear_type}") %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">PEライン</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= reel.line.name %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">購入日</th>

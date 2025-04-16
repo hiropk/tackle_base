@@ -6,7 +6,7 @@ if admin.nil?
 end
 
 rods_num = Rod.count
-if Rod.count <= 100
+if rods_num <= 100
   add_rods_num = 100 - rods_num
   suffix = Time.current.strftime("%Y-%m-%d_%H:%M:%S")
   rods = []
@@ -17,7 +17,7 @@ if Rod.count <= 100
 end
 
 lines_num = Line.count
-if Line.count <= 100
+if lines_num <= 100
   add_lines_num = 100 - lines_num
   suffix = Time.current.strftime("%Y-%m-%d_%H:%M:%S")
   lines = []
@@ -28,7 +28,7 @@ if Line.count <= 100
 end
 
 leaders_num = Leader.count
-if Leader.count <= 100
+if leaders_num <= 100
   add_leaders_num = 100 - leaders_num
   suffix = Time.current.strftime("%Y-%m-%d_%H:%M:%S")
   leaders = []
@@ -39,7 +39,7 @@ if Leader.count <= 100
 end
 
 reels_num = Reel.count
-if Reel.count <= 100
+if reels_num <= 100
   add_reels_num = 100 - reels_num
   suffix = Time.current.strftime("%Y-%m-%d_%H:%M:%S")
   reels = []
@@ -48,4 +48,18 @@ if Reel.count <= 100
     reels << { user: admin, name: "リール#{i}_#{suffix}", brand: "リール#{i}_ブランド#{suffix}", reel_type: 1, gear_type: 2, line: line, purchase_date: Date.current, price: 12345,  notes: "メモ#{suffix}" }
   end
   Reel.create!(reels)
+end
+
+tackles_num = Tackle.count
+if tackles_num <= 100
+  add_tackles_num = 100 - tackles_num
+  suffix = Time.current.strftime("%Y-%m-%d_%H:%M:%S")
+  tackles = []
+  rod = Rod.last
+  reel = Reel.last
+  leader = Leader.last
+  add_tackles_num.times do |i|
+    tackles << { user: admin, name: "タックル#{i}_#{suffix}", rod: rod, reel: reel, knot: 1, leader: leader, notes: "メモ#{suffix}" }
+  end
+  Tackle.create!(tackles)
 end

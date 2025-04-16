@@ -1,34 +1,43 @@
 <div id="<%= dom_id leader %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= leader.user_id %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= leader.name %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Brand:</strong>
-    <%= leader.brand %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Leader rating:</strong>
-    <%= leader.leader_rating %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Material:</strong>
-    <%= leader.material %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Price:</strong>
-    <%= leader.price %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Purchase date:</strong>
-    <%= leader.purchase_date %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Notes:</strong>
-    <%= leader.notes %>
-  </div>
+  <table class="text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
+    <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr class="bg-gray-200 text-gray-700">
+        <th scope="col" class="px-6 py-3">項目</th><th scope="col" class="px-6 py-3">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">名前</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= leader.name %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ブランド</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= leader.brand %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">長さ<br>(単位:m)</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= leader.length %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">太さ<br>(単位:号)</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= leader.leader_rating %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">素材</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.leader.material_values.#{leader.material}") %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">購入日</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= l(leader.purchase_date) %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">購入金額<br>(単位:円)</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= number_with_delimiter(leader.price) %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">メモ</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= leader.notes %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

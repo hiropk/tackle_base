@@ -27,33 +27,60 @@ function handleHamburgerMenu() {
   });
 }
 
-function toggleSection(head) {
-  const toggleSectionAddIcon = document.getElementById(
-    `toggle_${head}_add_icon`
-  );
-  const toggleSectionRemoveIcon = document.getElementById(
-    `toggle_${head}_remove_icon`
-  );
-  const section = document.getElementById(`toggle_${head}`);
+function toggleSection() {
+  const userId = document.body.dataset.userId;
+  const sectionKeys = ["tackle", "rod", "reel", "line", "leader"];
+  const storageKey = `section-visibility-${userId}`;
 
-  if (toggleSectionAddIcon == null || toggleSectionRemoveIcon == null) {
-    return;
-  }
+  // 初期状態取得
+  let visibilityState = JSON.parse(localStorage.getItem(storageKey)) || {};
 
-  toggleSectionAddIcon.addEventListener("click", function () {
-    if (section.classList.contains("hidden")) {
-      section.classList.remove("hidden");
-      toggleSectionAddIcon.classList.add("hidden");
-      toggleSectionRemoveIcon.classList.remove("hidden");
+  // デフォルトを false に補完
+  sectionKeys.forEach((key) => {
+    if (visibilityState[key] === undefined) {
+      visibilityState[key] = false;
     }
   });
 
-  toggleSectionRemoveIcon.addEventListener("click", function () {
-    if (!section.classList.contains("hidden")) {
-      section.classList.add("hidden");
-      toggleSectionAddIcon.classList.remove("hidden");
-      toggleSectionRemoveIcon.classList.add("hidden");
-    }
+  // 初期反映
+  sectionKeys.forEach((key) => {
+    const sectionEl = document.querySelector(`[data-section="${key}"]`)
+      .parentElement.parentElement;
+    if (!sectionEl) return;
+
+    const content = sectionEl.querySelector(".section-content");
+    const iconOpen = sectionEl.querySelector(".icon-open");
+    const iconClose = sectionEl.querySelector(".icon-close");
+    const visible = visibilityState[key];
+
+    content.classList.toggle("hidden", !visible);
+    iconOpen.classList.toggle("hidden", visible);
+    iconClose.classList.toggle("hidden", !visible);
+  });
+
+  // イベントリスナー
+  document.querySelectorAll(".toggle-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let key = btn.dataset.section;
+      const sectionEl = document.querySelector(`[data-section="${key}"]`)
+        .parentElement.parentElement;
+      const content = sectionEl.querySelector(".section-content");
+      const iconOpen = sectionEl.querySelector(".icon-open");
+      const iconClose = sectionEl.querySelector(".icon-close");
+
+      const isVisible = !content.classList.contains("hidden");
+      const newState = !isVisible;
+
+      content.classList.toggle("hidden", !newState);
+      iconOpen.classList.toggle("hidden", newState);
+      iconClose.classList.toggle("hidden", !newState);
+
+      // 保存
+      const newKey = key.replace("-btn", "");
+      key = newKey;
+      visibilityState[key] = newState;
+      localStorage.setItem(storageKey, JSON.stringify(visibilityState));
+    });
   });
 }
 
@@ -76,11 +103,7 @@ function toggleSearchForm(items) {
 
 document.addEventListener("turbo:load", function () {
   handleHamburgerMenu();
-  toggleSection("tackle");
-  toggleSection("rod");
-  toggleSection("reel");
-  toggleSection("line");
-  toggleSection("leader");
+  toggleSection();
 
   toggleSearchForm("tackles");
   toggleSearchForm("rods");
@@ -90,11 +113,7 @@ document.addEventListener("turbo:load", function () {
 });
 
 document.addEventListener("turbo:frame-load", function () {
-  toggleSection("tackle");
-  toggleSection("rod");
-  toggleSection("reel");
-  toggleSection("line");
-  toggleSection("leader");
+  toggleSection();
 
   toggleSearchForm("tackles");
   toggleSearchForm("rods");

@@ -1,10 +1,12 @@
 <section id="reel">
   <div class="flex">
     <h2>リール</h2>
-    <svg class="ml-1 mt-3 hover:bg-gray-200 hover:rounded-md" id="toggle_reel_add_icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
-    <svg class="ml-1 mt-3 hover:bg-gray-200 hover:rounded-md hidden" id="toggle_reel_remove_icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M200-440v-80h560v80H200Z"/></svg>
+    <span class="toggle-btn" data-section="reel">
+      <svg class="icon-open ml-1 mt-3 hover:bg-gray-200 hover:rounded-md" id="toggle_reel_add_icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+      <svg class="icon-close ml-1 mt-3 hover:bg-gray-200 hover:rounded-md hidden" id="toggle_reel_remove_icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M200-440v-80h560v80H200Z"/></svg>
+    </span>
   </div>
-  <section class="hidden" id="toggle_reel">
+  <section class="section-content hidden" id="toggle_reel">
     <div class="w-full">
       <% if notice.present? %>
         <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>

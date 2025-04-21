@@ -34,7 +34,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body data-user-id="<%= @current_user.id %>">
+  <body data-user-id="<%= @current_user&.id %>">
     <main class="container mx-auto mt-28 px-5 kiwi-maru-regular">
       <%= render 'header' %>
       <%= yield %>

@@ -1,6 +1,6 @@
 <header class="font-bold bg-blue-500">
   <div class="container">
-    <a href=<% root_path %>>
+    <a href=<%= root_path %>>
       <h1>ファミとも！</h1>
     </a>
     <nav class="desktop-nav">
@@ -20,12 +20,12 @@
   </div>
   <nav class="mobile-nav" id="mobile-nav">
     <ul>
-      <li><a href="#schedule">スケジュール</a></li>
-      <li><a href="#tackle">タックル</a></li>
-      <li><a href="#rod">ロッド</a></li>
-      <li><a href="#reel">リール</a></li>
-      <li><a href="#line">ライン</a></li>
-      <li><a href="#leader">リーダー</a></li>
+      <li><a href=<%= "#{root_path}#schedule" %>>スケジュール</a></li>
+      <li><a href=<%= "#{root_path}#tackle" %>>タックル</a></li>
+      <li><a href=<%= "#{root_path}#rod" %>>ロッド</a></li>
+      <li><a href=<%= "#{root_path}#reel" %>>リール</a></li>
+      <li><a href=<%= "#{root_path}#line" %>>ライン</a></li>
+      <li><a href=<%= "#{root_path}#leader" %>>リーダー</a></li>
       <li><%= link_to "ログアウト", session_path, data: { "turbo-method": :delete} %></li>
     </ul>
   </nav>

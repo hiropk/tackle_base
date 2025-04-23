@@ -1,9 +1,9 @@
 class LogsController < ApplicationController
   before_action :set_log, only: %i[ show edit update destroy ]
+  before_action :set_logs, only: :index
 
   # GET /logs or /logs.json
   def index
-    @logs = Log.all
   end
 
   # GET /logs/1 or /logs/1.json
@@ -21,7 +21,7 @@ class LogsController < ApplicationController
 
   # POST /logs or /logs.json
   def create
-    @log = Log.new(log_params)
+    @log = Log.new(log_params.merge({ user: @current_user }))
 
     respond_to do |format|
       if @log.save
@@ -53,6 +53,13 @@ class LogsController < ApplicationController
   end
 
   private
+    def set_logs
+      @search_logs = Log.ransack(params[:q])
+      @search_logs.sorts = "id desc" if @search_logs.sorts.empty?
+      @logs = @search_logs.result.page(params[:page])
+      @logs.where(user: @current_user)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_log
       @log = Log.find(params.expect(:id))

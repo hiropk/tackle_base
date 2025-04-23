@@ -20,7 +20,7 @@
     <%= form.label :rod_id %>
     <%= form.select :rod_id,
       options_from_collection_for_select(Rod.where(user: @current_user), :id, ->(rod) { "#{rod.name} / #{rod.brand} / #{t("activerecord.attributes.rod.fishing_type_values.#{rod.fishing_type}")}" }),
-      prompt: "選択してください",
+      { prompt: "選択してください" },
       class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", 
              { "border-gray-400 focus:outline-blue-600": tackle.errors[:rod_id].none?, 
                "border-red-400 focus:outline-red-600": tackle.errors[:rod_id].any? }]
@@ -31,7 +31,7 @@
     <%= form.label :reel_id %>
     <%= form.select :reel_id,
       options_from_collection_for_select(Reel.where(user: @current_user), :id, ->(reel) { "#{reel.name} / #{reel.brand} / #{t("activerecord.attributes.reel.reel_type_values.#{reel.reel_type}")}" }),
-      prompt: "選択してください",
+      { prompt: "選択してください" },
       class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", 
              { "border-gray-400 focus:outline-blue-600": tackle.errors[:reel_id].none?, 
                "border-red-400 focus:outline-red-600": tackle.errors[:reel_id].any? }]
@@ -52,7 +52,7 @@
     <%= form.label :leader_id %>
     <%= form.select :leader_id,
       options_from_collection_for_select(Leader.where(user: @current_user), :id, ->(leader) { "#{leader.name} / #{leader.brand} / #{t("activerecord.attributes.leader.material_values.#{leader.material}")}" }),
-      prompt: "選択してください",
+      { prompt: "選択してください" },
       class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", 
              { "border-gray-400 focus:outline-blue-600": tackle.errors[:leader_id].none?, 
                "border-red-400 focus:outline-red-600": tackle.errors[:leader_id].any? }]

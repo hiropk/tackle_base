@@ -123,6 +123,7 @@ else
     missing_count.times do |i|
       fishing_date = base_date + (existing_count + i) * 3
       log = Log.create!(
+        user: admin,
         fishing_date: fishing_date,
         start_time: fishing_date.to_datetime.change(hour: 8),
         end_time: fishing_date.to_datetime.change(hour: 16),

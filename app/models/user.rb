@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :reels, dependent: :destroy
   has_many :lines, dependent: :destroy
   has_many :leaders, dependent: :destroy
+  has_many :logs, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 end

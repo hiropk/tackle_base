@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_16_060109) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_23_003344) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -43,6 +43,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_16_060109) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lines_on_user_id"
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.date "fishing_date", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.string "area", null: false
+    t.string "fishing_guide_boat", null: false
+    t.string "menu", null: false
+    t.text "notes", null: false
+    t.text "other"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reels", force: :cascade do |t|
@@ -88,6 +101,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_16_060109) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "tackle_selections", force: :cascade do |t|
+    t.bigint "log_id", null: false
+    t.bigint "tackle_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["log_id"], name: "index_tackle_selections_on_log_id"
+    t.index ["tackle_id"], name: "index_tackle_selections_on_tackle_id"
+  end
+
   create_table "tackles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", null: false
@@ -119,6 +141,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_16_060109) do
   add_foreign_key "reels", "users"
   add_foreign_key "rods", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "tackle_selections", "logs"
+  add_foreign_key "tackle_selections", "tackles"
   add_foreign_key "tackles", "leaders"
   add_foreign_key "tackles", "reels"
   add_foreign_key "tackles", "rods"

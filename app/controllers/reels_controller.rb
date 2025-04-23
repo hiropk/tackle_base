@@ -26,7 +26,7 @@ class ReelsController < ApplicationController
 
     respond_to do |format|
       if @reel.save
-        format.html { redirect_to @reel, notice: "Reel was successfully created." }
+        format.html { redirect_to @reel, notice: "リールを作成しました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -37,7 +37,7 @@ class ReelsController < ApplicationController
   def update
     respond_to do |format|
       if @reel.update(reel_params)
-        format.html { redirect_to @reel, notice: "Reel was successfully updated." }
+        format.html { redirect_to @reel, notice: "リールを更新しました。" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -49,7 +49,7 @@ class ReelsController < ApplicationController
     @reel.destroy!
 
     respond_to do |format|
-      format.html { redirect_to reels_path, status: :see_other, notice: "Reel was successfully destroyed." }
+      format.html { redirect_to reels_path, status: :see_other, notice: "リールを削除しました。" }
     end
   end
 

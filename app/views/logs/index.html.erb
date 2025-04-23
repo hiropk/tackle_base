@@ -1,0 +1,36 @@
+<% content_for :title, "Logs" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h2 class="font-bold text-4xl">釣行日誌</h2>
+  </div>
+  <div class="text-right mb-5">
+    <%= link_to "ホームへ", root_path, class: "px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
+  </div>
+  <div class="text-right mb-5">
+    <%= link_to "新規作成", new_log_path, class: "px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
+  </div>
+
+  <div id="logs" class="min-w-full divide-y divide-gray-200 space-y-5">
+    <% if @logs.any? %>
+      <% @logs.each do |log| %>
+        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
+          <%= render log %>
+          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
+            <%= link_to "Show", log, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+            <%= link_to "Edit", edit_log_path(log), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+            <div class="sm:inline-block">
+              <%= button_to "Destroy", log, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-center my-10">No logs found.</p>
+    <% end %>
+  </div>
+</div>

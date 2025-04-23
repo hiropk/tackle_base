@@ -2,6 +2,20 @@ ja:
   activerecord:
     errors:
       models:
+        log:
+          attributes:
+            fishing_date:
+              blank: "を入力してください"
+            start_time:
+              blank: "を入力してください"
+            end_time:
+              blank: "を入力してください"
+            area:
+              blank: "を入力してください"
+            fishing_guide_boat:
+              blank: "を入力してください"
+            menu:
+              blank: "を入力してください"
         tackle:
           attributes:
             name:
@@ -30,7 +44,6 @@ ja:
               blank: 入力してください
             line_id:
               required: 選択してください
-
         line:
           attributes:
             name:
@@ -54,6 +67,16 @@ ja:
               blank: 入力してください
               not_a_number: 値を入力してください
     attributes:
+      log:
+        fishing_date: 釣行日
+        start_time: 開始時刻
+        end_time: 終了時刻
+        area: エリア
+        fishing_guide_boat: 利用遊漁船
+        menu: メニュー
+        notes: 記録
+        other: 備考
+        tackles: 使用タックル
       tackle:
         name: 名前
         rod_id: ロッド

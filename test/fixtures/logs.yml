@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fishing_date: 2025-04-23
+  start_time: 2025-04-23 09:30:38
+  end_time: 2025-04-23 09:30:38
+  area: MyString
+  fishing_guide_boat: MyString
+  menu: MyString
+  notes: MyText
+  other: MyText
+
+two:
+  fishing_date: 2025-04-23
+  start_time: 2025-04-23 09:30:38
+  end_time: 2025-04-23 09:30:38
+  area: MyString
+  fishing_guide_boat: MyString
+  menu: MyString
+  notes: MyText
+  other: MyText

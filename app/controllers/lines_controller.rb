@@ -25,7 +25,7 @@ class LinesController < ApplicationController
 
     respond_to do |format|
       if @line.save
-        format.html { redirect_to @line, notice: "Line was successfully created." }
+        format.html { redirect_to @line, notice: "ラインを作成しました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -36,7 +36,7 @@ class LinesController < ApplicationController
   def update
     respond_to do |format|
       if @line.update(line_params)
-        format.html { redirect_to @line, notice: "Line was successfully updated." }
+        format.html { redirect_to @line, notice: "ラインを更新しました。" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -48,7 +48,7 @@ class LinesController < ApplicationController
     @line.destroy!
 
     respond_to do |format|
-      format.html { redirect_to lines_path, status: :see_other, notice: "Line was successfully destroyed." }
+      format.html { redirect_to lines_path, status: :see_other, notice: "ラインを削除しました。" }
     end
   end
 

@@ -3,6 +3,8 @@ class Tackle < ApplicationRecord
   belongs_to :rod
   belongs_to :reel
   belongs_to :leader
+  has_many :tackle_selections, dependent: :destroy
+  has_many :logs, through: :tackle_selections
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :rod_id, presence: true

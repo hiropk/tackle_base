@@ -64,7 +64,7 @@ header h1 {
 
 .mobile-nav {
   display: none;
-  background-color: rgb(72, 200, 239);
+  background-color: #3b82f6;
   position: absolute;
   top: 0;
   left: 0;
@@ -75,7 +75,7 @@ header h1 {
 .mobile-nav ul {
   list-style-type: none;
   text-align: center;
-  background-color: rgb(72, 200, 239);
+  background-color: #3b82f6;
 }
 
 .mobile-nav ul li {

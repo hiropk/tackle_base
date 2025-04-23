@@ -54,6 +54,8 @@ ja:
               blank: 入力してください
             line_id:
               required: 選択してください
+            line:
+              required: 入力してください
         line:
           attributes:
             name:

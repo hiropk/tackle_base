@@ -22,12 +22,22 @@ ja:
               blank: 入力してください
             brand:
               blank: 入力してください
+            rod:
+              required: 入力してください
             rod_id:
               required: 選択してください
+              blank: 入力してください
             reel_id:
               required: 選択してください
+              blank: 入力してください
+            reel:
+              required: 入力してください
             leader_id:
               required: 選択してください
+              blank: 入力してください
+            leader:
+              required: 入力してください
+
         rod:
           attributes:
             name:

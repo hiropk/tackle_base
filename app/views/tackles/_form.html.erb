@@ -1,7 +1,7 @@
 <%= form_with(model: tackle, class: "contents") do |form| %>
   <% if tackle.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(tackle.errors.count, "error") %> prohibited this tackle from being saved:</h2>
+      <h2><%= pluralize(tackle.errors.count, "件のエラー：") %></h2>
 
       <ul class="list-disc ml-6">
         <% tackle.errors.each do |error| %>

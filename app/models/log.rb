@@ -3,6 +3,15 @@ class Log < ApplicationRecord
   has_many :tackle_selections, dependent: :destroy
   has_many :tackles, through: :tackle_selections
 
+  validates :fishing_date, presence: true
+  validates :start_time, presence: true
+  validates :end_time, presence: true
+  validates :area, presence: true
+  validates :fishing_guide_boat, presence: true
+  validates :notes, presence: true, length: { maximum: 10000 }
+
+  scope :on_fishing_date, ->(date) { where(fishing_date: date) }
+
   # 釣行日程の年を追加
   ransacker :fishing_year do
     Arel.sql("EXTRACT(YEAR FROM fishing_date)")

@@ -23,8 +23,17 @@ class LogsController < ApplicationController
   def create
     @log = Log.new(log_params.merge({ user: @current_user }))
 
+    tackle_ids = params[:log][:tackle_ids].uniq
+    if tackle_ids.empty? || !all_tackles_exist?(tackle_ids)
+      @log.errors.add(:base, "タックルの選択に不備があります。")
+      flash[:alert] = @log.errors.full_messages.join(" / ")
+    end
+
     respond_to do |format|
-      if @log.save
+      if @log.errors.nil? && @log.save
+        tackle_ids.each do |tackle_id|
+          TackleSelection.create!(log: @log, tackle_id: tackle_id)
+        end
         format.html { redirect_to @log, notice: "釣行日誌を作成しました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -68,5 +77,11 @@ class LogsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def log_params
       params.expect(log: [ :fishing_date, :start_time, :end_time, :area, :fishing_guide_boat, :menu, :notes, :other ])
+    end
+
+    def all_tackles_exist?(ids)
+      return false if ids.empty?
+
+      Tackle.where(id: ids).pluck(:id).sort == ids.map(&:to_i).uniq.sort
     end
 end

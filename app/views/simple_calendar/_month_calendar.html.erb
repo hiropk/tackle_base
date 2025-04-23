@@ -24,6 +24,10 @@
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
+              <% unless Log.on_fishing_date(day).empty? %>
+                <% year, month = day.to_s.split("-").map(&:to_i)[0..1] %>
+                <%= link_to '⚫︎', logs_path(params: { q: {"fishing_year_eq"=>year, "fishing_month_eq"=>month, "area_cont"=>"", "fishing_guide_boat_cont"=>"", "menu_eq"=>""} }), class: "text-green-500 hover:text-green-700" %>
+              <% end %>
             <% end %>
           <% end %>
         </tr>

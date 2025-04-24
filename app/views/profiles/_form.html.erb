@@ -31,7 +31,7 @@
                "border-red-400 focus:outline-red-600": profile.errors[:residence].any? }] %>
   </div>
 
-  <%= form.label :interest_fishing, "釣行エリア", class: "flex items-center space-x-2" do %>
+  <%= form.label :fishing_area, "釣行エリア", class: "flex items-center space-x-2" do %>
     <span class="mr-1">釣行エリア</span>
     <button type="button" id="toggle-fishing-area" class="mb-2 text-gray-500 hover:text-gray-800">
       <svg class="icon-open ml-1 mt-3 hover:bg-gray-200 hover:rounded-md" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
@@ -40,8 +40,8 @@
   <div id="fishing-area-options" class="grid grid-cols-2 gap-2 mt-2 hidden">
     <% Profile::FISHING_AREAS.each do |label, value| %>
       <label class="flex items-center space-x-2">
-        <%= check_box_tag "profile[interest_fishing][]", value, profile.fishing_area.include?(value), id: "fishing_area_#{value}" %>
-        <%= label_tag "interest_fishing_#{value}", t("activerecord.attributes.profile.fishing_area_values.#{Profile::FISHING_AREAS[label]}") %>
+        <%= check_box_tag "profile[fishing_area][]", label, profile.fishing_area.map{|area| Profile::FISHING_AREAS[area]}.include?(value), id: "fishing_area_#{value}" %>
+        <%= label_tag "fishing-area_#{value}", t("activerecord.attributes.profile.fishing_area_values.#{Profile::FISHING_AREAS[label]}") %>
       </label>
     <% end %>
   </div>
@@ -56,7 +56,7 @@
   <div id="interest-fishing-options" class="grid grid-cols-2 gap-2 mt-2 hidden">
     <% Profile::INTEREST_FISHING_TYPES.each do |label, value| %>
       <label class="flex items-center space-x-2">
-        <%= check_box_tag "profile[interest_fishing][]", value, profile.interest_fishing.include?(value), id: "interest_fishing_#{value}" %>
+        <%= check_box_tag "profile[interest_fishing][]", label, profile.interest_fishing.map{|type| Profile::INTEREST_FISHING_TYPES[type]}.include?(value), id: "interest_fishing_#{value}" %>
         <%= label_tag "interest_fishing_#{value}", t("activerecord.attributes.profile.interest_fishing_values.#{Profile::INTEREST_FISHING_TYPES[label]}") %>
       </label>
     <% end %>
@@ -68,21 +68,27 @@
 <% end %>
 
 <script>
-  document.addEventListener("turbo:load", function() {
+
+  function toggleInterestFishing(){
     const toggleButton = document.getElementById("toggle-interest-fishing");
     const optionsDiv = document.getElementById("interest-fishing-options");
 
     toggleButton.addEventListener("click", () => {
       optionsDiv.classList.toggle("hidden");
     });
-  });
+  }
 
-  document.addEventListener("turbo:load", function() {
+  function toggleFishingArea(){
     const toggleButton = document.getElementById("toggle-fishing-area");
     const optionsDiv = document.getElementById("fishing-area-options");
 
     toggleButton.addEventListener("click", () => {
       optionsDiv.classList.toggle("hidden");
     });
+  }
+
+  document.addEventListener("turbo:load", function() {
+    toggleInterestFishing();
+    toggleFishingArea();
   });
 </script>

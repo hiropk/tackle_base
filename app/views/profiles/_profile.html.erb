@@ -1,0 +1,43 @@
+<div id="<%= dom_id profile %>" class="w-full sm:w-auto my-5 space-y-5">
+  <table class="text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
+    <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr class="bg-gray-200 text-gray-700">
+        <th scope="col" class="px-6 py-3">項目</th><th scope="col" class="px-6 py-3">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">姓</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= profile.last_name %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">姓</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= profile.first_name %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">居住地</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= t("activerecord.attributes.profile.residence_values.#{profile.residence}") %></td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">関心の<br>ある釣り</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs">
+          <ul>
+            <% profile.interest_fishing.each do |fishing| %>
+              <li><%= t("activerecord.attributes.profile.interest_fishing_values.#{Profile::INTEREST_FISHING_TYPES[fishing]}") %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">釣行エリア</th>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs">
+          <ul>
+            <% profile.fishing_area.each do |area| %>
+              <li><%= t("activerecord.attributes.profile.fishing_area_values.#{Profile::FISHING_AREAS[area]}") %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

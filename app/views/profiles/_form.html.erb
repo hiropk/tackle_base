@@ -1,0 +1,88 @@
+<%= form_with(model: profile, url: user_profile_path(profile.user_id), class: "contents") do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(profile.errors.count, "件のエラー：") %></h2>
+
+      <ul class="list-disc ml-6">
+        <% profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": profile.errors[:last_name].none?, "border-red-400 focus:outline-red-600": profile.errors[:last_name].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": profile.errors[:first_name].none?, "border-red-400 focus:outline-red-600": profile.errors[:first_name].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :residence %>
+    <%= form.select :residence, 
+      Profile.residences.keys.map { |key| [t("activerecord.attributes.profile.residence_values.#{key}"), key] }, 
+      {}, 
+      class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", 
+             { "border-gray-400 focus:outline-blue-600": profile.errors[:residence].none?, 
+               "border-red-400 focus:outline-red-600": profile.errors[:residence].any? }] %>
+  </div>
+
+  <%= form.label :interest_fishing, "釣行エリア", class: "flex items-center space-x-2" do %>
+    <span class="mr-1">釣行エリア</span>
+    <button type="button" id="toggle-fishing-area" class="mb-2 text-gray-500 hover:text-gray-800">
+      <svg class="icon-open ml-1 mt-3 hover:bg-gray-200 hover:rounded-md" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+    </button>
+  <% end %>
+  <div id="fishing-area-options" class="grid grid-cols-2 gap-2 mt-2 hidden">
+    <% Profile::FISHING_AREAS.each do |label, value| %>
+      <label class="flex items-center space-x-2">
+        <%= check_box_tag "profile[interest_fishing][]", value, profile.fishing_area.include?(value), id: "fishing_area_#{value}" %>
+        <%= label_tag "interest_fishing_#{value}", t("activerecord.attributes.profile.fishing_area_values.#{Profile::FISHING_AREAS[label]}") %>
+      </label>
+    <% end %>
+  </div>
+
+  <br>
+  <%= form.label :interest_fishing, "関心のある釣り", class: "flex items-center space-x-2" do %>
+    <span class="mr-1">関心のある釣り</span>
+    <button type="button" id="toggle-interest-fishing" class="mb-2 text-gray-500 hover:text-gray-800">
+      <svg class="icon-open ml-1 mt-3 hover:bg-gray-200 hover:rounded-md" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+    </button>
+  <% end %>
+  <div id="interest-fishing-options" class="grid grid-cols-2 gap-2 mt-2 hidden">
+    <% Profile::INTEREST_FISHING_TYPES.each do |label, value| %>
+      <label class="flex items-center space-x-2">
+        <%= check_box_tag "profile[interest_fishing][]", value, profile.interest_fishing.include?(value), id: "interest_fishing_#{value}" %>
+        <%= label_tag "interest_fishing_#{value}", t("activerecord.attributes.profile.interest_fishing_values.#{Profile::INTEREST_FISHING_TYPES[label]}") %>
+      </label>
+    <% end %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit "更新", class: "w-full mt-5 sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener("turbo:load", function() {
+    const toggleButton = document.getElementById("toggle-interest-fishing");
+    const optionsDiv = document.getElementById("interest-fishing-options");
+
+    toggleButton.addEventListener("click", () => {
+      optionsDiv.classList.toggle("hidden");
+    });
+  });
+
+  document.addEventListener("turbo:load", function() {
+    const toggleButton = document.getElementById("toggle-fishing-area");
+    const optionsDiv = document.getElementById("fishing-area-options");
+
+    toggleButton.addEventListener("click", () => {
+      optionsDiv.classList.toggle("hidden");
+    });
+  });
+</script>

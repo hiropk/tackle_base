@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :users do
+    resource :profile, only: [ :show, :edit, :update ]
+  end
   resources :logs
   resources :tackles
   resources :reels

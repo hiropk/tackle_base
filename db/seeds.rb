@@ -5,6 +5,10 @@ if admin.nil?
   admin.save
 end
 
+unless Profile.find_by(user: admin)
+  Profile.create(user: admin, last_name: "加納", first_name: "寛之", residence: 31, fishing_area: [ 30, 31 ], interest_fishing: [ 1, 2, 3, 4 ])
+end
+
 rods_num = Rod.count
 if rods_num <= 100
   add_rods_num = 100 - rods_num

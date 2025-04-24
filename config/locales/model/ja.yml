@@ -79,6 +79,153 @@ ja:
               blank: 入力してください
               not_a_number: 値を入力してください
     attributes:
+      profile:
+        last_name: 姓
+        first_name: 名
+        residence: 居住地
+        residence_values:
+          hokkaido: "北海道"
+          aomori: "青森県"
+          iwate: "岩手県"
+          miyagi: "宮城県"
+          akita: "秋田県"
+          yamagata: "山形県"
+          fukushima: "福島県"
+          ibaraki: "茨城県"
+          tochigi: "栃木県"
+          gunma: "群馬県"
+          saitama: "埼玉県"
+          chiba: "千葉県"
+          tokyo: "東京都"
+          kanagawa: "神奈川県"
+          niigata: "新潟県"
+          toyama: "富山県"
+          ishikawa: "石川県"
+          fukui: "福井県"
+          yamanashi: "山梨県"
+          nagano: "長野県"
+          gifu: "岐阜県"
+          shizuoka: "静岡県"
+          aichi: "愛知県"
+          mie: "三重県"
+          shiga: "滋賀県"
+          kyoto: "京都府"
+          osaka: "大阪府"
+          hyogo: "兵庫県"
+          nara: "奈良県"
+          wakayama: "和歌山県"
+          tottori: "鳥取県"
+          shimane: "島根県"
+          okayama: "岡山県"
+          hiroshima: "広島県"
+          yamaguchi: "山口県"
+          tokushima: "徳島県"
+          kagawa: "香川県"
+          ehime: "愛媛県"
+          kochi: "高知県"
+          fukuoka: "福岡県"
+          saga: "佐賀県"
+          nagasaki: "長崎県"
+          kumamoto: "熊本県"
+          oita: "大分県"
+          miyazaki: "宮崎県"
+          kagoshima: "鹿児島県"
+          okinawa: "沖縄県"
+        fishing_area: 釣行エリア
+        fishing_area_values:
+          hokkaido: "北海道"
+          aomori: "青森県"
+          iwate: "岩手県"
+          miyagi: "宮城県"
+          akita: "秋田県"
+          yamagata: "山形県"
+          fukushima: "福島県"
+          ibaraki: "茨城県"
+          tochigi: "栃木県"
+          gunma: "群馬県"
+          saitama: "埼玉県"
+          chiba: "千葉県"
+          tokyo: "東京都"
+          kanagawa: "神奈川県"
+          niigata: "新潟県"
+          toyama: "富山県"
+          ishikawa: "石川県"
+          fukui: "福井県"
+          yamanashi: "山梨県"
+          nagano: "長野県"
+          gifu: "岐阜県"
+          shizuoka: "静岡県"
+          aichi: "愛知県"
+          mie: "三重県"
+          shiga: "滋賀県"
+          kyoto: "京都府"
+          osaka: "大阪府"
+          hyogo: "兵庫県"
+          nara: "奈良県"
+          wakayama: "和歌山県"
+          tottori: "鳥取県"
+          shimane: "島根県"
+          okayama: "岡山県"
+          hiroshima: "広島県"
+          yamaguchi: "山口県"
+          tokushima: "徳島県"
+          kagawa: "香川県"
+          ehime: "愛媛県"
+          kochi: "高知県"
+          fukuoka: "福岡県"
+          saga: "佐賀県"
+          nagasaki: "長崎県"
+          kumamoto: "熊本県"
+          oita: "大分県"
+          miyazaki: "宮崎県"
+          kagoshima: "鹿児島県"
+          okinawa: "沖縄県"
+        interest_fishing: 関心のある釣り
+        interest_fishing_values:
+          fishing_type_none: 指定なし
+          jigging_offshore: ジギング系 - オフショア
+          light_jigging_slj: ジギング系 - ライトジギング (SLJ)
+          deep_jigging: ジギング系 - ディープジギング
+          shore_jigging: ジギング系 - ショアジギング
+          worm_fishing: ソフトルアー系 - ワームフィッシング
+          no_sinker: ソフトルアー系 - ノーシンカー
+          texas_rig: ソフトルアー系 - テキサスリグ
+          down_shot_rig: ソフトルアー系 - ダウンショットリグ
+          carolina_rig: ソフトルアー系 - キャロライナリグ
+          split_shot_rig: ソフトルアー系 - スプリットショットリグ
+          jig_head_rig: ソフトルアー系 - ジグヘッドリグ
+          pencil_bait: トップウォーター系 - ペンシルベイト
+          popper: トップウォーター系 - ポッパー
+          frog: トップウォーター系 - フロッグ
+          spisher: トップウォーター系 - スイッシャー
+          crankbait: ハードルアー系 - クランクベイト
+          minnow_floating: ハードルアー系 - ミノー (フローティング)
+          minnow_sinking: ハードルアー系 - ミノー (シンキング)
+          shad: ハードルアー系 - シャッド
+          vibration: ハードルアー系 - バイブレーション
+          spinnerbait: ハードルアー系 - スピナーベイト
+          chatterbait: ハードルアー系 - チャターベイト
+          swim_bait: ハードルアー系 - スイムベイト
+          sinking_pencil: シーバス系 - シンキングペンシル
+          sea_bass_vibration: シーバス系 - バイブレーション
+          sea_bass_minnow: シーバス系 - ミノー
+          sea_bass_worm: シーバス系 - ワーム
+          sea_bass_big_bait: シーバス系 - ビッグベイト
+          eging_aoiri: エギング系 - アオリイカ
+          light_eging: エギング系 - ライトエギング（ヤリイカ・ヒイカ）
+          ikametal: エギング系 - イカメタル
+          omorig: エギング系 - オモリグ
+          mebaru_fishing: その他ターゲット別 - メバリング
+          ajing: その他ターゲット別 - アジング
+          rockfish: その他ターゲット別 - ロックフィッシュ（アイナメ・ソイ・カサゴ）
+          chining: その他ターゲット別 - チニング（クロダイ）
+          bass_fishing: その他ターゲット別 - バスフィッシング（ラージ・スモール）
+          trout_fishing: その他ターゲット別 - トラウト（エリア・ネイティブ）
+          catfish_fishing: その他ターゲット別 - ナマズゲーム
+          gar_fishing: その他ターゲット別 - 雷魚（ライギョ）フィッシング
+          trolling: 海外・ビッグゲーム系 - トローリング
+          gt_fishing: 海外・ビッグゲーム系 - GTフィッシング
+          tuna_casting: 海外・ビッグゲーム系 - マグロキャスティング
       log:
         fishing_date: 釣行日
         start_time: 開始時刻

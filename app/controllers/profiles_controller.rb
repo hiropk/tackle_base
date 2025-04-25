@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = @user.build_profile(profile_params.merge({ user: @current_user }))
     if @profile.save
-      redirect_to user_profile_path(@user), notice: "\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u3092\u4F5C\u6210\u3057\u307E\u3057\u305F\u3002"
+      redirect_to user_profile_path(@user), notice: "プロフィールを作成しました。"
     else
       render :new
     end
@@ -20,10 +20,14 @@ class ProfilesController < ApplicationController
   def edit; end
 
   def update
-    if @profile.update(profile_params)
-      redirect_to user_profile_path(@user), notice: "\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u3092\u66F4\u65B0\u3057\u307E\u3057\u305F\u3002"
+    attributes = profile_params
+    attributes.merge!({ fishing_areas: [] }) if attributes[:fishing_areas].nil?
+    attributes.merge!({ interest_fishings: [] }) if attributes[:interest_fishings].nil?
+
+    if @profile.update(attributes)
+      redirect_to user_profile_path(@user), notice: "プロフィールを更新しました。"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

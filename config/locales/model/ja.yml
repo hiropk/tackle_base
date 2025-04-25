@@ -131,8 +131,8 @@ ja:
           miyazaki: "宮崎県"
           kagoshima: "鹿児島県"
           okinawa: "沖縄県"
-        fishing_area: 釣行エリア
-        fishing_area_values:
+        fishing_areas: 釣行エリア
+        fishing_areas_values:
           hokkaido: "北海道"
           aomori: "青森県"
           iwate: "岩手県"
@@ -180,8 +180,8 @@ ja:
           miyazaki: "宮崎県"
           kagoshima: "鹿児島県"
           okinawa: "沖縄県"
-        interest_fishing: 関心のある釣り
-        interest_fishing_values:
+        interest_fishings: 関心のある釣り
+        interest_fishings_values:
           fishing_type_none: 指定なし
           jigging_offshore: ジギング系 - オフショア
           light_jigging_slj: ジギング系 - ライトジギング (SLJ)

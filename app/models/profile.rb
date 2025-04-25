@@ -1,6 +1,12 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
+  validates :user_id, presence: true
+  validates :last_name, presence: true, length: { maximum: 20 }
+  validates :first_name, presence: true, length: { maximum: 20 }
+  validate :fishing_areas_cannot_be_empty
+  validate :interest_fishings_cannot_be_empty
+
   INTEREST_FISHING_TYPES = {
     0 => "fishing_type_none",
     1 => "jigging_offshore",
@@ -48,55 +54,55 @@ class Profile < ApplicationRecord
     43 => "tuna_casting"
   }.freeze
 
-FISHING_AREAS = {
-  0 => "hokkaido",
-  1 => "aomori",
-  2 => "iwate",
-  3 => "miyagi",
-  4 => "akita",
-  5 => "yamagata",
-  6 => "fukushima",
-  7 => "ibaraki",
-  8 => "tochigi",
-  9 => "gunma",
-  10 => "saitama",
-  11 => "chiba",
-  12 => "tokyo",
-  13 => "kanagawa",
-  14 => "niigata",
-  15 => "toyama",
-  16 => "ishikawa",
-  17 => "fukui",
-  18 => "yamanashi",
-  19 => "nagano",
-  20 => "gifu",
-  21 => "shizuoka",
-  22 => "aichi",
-  23 => "mie",
-  24 => "shiga",
-  25 => "kyoto",
-  26 => "osaka",
-  27 => "hyogo",
-  28 => "nara",
-  29 => "wakayama",
-  30 => "tottori",
-  31 => "shimane",
-  32 => "okayama",
-  33 => "hiroshima",
-  34 => "yamaguchi",
-  35 => "tokushima",
-  36 => "kagawa",
-  37 => "ehime",
-  38 => "kochi",
-  39 => "fukuoka",
-  40 => "saga",
-  41 => "nagasaki",
-  42 => "kumamoto",
-  43 => "oita",
-  44 => "miyazaki",
-  45 => "kagoshima",
-  46 => "okinawa"
-}.freeze
+  FISHING_AREAS = {
+    0 => "hokkaido",
+    1 => "aomori",
+    2 => "iwate",
+    3 => "miyagi",
+    4 => "akita",
+    5 => "yamagata",
+    6 => "fukushima",
+    7 => "ibaraki",
+    8 => "tochigi",
+    9 => "gunma",
+    10 => "saitama",
+    11 => "chiba",
+    12 => "tokyo",
+    13 => "kanagawa",
+    14 => "niigata",
+    15 => "toyama",
+    16 => "ishikawa",
+    17 => "fukui",
+    18 => "yamanashi",
+    19 => "nagano",
+    20 => "gifu",
+    21 => "shizuoka",
+    22 => "aichi",
+    23 => "mie",
+    24 => "shiga",
+    25 => "kyoto",
+    26 => "osaka",
+    27 => "hyogo",
+    28 => "nara",
+    29 => "wakayama",
+    30 => "tottori",
+    31 => "shimane",
+    32 => "okayama",
+    33 => "hiroshima",
+    34 => "yamaguchi",
+    35 => "tokushima",
+    36 => "kagawa",
+    37 => "ehime",
+    38 => "kochi",
+    39 => "fukuoka",
+    40 => "saga",
+    41 => "nagasaki",
+    42 => "kumamoto",
+    43 => "oita",
+    44 => "miyazaki",
+    45 => "kagoshima",
+    46 => "okinawa"
+  }.freeze
 
 
   enum :residence, {
@@ -148,4 +154,16 @@ FISHING_AREAS = {
     kagoshima: 45,
     okinawa: 46
   }
+
+  def fishing_areas_cannot_be_empty
+    if fishing_areas.blank? || fishing_areas.reject(&:blank?).empty?
+      errors.add(:fishing_areas, "を選択してください")
+    end
+  end
+
+  def interest_fishings_cannot_be_empty
+    if interest_fishings.blank? || interest_fishings.reject(&:blank?).empty?
+      errors.add(:interest_fishings, "を選択してください")
+    end
+  end
 end

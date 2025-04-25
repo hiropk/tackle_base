@@ -33,15 +33,12 @@
 
   <%= form.label :fishing_area, "釣行エリア", class: "flex items-center space-x-2" do %>
     <span class="mr-1">釣行エリア</span>
-    <button type="button" id="toggle-fishing-area" class="mb-2 text-gray-500 hover:text-gray-800">
-      <svg class="icon-open ml-1 mt-3 hover:bg-gray-200 hover:rounded-md" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
-    </button>
   <% end %>
-  <div id="fishing-area-options" class="grid grid-cols-2 gap-2 mt-2 hidden">
+  <div id="fishing-area-options" class="grid grid-cols-4 gap-2 mt-2 ml-10">
     <% Profile::FISHING_AREAS.each do |key, value| %>
       <label class="flex items-center space-x-2">
         <%= check_box_tag "profile[fishing_areas][]", key, profile.fishing_areas.include?(key), id: "fishing_area_#{value}" %>
-        <%= label_tag "fishing-area_#{value}", t("activerecord.attributes.profile.fishing_area_values.#{value}") %>
+        <%= label_tag "fishing-area_#{value}", t("activerecord.attributes.profile.fishing_areas_values.#{value}") %>
       </label>
     <% end %>
   </div>
@@ -49,15 +46,12 @@
   <br>
   <%= form.label :interest_fishing, "関心のある釣り", class: "flex items-center space-x-2" do %>
     <span class="mr-1">関心のある釣り</span>
-    <button type="button" id="toggle-interest-fishing" class="mb-2 text-gray-500 hover:text-gray-800">
-      <svg class="icon-open ml-1 mt-3 hover:bg-gray-200 hover:rounded-md" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
-    </button>
   <% end %>
-  <div id="interest-fishing-options" class="grid grid-cols-2 gap-2 mt-2 hidden">
+  <div id="interest-fishing-options" class="grid grid-cols-2 gap-2 mt-2 ml-10">
     <% Profile::INTEREST_FISHING_TYPES.each do |key, value| %>
       <label class="flex items-center space-x-2">
         <%= check_box_tag "profile[interest_fishings][]", key, profile.interest_fishings.include?(key), id: "interest_fishing_#{value}" %>
-        <%= label_tag "interest_fishing_#{value}", t("activerecord.attributes.profile.interest_fishing_values.#{value}") %>
+        <%= label_tag "interest_fishing_#{value}", t("activerecord.attributes.profile.interest_fishings_values.#{value}") %>
       </label>
     <% end %>
   </div>
@@ -66,29 +60,3 @@
     <%= form.submit "更新", class: "w-full mt-5 sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
-
-<script>
-
-  function toggleInterestFishing(){
-    const toggleButton = document.getElementById("toggle-interest-fishing");
-    const optionsDiv = document.getElementById("interest-fishing-options");
-
-    toggleButton.addEventListener("click", () => {
-      optionsDiv.classList.toggle("hidden");
-    });
-  }
-
-  function toggleFishingArea(){
-    const toggleButton = document.getElementById("toggle-fishing-area");
-    const optionsDiv = document.getElementById("fishing-area-options");
-
-    toggleButton.addEventListener("click", () => {
-      optionsDiv.classList.toggle("hidden");
-    });
-  }
-
-  document.addEventListener("turbo:load", function() {
-    toggleInterestFishing();
-    toggleFishingArea();
-  });
-</script>

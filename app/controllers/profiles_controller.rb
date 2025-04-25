@@ -38,6 +38,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :residence, fishing_area: [], interest_fishing: [])
+    params.require(:profile).permit(:first_name, :last_name, :residence, fishing_areas: [], interest_fishings: [])
   end
 end

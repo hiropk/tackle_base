@@ -40,7 +40,7 @@
   <div id="fishing-area-options" class="grid grid-cols-2 gap-2 mt-2 hidden">
     <% Profile::FISHING_AREAS.each do |key, value| %>
       <label class="flex items-center space-x-2">
-        <%= check_box_tag "profile[fishing_area][]", key, profile.fishing_areas.include?(key), id: "fishing_area_#{value}" %>
+        <%= check_box_tag "profile[fishing_areas][]", key, profile.fishing_areas.include?(key), id: "fishing_area_#{value}" %>
         <%= label_tag "fishing-area_#{value}", t("activerecord.attributes.profile.fishing_area_values.#{value}") %>
       </label>
     <% end %>
@@ -56,7 +56,7 @@
   <div id="interest-fishing-options" class="grid grid-cols-2 gap-2 mt-2 hidden">
     <% Profile::INTEREST_FISHING_TYPES.each do |key, value| %>
       <label class="flex items-center space-x-2">
-        <%= check_box_tag "profile[interest_fishing][]", key, profile.interest_fishings.include?(key), id: "interest_fishing_#{value}" %>
+        <%= check_box_tag "profile[interest_fishings][]", key, profile.interest_fishings.include?(key), id: "interest_fishing_#{value}" %>
         <%= label_tag "interest_fishing_#{value}", t("activerecord.attributes.profile.interest_fishing_values.#{value}") %>
       </label>
     <% end %>

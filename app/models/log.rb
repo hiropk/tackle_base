@@ -22,11 +22,16 @@ class Log < ApplicationRecord
     Arel.sql("EXTRACT(MONTH FROM fishing_date)")
   end
 
+  # 釣行日程の日を追加
+  ransacker :fishing_day do
+    Arel.sql("EXTRACT(DAY FROM fishing_date)")
+  end
+
   def self.ransackable_associations(auth_object = nil)
     [ "tackle_selections", "tackles", "user" ]
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "area", "created_at", "end_time", "fishing_year", "fishing_month", "fishing_guide_boat", "id", "menu", "notes", "other", "start_time", "updated_at" ]
+    [ "area", "created_at", "end_time", "fishing_year", "fishing_month", "fishing_day", "fishing_guide_boat", "id", "menu", "notes", "other", "start_time", "updated_at" ]
   end
 end

@@ -26,6 +26,11 @@
             <%= f.select :fishing_month_eq, (1..12).to_a, { include_blank: true }, { class: "border rounded w-full" } %>
             <%= f.label :fishing_month_eq, "月" %>
           </div>
+
+          <div class="ml-3 mr-3 flex">
+            <%= f.select :fishing_day_eq, (1..31).to_a, { include_blank: true }, { class: "border rounded w-full" } %>
+            <%= f.label :fishing_day_eq, "日" %>
+          </div>
         </div>
 
         <div>

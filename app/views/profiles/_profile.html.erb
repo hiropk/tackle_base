@@ -22,7 +22,7 @@
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">関心の<br>ある釣り</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs">
           <ul>
-            <% profile.interest_fishing.each do |fishing| %>
+            <% profile.interest_fishings.each do |fishing| %>
               <li><%= t("activerecord.attributes.profile.interest_fishing_values.#{Profile::INTEREST_FISHING_TYPES[fishing]}") %></li>
             <% end %>
           </ul>
@@ -32,7 +32,7 @@
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">釣行エリア</th>
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs">
           <ul>
-            <% profile.fishing_area.each do |area| %>
+            <% profile.fishing_areas.each do |area| %>
               <li><%= t("activerecord.attributes.profile.fishing_area_values.#{Profile::FISHING_AREAS[area]}") %></li>
             <% end %>
           </ul>

@@ -1,41 +1,39 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails";
 
+// ハンバーガーメニューの処理
 function handleHamburgerMenu() {
-  const hamburgerMenu = document.getElementById("hamburger-menu");
-  const mobileNav = document.getElementById("mobile-nav");
-  const menuLinks = document.querySelectorAll(".mobile-nav ul li a");
+  const $hamburgerMenu = $("#hamburger-menu");
+  const $mobileNav = $("#mobile-nav");
+  const $menuLinks = $(".mobile-nav ul li a");
 
-  hamburgerMenu.addEventListener("click", (event) => {
+  $hamburgerMenu.on("click", function (event) {
     event.stopPropagation();
-    mobileNav.classList.toggle("show");
+    $mobileNav.toggleClass("show");
   });
 
-  menuLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileNav.classList.remove("show");
-    });
+  $menuLinks.on("click", function () {
+    $mobileNav.removeClass("show");
   });
 
-  document.addEventListener("click", (event) => {
+  $(document).on("click", function (event) {
     if (
-      !mobileNav.contains(event.target) &&
-      !hamburgerMenu.contains(event.target)
+      !$.contains($mobileNav[0], event.target) &&
+      !$.contains($hamburgerMenu[0], event.target)
     ) {
-      mobileNav.classList.remove("show");
+      $mobileNav.removeClass("show");
     }
   });
 }
 
+// セクションの表示・非表示を切り替える処理
 function toggleSection() {
-  const userId = document.body.dataset.userId;
+  const userId = $("body").data("userId");
   const sectionKeys = ["tackle", "rod", "reel", "line", "leader"];
   const storageKey = `section-visibility-${userId}`;
 
-  // 初期状態取得
   let visibilityState = JSON.parse(localStorage.getItem(storageKey)) || {};
 
-  // デフォルトを false に補完
   sectionKeys.forEach((key) => {
     if (visibilityState[key] === undefined) {
       visibilityState[key] = false;
@@ -44,80 +42,60 @@ function toggleSection() {
 
   // 初期反映
   sectionKeys.forEach((key) => {
-    const sectionEl = document.querySelector(`[data-section="${key}"]`)
-      .parentElement.parentElement;
-    if (!sectionEl) return;
+    const $sectionEl = $(`[data-section="${key}"]`).parent().parent();
+    if ($sectionEl.length === 0) return;
 
-    const content = sectionEl.querySelector(".section-content");
-    const iconOpen = sectionEl.querySelector(".icon-open");
-    const iconClose = sectionEl.querySelector(".icon-close");
+    const $content = $sectionEl.find(".section-content");
+    const $iconOpen = $sectionEl.find(".icon-open");
+    const $iconClose = $sectionEl.find(".icon-close");
     const visible = visibilityState[key];
 
-    content.classList.toggle("hidden", !visible);
-    iconOpen.classList.toggle("hidden", visible);
-    iconClose.classList.toggle("hidden", !visible);
+    $content.toggleClass("hidden", !visible);
+    $iconOpen.toggleClass("hidden", visible);
+    $iconClose.toggleClass("hidden", !visible);
   });
 
   // イベントリスナー
-  document.querySelectorAll(".toggle-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      let key = btn.dataset.section;
-      const sectionEl = document.querySelector(`[data-section="${key}"]`)
-        .parentElement.parentElement;
-      const content = sectionEl.querySelector(".section-content");
-      const iconOpen = sectionEl.querySelector(".icon-open");
-      const iconClose = sectionEl.querySelector(".icon-close");
+  $(".toggle-btn").on("click", function () {
+    const key = $(this).data("section");
+    const $sectionEl = $(`[data-section="${key}"]`).parent().parent();
+    const $content = $sectionEl.find(".section-content");
+    const $iconOpen = $sectionEl.find(".icon-open");
+    const $iconClose = $sectionEl.find(".icon-close");
 
-      const isVisible = !content.classList.contains("hidden");
-      const newState = !isVisible;
+    const isVisible = !$content.hasClass("hidden");
+    const newState = !isVisible;
 
-      content.classList.toggle("hidden", !newState);
-      iconOpen.classList.toggle("hidden", newState);
-      iconClose.classList.toggle("hidden", !newState);
+    $content.toggleClass("hidden", !newState);
+    $iconOpen.toggleClass("hidden", newState);
+    $iconClose.toggleClass("hidden", !newState);
 
-      // 保存
-      const newKey = key.replace("-btn", "");
-      key = newKey;
-      visibilityState[key] = newState;
-      localStorage.setItem(storageKey, JSON.stringify(visibilityState));
-    });
+    // 保存
+    visibilityState[key] = newState;
+    localStorage.setItem(storageKey, JSON.stringify(visibilityState));
   });
 }
 
+// 検索フォームの表示・非表示を切り替える処理
 function toggleSearchForm(items) {
-  const toggleButton = document.getElementById(`toggle_search_${items}_form`);
-  const searchForm = document.getElementById(`search_${items}_form`);
+  const $toggleButton = $(`#toggle_search_${items}_form`);
+  const $searchForm = $(`#search_${items}_form`);
 
-  if (toggleButton == null) {
+  if ($toggleButton.length === 0) {
     return;
   }
 
-  toggleButton.addEventListener("click", function () {
-    if (searchForm.classList.contains("hidden")) {
-      searchForm.classList.remove("hidden");
-    } else {
-      searchForm.classList.add("hidden");
-    }
+  $toggleButton.on("click", function () {
+    $searchForm.toggleClass("hidden");
   });
 }
 
-document.addEventListener("turbo:load", function () {
+$(document).on("turbo:load turbo:frame-load", function () {
   handleHamburgerMenu();
   toggleSection();
 
-  toggleSearchForm("tackles");
-  toggleSearchForm("rods");
-  toggleSearchForm("reels");
-  toggleSearchForm("lines");
-  toggleSearchForm("leaders");
-});
-
-document.addEventListener("turbo:frame-load", function () {
-  toggleSection();
-
-  toggleSearchForm("tackles");
-  toggleSearchForm("rods");
-  toggleSearchForm("reels");
-  toggleSearchForm("lines");
-  toggleSearchForm("leaders");
+  // 各セクションの検索フォームを初期化
+  ["tackles", "rods", "reels", "lines", "leaders"].forEach(function (items) {
+    toggleSearchForm(items);
+  });
 });

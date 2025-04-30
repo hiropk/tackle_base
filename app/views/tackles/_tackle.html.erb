@@ -12,11 +12,11 @@
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ロッド</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= tackle.rod.name %></td>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= link_to tackle.rod.name, rod_path(tackle.rod), class: "hover:underline" %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">リール</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= tackle.reel.name %></td>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= link_to tackle.reel.name, reel_path(tackle.reel), class: "hover:underline" %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">ノット</th>
@@ -24,7 +24,7 @@
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">リーダー</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= tackle.leader.name %></td>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= link_to tackle.leader.name, leader_path(tackle.leader), class: "hover:underline" %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">メモ</th>

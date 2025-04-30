@@ -35,7 +35,7 @@
         <td class="px-6 py-4 break-words whitespace-normal max-w-xs">
           <ul>
             <% log.tackles.each do |tackle| %>
-              <li><%= link_to tackle.name, "#{root_path( params: { q: { "name_cont"=>tackle.name }})}#tackle", class: "hover:underline" %></li>
+              <li><%= link_to tackle.name, tackle_path(tackle), class: "hover:underline" %></li>
             <% end %>
           </ul>
         </td>

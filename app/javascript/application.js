@@ -56,24 +56,26 @@ function toggleSection() {
   });
 
   // イベントリスナー
-  $(".toggle-btn").on("click", function () {
-    const key = $(this).data("section");
-    const $sectionEl = $(`[data-section="${key}"]`).parent().parent();
-    const $content = $sectionEl.find(".section-content");
-    const $iconOpen = $sectionEl.find(".icon-open");
-    const $iconClose = $sectionEl.find(".icon-close");
+  $(".toggle-btn")
+    .off("click")
+    .on("click", function () {
+      const key = $(this).data("section");
+      const $sectionEl = $(`[data-section="${key}"]`).parent().parent();
+      const $content = $sectionEl.find(".section-content");
+      const $iconOpen = $sectionEl.find(".icon-open");
+      const $iconClose = $sectionEl.find(".icon-close");
 
-    const isVisible = !$content.hasClass("hidden");
-    const newState = !isVisible;
+      const isVisible = !$content.hasClass("hidden");
+      const newState = !isVisible;
 
-    $content.toggleClass("hidden", !newState);
-    $iconOpen.toggleClass("hidden", newState);
-    $iconClose.toggleClass("hidden", !newState);
+      $content.toggleClass("hidden", !newState);
+      $iconOpen.toggleClass("hidden", newState);
+      $iconClose.toggleClass("hidden", !newState);
 
-    // 保存
-    visibilityState[key] = newState;
-    localStorage.setItem(storageKey, JSON.stringify(visibilityState));
-  });
+      // 保存
+      visibilityState[key] = newState;
+      localStorage.setItem(storageKey, JSON.stringify(visibilityState));
+    });
 }
 
 // 検索フォームの表示・非表示を切り替える処理
@@ -85,7 +87,7 @@ function toggleSearchForm(items) {
     return;
   }
 
-  $toggleButton.on("click", function () {
+  $toggleButton.off("click").on("click", function () {
     $searchForm.toggleClass("hidden");
   });
 }

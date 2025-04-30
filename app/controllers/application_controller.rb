@@ -16,38 +16,33 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_fishing_gear(gear)
+    value = instance_variable_set("@search_#{gear}s", to_class_name(gear).constantize.ransack(params[:q]))
+    value.sorts = "id desc" if value.sorts.empty?
+    instance_variable_set("@#{gear}s", value.result.page(params[:page]).where(user: @current_user))
+  end
+
+  def to_class_name(str)
+    str.split("_").map(&:capitalize).join
+  end
+
   def set_tackles
-    @search_tackles = Tackle.ransack(params[:q])
-    @search_tackles.sorts = "id desc" if @search_tackles.sorts.empty?
-    @tackles = @search_tackles.result.page(params[:page])
-    @tackles.where(user: @current_user)
+    set_fishing_gear("tackle")
   end
 
   def set_rods
-    @search_rods = Rod.ransack(params[:q])
-    @search_rods.sorts = "id desc" if @search_rods.sorts.empty?
-    @rods = @search_rods.result.page(params[:page])
-    @rods.where(user: @current_user)
+    set_fishing_gear("rod")
   end
 
   def set_reels
-    @search_reels = Reel.ransack(params[:q])
-    @search_reels.sorts = "id desc" if @search_reels.sorts.empty?
-    @reels = @search_reels.result.page(params[:page])
-    @reels.where(user: @current_user)
+    set_fishing_gear("reel")
   end
 
   def set_lines
-    @search_lines = Line.ransack(params[:q])
-    @search_lines.sorts = "id desc" if @search_lines.sorts.empty?
-    @lines = @search_lines.result.page(params[:page])
-    @lines.where(user: @current_user)
+    set_fishing_gear("line")
   end
 
   def set_leaders
-    @search_leaders = Leader.ransack(params[:q])
-    @search_leaders.sorts = "id desc" if @search_leaders.sorts.empty?
-    @leaders = @search_leaders.result.page(params[:page])
-    @leaders.where(user: @current_user)
+    set_fishing_gear("leader")
   end
 end

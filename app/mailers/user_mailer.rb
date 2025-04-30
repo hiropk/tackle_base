@@ -1,0 +1,9 @@
+class UserMailer < ApplicationMailer
+  default from: "no-reply@example.com"
+
+  def activation_email(user)
+    @user = user
+    @activation_url = activate_user_url(@user.activation_token)
+    mail(to: @user.email_address, subject: "Please activate your account")
+  end
+end

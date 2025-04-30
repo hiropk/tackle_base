@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "homes#index"
 
+  get "signup", to: "users#new"
+  post "signup", to: "users#create"
+  get "/activate/:token", to: "users#activate", as: "activate_user"
   if Rails.env.development?
     # LetterOpenerWebのエンジンをマウント
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

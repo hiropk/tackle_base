@@ -1,53 +1,22 @@
 <div id="<%= dom_id log %>" class="w-full sm:w-auto my-5 space-y-5">
-  <table class="text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
-    <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-      <tr class="bg-gray-200 text-gray-700">
-        <th scope="col" class="px-6 py-3">項目</th><th scope="col" class="px-6 py-3">内容</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">釣行日</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= l(log.fishing_date) %></td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">開始時刻</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= l(log.start_time) %></td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">終了時刻</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= l(log.end_time) %></td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">エリア</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= log.area %></td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">利用遊漁船</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= log.fishing_guide_boat %></td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">メニュー</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= log.menu %></td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">使用タックル</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs">
-          <ul>
-            <% log.tackles.each do |tackle| %>
-              <li><%= link_to tackle.name, tackle_path(tackle), class: "hover:underline" %></li>
-            <% end %>
-          </ul>
-        </td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">記録</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= log.notes %></td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">備考</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= log.other %></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="mb-1">釣行日：<%= l(log.fishing_date) %></div>
+  <div class="mb-1">時刻：<%= l(log.start_time, format: :short) + "　~　" + l(log.end_time, format: :short) %></div>
+  <div class="mb-1">エリア：<%= log.area %></div>
+  <div class="mb-1">利用遊漁船：<%= log.fishing_guide_boat %></div>
+  <div class="mb-1">メニュー：<%= log.menu %></div>
+  <div class="mb-1">使用タックル：</div>
+  <ul>
+    <% log.tackles.each do |tackle| %>
+      <li><%= link_to tackle.name, tackle_path(tackle), class: "ml-5 hover:underline" %></li>
+    <% end %>
+  </ul>
+
+  <div class="mb-1">記録</div>
+  <div class="ml-2">
+    <%= simple_format(log.notes) %>
+  </div>
+  <div class="mb-1">備考</div>
+  <div class="ml-2">
+    <%= log.other %>
+  </div>
 </div>

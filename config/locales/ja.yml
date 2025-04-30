@@ -28,6 +28,7 @@ ja:
   time:
     formats:
       default: "%Y年%-m月%-d日 %H:%M"
+      short: "%Y/%-m/%-d %H:%M"
   activerecord:
     models:
       cat: ロッド

@@ -2,14 +2,14 @@
   <div class="calendar-heading">
     <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title"><%= start_date.year %>年<%= t('date.month_names')[start_date.month] %></time>
 
-    <nav>
+    <nav class="mb-1">
       <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 hover:bg-gray-300 inline-block font-medium" %>
       <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 hover:bg-gray-300 inline-block font-medium" %>
       <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: "rounded-lg py-3 px-5 pl-1 pt-1 pb-1 pr-1 mr-1 bg-gray-100 hover:bg-gray-300 inline-block font-medium" %>
     </nav>
   </div>
 
-  <table class="table table-striped">
+  <table class="mb-5 table table-striped">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>

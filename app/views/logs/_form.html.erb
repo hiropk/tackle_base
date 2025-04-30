@@ -28,17 +28,17 @@
 
   <div class="my-5">
     <%= form.label :area %>
-    <%= form.text_field :area, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:area].none?, "border-red-400 focus:outline-red-600": log.errors[:area].any?}] %>
+    <%= form.text_field :area, placeholder: "例）隠岐海峡", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:area].none?, "border-red-400 focus:outline-red-600": log.errors[:area].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :fishing_guide_boat %>
-    <%= form.text_field :fishing_guide_boat, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:fishing_guide_boat].none?, "border-red-400 focus:outline-red-600": log.errors[:fishing_guide_boat].any?}] %>
+    <%= form.text_field :fishing_guide_boat, placeholder: "例）遊漁船ファミリア", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:fishing_guide_boat].none?, "border-red-400 focus:outline-red-600": log.errors[:fishing_guide_boat].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :menu %>
-    <%= form.text_field :menu, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:menu].none?, "border-red-400 focus:outline-red-600": log.errors[:menu].any?}] %>
+    <%= form.text_field :menu, placeholder: "例）ネギング", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:menu].none?, "border-red-400 focus:outline-red-600": log.errors[:menu].any?}] %>
   </div>
 
   <%= form.label :tackle_ids, "使用タックル" %>
@@ -62,12 +62,12 @@
 
   <div class="my-5">
     <%= form.label :notes %>
-    <%= form.textarea :notes, rows: 25, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:notes].none?, "border-red-400 focus:outline-red-600": log.errors[:notes].any?}] %>
+    <%= form.textarea :notes, placeholder: "例）#{Log::RECORD_TEXT}", rows: 25, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:notes].none?, "border-red-400 focus:outline-red-600": log.errors[:notes].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :other %>
-    <%= form.textarea :other, rows: 5, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:other].none?, "border-red-400 focus:outline-red-600": log.errors[:other].any?}] %>
+    <%= form.textarea :other, placeholder: "例）アシストフックが少なくなってきたので要補充", rows: 5, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:other].none?, "border-red-400 focus:outline-red-600": log.errors[:other].any?}] %>
   </div>
 
   <div class="inline">

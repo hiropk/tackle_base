@@ -12,6 +12,13 @@ class Log < ApplicationRecord
 
   scope :on_fishing_date, ->(date) { where(fishing_date: date) }
 
+  RECORD_TEXT = <<~TEXT
+    当日は、強い西風の影響で西側エリアは厳しいとのことで、鹿島マリーナから出て多古鼻沖へ。
+    到着してからひと流し目はポロポロと！この調子で行くといいんじゃない？と思ってたら修行の時間。
+    波が落ち着いてからはポツリポツリまだマシになっていき、ジジー！っと鳴る初心者さんのリール！80upの真鯛。
+    なかなか当たりがなく厳しい1日でしたが楽しかった。
+  TEXT
+
   # 釣行日程の年を追加
   ransacker :fishing_year do
     Arel.sql("EXTRACT(YEAR FROM fishing_date)")

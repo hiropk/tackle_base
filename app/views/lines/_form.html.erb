@@ -13,22 +13,22 @@
 
   <div class="my-5">
     <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:name].none?, "border-red-400 focus:outline-red-600": line.errors[:name].any?}] %>
+    <%= form.text_field :name, placeholder: "例）VARIVAS 8 マーキング", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:name].none?, "border-red-400 focus:outline-red-600": line.errors[:name].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :brand %>
-    <%= form.text_field :brand, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:brand].none?, "border-red-400 focus:outline-red-600": line.errors[:brand].any?}] %>
+    <%= form.text_field :brand, placeholder: "例）VARIVAS", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:brand].none?, "border-red-400 focus:outline-red-600": line.errors[:brand].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :pe_rating %>
-    <%= form.text_field :pe_rating, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:pe_rating].none?, "border-red-400 focus:outline-red-600": line.errors[:pe_rating].any?}] %>
+    <%= form.text_field :pe_rating, placeholder: "例）1.5号", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:pe_rating].none?, "border-red-400 focus:outline-red-600": line.errors[:pe_rating].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :length %>
-    <%= form.number_field :length, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:length].none?, "border-red-400 focus:outline-red-600": line.errors[:length].any?}] %>
+    <%= form.number_field :length, placeholder: "例）300号", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:length].none?, "border-red-400 focus:outline-red-600": line.errors[:length].any?}] %>
   </div>
 
   <div class="my-5">
@@ -58,7 +58,7 @@
 
   <div class="my-5">
     <%= form.label :notes %>
-    <%= form.textarea :notes, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:notes].none?, "border-red-400 focus:outline-red-600": line.errors[:notes].any?}] %>
+    <%= form.textarea :notes, placeholder: "例）ジギングで使用。高密度に編み込まれていて良い。", rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": line.errors[:notes].none?, "border-red-400 focus:outline-red-600": line.errors[:notes].any?}] %>
   </div>
 
   <div class="inline">

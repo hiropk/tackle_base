@@ -6,8 +6,8 @@ class Tackle < ApplicationRecord
   has_many :tackle_selections, dependent: :destroy
   has_many :logs, through: :tackle_selections
 
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :rod_id, presence: true
+  validates :name, presence: true, uniqueness: { message: "はすでに使われています" }, length: { maximum: 50 }
+  validates :rod_id, presence: true, uniqueness: { scope: :reel_id, message: "とリールの組み合わせはすでに存在します" }
   validates :reel_id, presence: true
   validates :leader_id, presence: true
   validates :notes, length: { maximum: 1000 }

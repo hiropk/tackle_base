@@ -23,4 +23,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "homes#index"
+
+  if Rails.env.development?
+    # LetterOpenerWebのエンジンをマウント
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

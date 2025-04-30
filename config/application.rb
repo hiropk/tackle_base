@@ -24,5 +24,7 @@ module FamiliarFishingManagement
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = "Tokyo"
     config.i18n.default_locale = :ja
+
+    config.action_mailer.default_options = { content_type: "text/html" }
   end
 end

@@ -10,7 +10,7 @@ class Log < ApplicationRecord
   validates :fishing_guide_boat, presence: true
   validates :notes, presence: true, length: { maximum: 10000 }
 
-  scope :on_fishing_date, ->(date) { where(fishing_date: date) }
+  scope :on_fishing_date, ->(date, user) { where(fishing_date: date, user: user) }
 
   RECORD_TEXT = <<~TEXT
     当日は、強い西風の影響で西側エリアは厳しいとのことで、鹿島マリーナから出て多古鼻沖へ。

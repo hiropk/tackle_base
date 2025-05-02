@@ -6,11 +6,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      flash[:notice] = "Please check your email to activate your account."
-      redirect_to root_path
-    else
-      render :new
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to new_session_path, notice: "あなたのメールアドレス宛にメールを送りました。メールのリンクからアカウントを有効にしてください。" }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -18,9 +20,9 @@ class UsersController < ApplicationController
     @user = User.find_by(activation_token: params[:token])
     if @user && !@user.activated
       @user.activate
-      redirect_to login_path, notice: "Your account has been activated!"
+      redirect_to root_path, notice: "あなたのアカウントはすでに有効化されています。"
     else
-      redirect_to root_path, alert: "Invalid or expired activation link."
+      redirect_to new_user_path, alert: "無効もしくは有効期限書きれたリンクです。"
     end
   end
 

@@ -10,10 +10,15 @@ class User < ApplicationRecord
   has_many :logs, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
-  validates :email_address, presence: true, uniqueness: true
-
   before_create :generate_activation_token
   after_create :send_activation_email
+  after_create :generate_profile
+
+  validates :email_address, presence: true, uniqueness: { message: "はすでに使われています" }, length: { maximum: 70 }
+  validates :password, presence: true, format: {
+    with: /\A(?=.*[A-Z])(?=.*\d).{8,}\z/,
+    message: "は8文字以上で、アルファベットの大文字と数字を含めてください。"
+  }
 
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
@@ -27,5 +32,9 @@ class User < ApplicationRecord
 
   def send_activation_email
     UserMailer.activation_email(self).deliver_later
+  end
+
+  def generate_profile
+    Profile.create(user: self, last_name: "名", first_name: "設定してください", residence: :shimane, fishing_areas: [ 31 ], interest_fishings: [ 0 ])
   end
 end

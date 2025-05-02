@@ -2,6 +2,16 @@ ja:
   activerecord:
     errors:
       models:
+        user:
+          attributes:
+            email_address:
+              blank: "を入力してください"
+              taken: "このメールアドレスはすでに登録されています"
+            password:
+              blank: "を入力してください"
+            password_confirmation:
+              blank: "を入力してください"
+              confirmation: "パスワードの値が入力と異なります"
         log:
           attributes:
             fishing_date:
@@ -79,6 +89,10 @@ ja:
               blank: 入力してください
               not_a_number: 値を入力してください
     attributes:
+      user:
+        email_address: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード再確認
       profile:
         last_name: 姓
         first_name: 名

@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
     @current_user = Current.user
   end
 
+  def require_login
+   if @current_user.nil?
+     redirect_to new_session_path, alert: "ログインをしてください。"
+   end
+  end
+
   def reject_direct_access
     unless request.referer.present?
       redirect_to new_session_path, alert: "直接アクセスは禁止されています。"

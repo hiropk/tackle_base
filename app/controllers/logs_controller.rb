@@ -1,4 +1,5 @@
 class LogsController < ApplicationController
+  before_action :require_login
   before_action :set_log, only: %i[ show edit update destroy ]
   before_action :set_logs, only: :index
 
@@ -63,10 +64,7 @@ class LogsController < ApplicationController
 
   private
     def set_logs
-      @search_logs = Log.ransack(params[:q])
-      @search_logs.sorts = "id desc" if @search_logs.sorts.empty?
-      @logs = @search_logs.result.page(params[:page])
-      @logs.where(user: @current_user)
+      set_fishing_gear("log")
     end
 
     # Use callbacks to share common setup or constraints between actions.

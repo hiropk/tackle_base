@@ -26,7 +26,7 @@ class LeadersController < ApplicationController
 
     respond_to do |format|
       if @leader.save
-        format.html { redirect_to @leader, notice: "Leader was successfully created." }
+        format.html { redirect_to root_path, notice: "リーダーが作成されました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

@@ -30,7 +30,7 @@ class LogsController < ApplicationController
     end
 
     respond_to do |format|
-      if @log.errors.nil? && @log.save
+      if !@log.errors.nil? && @log.save
         tackle_ids.each do |tackle_id|
           TackleSelection.create!(log: @log, tackle_id: tackle_id)
         end

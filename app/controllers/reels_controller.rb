@@ -26,7 +26,7 @@ class ReelsController < ApplicationController
 
     respond_to do |format|
       if @reel.save
-        format.html { redirect_to @reel, notice: "リールを作成しました。" }
+        format.html { redirect_to root_path, notice: "リールを作成しました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

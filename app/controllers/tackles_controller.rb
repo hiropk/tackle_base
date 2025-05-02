@@ -29,7 +29,7 @@ class TacklesController < ApplicationController
 
     respond_to do |format|
       if @tackle.save
-        format.html { redirect_to @tackle, notice: "タックルを作成しました。" }
+        format.html { redirect_to root_path, notice: "タックルを作成しました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

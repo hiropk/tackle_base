@@ -25,7 +25,7 @@ class LinesController < ApplicationController
 
     respond_to do |format|
       if @line.save
-        format.html { redirect_to @line, notice: "ラインを作成しました。" }
+        format.html { redirect_to root_path, notice: "ラインを作成しました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

@@ -35,6 +35,6 @@ class User < ApplicationRecord
   end
 
   def generate_profile
-    Profile.create(user: self, last_name: "名", first_name: "設定してください", residence: :shimane, fishing_areas: [ 31 ], interest_fishings: [ 0 ])
+    Profile.create(user: self, last_name: "設定してください", first_name: "設定してください", residence: :shimane, fishing_areas: [ 31 ], interest_fishings: [ 0 ])
   end
 end

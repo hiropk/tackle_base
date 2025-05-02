@@ -26,7 +26,7 @@ class RodsController < ApplicationController
 
     respond_to do |format|
       if @rod.save
-        format.html { redirect_to @rod, notice: "ロッドを作成しました。" }
+        format.html { redirect_to root_path, notice: "ロッドを作成しました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

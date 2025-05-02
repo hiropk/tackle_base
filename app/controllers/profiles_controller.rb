@@ -6,15 +6,6 @@ class ProfilesController < ApplicationController
     @profile = @user.build_profile
   end
 
-  def create
-    @profile = @user.build_profile(profile_params.merge({ user: @current_user }))
-    if @profile.save
-      redirect_to user_profile_path(@user), notice: "プロフィールを作成しました。"
-    else
-      render :new
-    end
-  end
-
   def show; end
 
   def edit; end

@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-  before_action :require_login
   before_action :set_user
   before_action :set_profile, only: [ :show, :edit, :update ]
 

@@ -1,5 +1,4 @@
 class LogsController < ApplicationController
-  before_action :require_login
   before_action :set_log, only: %i[ show edit update destroy ]
   before_action :set_logs, only: :index
 

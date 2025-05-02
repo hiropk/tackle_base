@@ -1,5 +1,4 @@
 class LeadersController < ApplicationController
-  before_action :require_login
   before_action :reject_direct_access
   before_action :set_leaders, only: :index
   before_action :set_leader, only: %i[ show edit update destroy ]

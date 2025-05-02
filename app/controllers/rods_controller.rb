@@ -1,5 +1,4 @@
 class RodsController < ApplicationController
-  before_action :require_login
   before_action :reject_direct_access
   before_action :set_current_user
   before_action :set_rods, only: :index

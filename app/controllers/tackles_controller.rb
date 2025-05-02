@@ -1,5 +1,4 @@
 class TacklesController < ApplicationController
-  before_action :require_login
   before_action :reject_direct_access
   before_action :set_current_user
   before_action :set_tackle, only: %i[ show edit update destroy ]

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find_by(activation_token: params[:token])
     if @user && !@user.activated
       @user.activate
-      redirect_to root_path, notice: "あなたのアカウントはすでに有効化されています。"
+      redirect_to root_path, notice: "あなたのアカウントを有効化しました。"
     else
       redirect_to new_user_path, alert: "無効もしくは有効期限書きれたリンクです。"
     end

@@ -4,7 +4,12 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <h1 class="font-bold text-4xl">プロフィール</h1>
+    <h2 class="font-bold text-4xl mb-4">プロフィール</h2>
+    <div class="flex text-right">
+      <%= link_to "メールアドレス変更", '#', class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
+      <%= button_to "パスワードの変更", passwords_path(params: {email_address: @current_user.email_address}), method: :post, class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
+      <%= button_to "アカウントの有効化", '#', method: :post, class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
+    </div>
 
     <%= render @profile %>
 

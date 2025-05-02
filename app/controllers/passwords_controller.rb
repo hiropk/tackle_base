@@ -10,7 +10,7 @@ class PasswordsController < ApplicationController
       PasswordsMailer.reset(user).deliver_later
     end
 
-    redirect_to new_session_path, notice: "パスワード再設定用のメールアドレスを送信しましたのでご確認ください。"
+    redirect_to new_session_path, notice: "パスワード再設定用のメールを送信しましたのでご確認ください。"
   end
 
   def edit

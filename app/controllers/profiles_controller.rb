@@ -6,7 +6,10 @@ class ProfilesController < ApplicationController
     @profile = @user.build_profile
   end
 
-  def show; end
+  def show
+    admin = User.find_by(is_admin: true)
+    @users = User.where.not(id: admin.id)
+  end
 
   def edit; end
 

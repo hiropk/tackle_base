@@ -11,6 +11,9 @@
     <% end %>
 
     <h2 class="font-bold text-4xl mb-4">プロフィール</h2>
+    <% if @current_user.is_admin?%>
+      <%= render 'admin', users: @users %>
+    <% end%>
     <br>
     <div class="text-center">
       <%= link_to "メールアドレス変更",

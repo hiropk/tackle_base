@@ -13,14 +13,11 @@
       <%= image_tag "icon.png", class: "w-40 h-40 object-cover" %>
     </div>
     <br>
-    <p style="text-align: center">〜 釣行記録とタックル管理のサイト 〜</p>
+    <p style="text-align: center">〜 無料の釣行記録とタックル管理のサイト 〜</p>
 
     <div class="mt-8 text-center">
-      <%= link_to "新規登録", signup_path, class: "inline-block text-lg font-semibold text-blue-600 underline hover:no-underline hover:text-blue-800 transition" %>
+      <%= link_to "新規登録はこちら💁", signup_path, class: "inline-block text-lg font-semibold text-blue-600 underline hover:no-underline hover:text-blue-800 transition" %>
     </div>
-
-
-    <h2 class="mt-4 font-bold text-2xl">ログイン</h2>
 
     <%= form_with url: session_url, class: "contents" do |form| %>
       <div class="my-5">

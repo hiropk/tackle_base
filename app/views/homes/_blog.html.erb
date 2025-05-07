@@ -1,0 +1,22 @@
+<section id="blog" class="max-w-4xl mx-auto py-10 px-4">
+  <h2 class="text-2xl font-bold text-center mb-1 text-gray-800">ファミリアのブログ</h2>
+  <div class="text-center text-gray-500 mb-8">〜 元教員の船長の日々をお届け！ 〜</div>
+  <div class="text-center"><a class="text-lg font-semibold hover:underline" href="https://hiropk.github.io/familiar-sw/">ご予約はこちら💁</a></div>
+
+  <ul class="space-y-6">
+    <% @feed.entries.each do |entry| %>
+      <li class="bg-white shadow-md hover:shadow-lg transition rounded-xl p-5 flex gap-4">
+        <div>
+          <a href="<%= entry.url %>" target="_blank" class="block">
+            <h3 class="text-lg font-semibold text-blue-700 hover:underline">
+              <%= entry.title %>（<%= l(entry.published.to_date, format: :short) %>）
+            </h3>
+            <p class="text-sm text-gray-600 mt-2">
+              <%= truncate(strip_tags(entry.summary), length: 30) %>
+            </p>
+          </a>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</section>

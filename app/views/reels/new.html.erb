@@ -1,6 +1,9 @@
 <%= turbo_frame_tag "reels_view" do %>
   <section id="reel">
     <h2>リール|新規作成</h2>
+    <% if Line.where(user: @current_user).count == 0 %>
+      <div class="text-red-500">※新規作成にはラインの登録が必要です。ラインの登録を済ませてください。</div>
+    <% end %>
     <div class="md:w-2/3 w-full">
       <%= render "form", reel: @reel %>
 

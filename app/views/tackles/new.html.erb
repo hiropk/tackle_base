@@ -1,6 +1,15 @@
 <%= turbo_frame_tag "tackles_view" do %>
   <section id="tackle">
     <h2>タックル|新規作成</h2>
+    <% if Rod.where(user: @current_user).count == 0 %>
+      <div class="text-red-500">※新規作成にはロッドの登録が必要です。ロッドの登録を済ませてください。</div>
+    <% end %>
+    <% if Reel.where(user: @current_user).count == 0 %>
+      <div class="text-red-500">※新規作成にはリールの登録が必要です。リールの登録を済ませてください。</div>
+    <% end %>
+    <% if Leader.where(user: @current_user).count == 0 %>
+      <div class="text-red-500">※新規作成にはリーダーの登録が必要です。リーダーの登録を済ませてください。</div>
+    <% end %>
     <div class="md:w-2/3 w-full">
       <%= render "form", tackle: @tackle %>
 

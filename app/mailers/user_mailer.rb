@@ -1,6 +1,4 @@
 class UserMailer < ApplicationMailer
-  default from: "no-reply@example.com"
-
   def activation_email(user)
     @user = user
     @activation_url = activate_user_url(@user.activation_token)

@@ -16,6 +16,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @current_user.update(user_params)
+      @current_user.update(activated: false)
+      @current_user.activation_token = SecureRandom.urlsafe_base64
+      UserMailer.activation_email(@current_user).deliver_later
+      terminate_session
+      redirect_to new_session_path, notice: "メールアドレスが変更されました。あなたのメールアドレス宛にメールを送りました。メールのリンクからアカウントを有効にしてください。"
+    else
+      redirect_to edit_user_path(@current_user), alert: "メールアドレスに誤りがあります。"
+    end
+  end
+
   def activate
     @user = User.find_by(activation_token: params[:token])
     if @user && !@user.activated

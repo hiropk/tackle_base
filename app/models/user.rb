@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validates :password, presence: true, format: {
     with: /\A(?=.*[A-Z])(?=.*\d).{8,}\z/,
     message: "は8文字以上で、アルファベットの大文字と数字を含めてください。"
-  }
+  }, if: -> { password.present? }
 
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
@@ -35,6 +35,6 @@ class User < ApplicationRecord
   end
 
   def generate_profile
-    Profile.create(user: self, last_name: "設定してください", first_name: "設定してください", residence: :shimane, fishing_areas: [ 31 ], interest_fishings: [ 0 ])
+    Profile.create(user: self, last_name: "ユーザ名", first_name: "ユーザ名", residence: :shimane, fishing_areas: [ 31 ], interest_fishings: [ 0 ])
   end
 end

@@ -8,8 +8,17 @@
   <% end %>
 
   <section id="captain">
-    <p style="text-align: center">〜 現役船長が作った釣行記録とタックル管理が一緒にできるサイト 〜</p>
     <br>
+    <div class="flex justify-center">
+      <%= image_tag "icon.png", class: "w-40 h-40 object-cover" %>
+    </div>
+    <br>
+    <p style="text-align: center">〜 釣行記録とタックル管理のサイト 〜</p>
+
+    <div class="mt-8 text-center">
+      <%= link_to "新規登録", signup_path, class: "inline-block text-lg font-semibold text-blue-600 underline hover:no-underline hover:text-blue-800 transition" %>
+    </div>
+
 
     <h2 class="mt-4 font-bold text-2xl">ログイン</h2>
 
@@ -29,9 +38,6 @@
 
         <div class="mt-4 text-sm text-gray-500 sm:mt-0">
           <%= link_to "パスワードをお忘れですか？", new_password_path, class: "text-gray-700 underline hover:no-underline" %>
-        </div>
-        <div class="mt-4 text-sm text-gray-500 sm:mt-0">
-          <%= link_to "新規登録", signup_path, class: "text-gray-700 underline hover:no-underline" %>
         </div>
       </div>
     <% end %>

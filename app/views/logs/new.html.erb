@@ -3,6 +3,10 @@
 <div class="md:w-2/3 w-full">
   <h1 class="font-bold text-4xl">釣行日誌|新規作成</h1>
 
+  <% if Tackle.where(user: @current_user).count == 0 %>
+    <div class="text-red-500">※新規作成にはタックルの登録が必要です。タックルの登録を済ませてください。</div>
+  <% end %>
+
   <%= render "form", log: @log %>
 
   <%= link_to "戻る", logs_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>

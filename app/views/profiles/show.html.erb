@@ -21,8 +21,7 @@
             method: :post, class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-300 hover:bg-green-100 inline-block font-medium" %>
       <%= link_to "アカウント有効化", 
             manual_activation_users_path, 
-            class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-300 hover:bg-green-100 inline-block font-medium #{'pointer-events-none opacity-50' if @current_user.activated?}", 
-            data: { turbo_prefetch: false } %>
+            class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-300 hover:bg-green-100 inline-block font-medium #{'pointer-events-none opacity-50' if @current_user.activated?}"%>
     </div>
 
     <br>

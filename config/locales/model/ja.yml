@@ -26,6 +26,8 @@ ja:
               blank: "を入力してください"
             menu:
               blank: "を入力してください"
+            notes:
+              blank: "を入力してください"
         tackle:
           attributes:
             name:

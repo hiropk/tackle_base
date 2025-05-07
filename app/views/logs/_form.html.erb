@@ -76,14 +76,15 @@
 <% end %>
 
 <script>
-  document.addEventListener("turbo:load", function () {
-    const addButton = document.getElementById("add-tackle-select");
-    const container = document.getElementById("tackle-select-container");
+  $(document).on('turbo:load', function () {
+  const $addButton = $('#add-tackle-select');
+  const $container = $('#tackle-select-container');
 
-    addButton.addEventListener("click", function () {
-      const existingSelect = container.querySelector(".tackle-select");
-      const newSelect = existingSelect.cloneNode(true);
-      container.appendChild(newSelect);
-    });
+  $addButton.off('click').on('click', function () {
+    const $existingSelect = $container.find('.tackle-select').first();
+    const $newSelect = $existingSelect.clone();
+    $container.append($newSelect);
   });
+});
+
 </script>

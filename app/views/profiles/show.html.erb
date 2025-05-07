@@ -11,12 +11,21 @@
     <% end %>
 
     <h2 class="font-bold text-4xl mb-4">プロフィール</h2>
-    <div class="flex text-right">
-      <%= link_to "メールアドレス変更", '#', class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
-      <%= button_to "パスワードの変更", passwords_path(params: {email_address: @current_user.email_address}), method: :post, class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
-      <%= link_to "アカウントの有効化", manual_activation_users_path, class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition", data: { turbo_prefetch: false } %>
+    <br>
+    <div class="text-center">
+      <%= link_to "メールアドレス変更",
+            '#',
+            class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-300 hover:bg-green-100 inline-block font-medium" %>
+      <%= button_to "パスワード変更",
+            passwords_path(params: {email_address: @current_user.email_address}),
+            method: :post, class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-300 hover:bg-green-100 inline-block font-medium" %>
+      <%= link_to "アカウント有効化", 
+            manual_activation_users_path, 
+            class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-300 hover:bg-green-100 inline-block font-medium #{'pointer-events-none opacity-50' if @current_user.activated?}", 
+            data: { turbo_prefetch: false } %>
     </div>
 
+    <br>
     <%= render @profile %>
 
     <%= link_to "編集", edit_user_profile_path, class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>

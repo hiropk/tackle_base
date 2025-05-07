@@ -26,6 +26,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def manual_activation
+    @current_user.activation_token = SecureRandom.urlsafe_base64
+    UserMailer.activation_email(@current_user).deliver_later
+    terminate_session
+    redirect_to new_session_path, notice: "あなたのメールアドレス宛にメールを送りました。メールのリンクからアカウントを有効にしてください。"
+  end
+
   private
 
   def user_params

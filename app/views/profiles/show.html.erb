@@ -2,7 +2,7 @@
   <div class="md:w-2/3 w-full">
     <% if alert = flash[:alert] %>
       <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
-    <% elsif %>
+    <% elsif !@current_user.activated? %>
       <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= "アカウントの有効化 によりアカウントの有効化を行なってください。" %></p>
     <% end %>
 
@@ -14,7 +14,7 @@
     <div class="flex text-right">
       <%= link_to "メールアドレス変更", '#', class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
       <%= button_to "パスワードの変更", passwords_path(params: {email_address: @current_user.email_address}), method: :post, class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
-      <%= button_to "アカウントの有効化", '#', method: :post, class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition" %>
+      <%= link_to "アカウントの有効化", manual_activation_users_path, class: "ml-4 px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 shadow-sm transition", data: { turbo_prefetch: false } %>
     </div>
 
     <%= render @profile %>

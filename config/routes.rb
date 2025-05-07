@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :users do
     resource :profile, only: [ :show, :edit, :update ]
+    collection do
+      get :manual_activation
+    end
   end
   resources :logs
   resources :tackles

@@ -9,7 +9,7 @@ class PasswordsController < ApplicationController
     if user = User.find_by(email_address: params[:email_address])
       PasswordsMailer.reset(user).deliver_later
     end
-
+    terminate_session
     redirect_to new_session_path, notice: "パスワード再設定用のメールを送信しましたのでご確認ください。"
   end
 

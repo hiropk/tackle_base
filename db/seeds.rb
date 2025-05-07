@@ -103,3 +103,12 @@ if Rails.env.development?
     end
   end
 end
+
+if Rails.env.production?
+  User.new(
+    email_address: "admin@example.com",
+    password: "P@ssword1234",
+    password_confirmation: "P@ssword1234",
+    activated: true,
+    is_admin: true).save
+end

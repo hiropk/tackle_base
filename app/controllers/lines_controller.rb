@@ -1,4 +1,5 @@
 class LinesController < ApplicationController
+  before_action :check_user_activation
   before_action :reject_direct_access
   before_action :set_lines, only: :index
   before_action :set_line, only: %i[ show edit update destroy ]

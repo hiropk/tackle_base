@@ -1,4 +1,5 @@
 class ReelsController < ApplicationController
+  before_action :check_user_activation
   before_action :reject_direct_access
   before_action :set_reels, only: :index
   before_action :set_reel, only: %i[ show edit update destroy ]

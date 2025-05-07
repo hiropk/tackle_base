@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  allow_unauthenticated_access only: %i[ new create ]
+  allow_unauthenticated_access only: %i[ new create activate ]
   def new
     @user = User.new
   end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find_by(activation_token: params[:token])
     if @user && !@user.activated
       @user.activate
-      redirect_to root_path, notice: "あなたのアカウントを有効化しました。"
+      redirect_to new_session_path, notice: "あなたのアカウントを有効化しました。ログインをすることによりサービスを利用できます。"
     else
       redirect_to new_user_path, alert: "無効もしくは有効期限書きれたリンクです。"
     end

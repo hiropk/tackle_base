@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_user_activation
+    set_current_user if @current_user.nil?
+
+    unless @current_user.activated
+      redirect_to user_profile_path(@current_user), alert: "アカウントの有効化 によりアカウントの有効化を行なってください。"
+    end
+  end
+
   def set_fishing_gear(gear)
     value = instance_variable_set("@search_#{gear}s", to_class_name(gear).constantize.ransack(params[:q]))
     value.sorts = "id desc" if value.sorts.empty?

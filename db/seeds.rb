@@ -102,13 +102,15 @@ if Rails.env.development?
       puts "Logはすでに100件以上存在しています（#{existing_count}件）"
     end
   end
-end
-
-if Rails.env.production?
-  User.new(
-    email_address: "admin@example.com",
-    password: "P@ssword1234",
-    password_confirmation: "P@ssword1234",
-    activated: true,
-    is_admin: true).save
+elsif Rails.env.production?
+  unless User.find_by(is_admin: true)
+    admin_attributes = {
+      email_address: "admin@example.com",
+      password: "P@ssword1234",
+      password_confirmation: "P@ssword1234",
+      activated: true,
+      is_admin: true
+    }
+    User.new(admin_attributes).save
+  end
 end

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Familiar 松江店 スタッフブログ</title>
+    <link>https://ameblo.jp/familiar-matsue/</link>
+    <description>Familiar 松江店のスタッフブログです。</description>
+    <item>
+      <title>サンプル記事1</title>
+      <link>https://ameblo.jp/familiar-matsue/entry-1.html</link>
+      <description>これはサンプル記事1の内容です。</description>
+      <pubDate>Wed, 01 Jan 2024 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>サンプル記事2</title>
+      <link>https://ameblo.jp/familiar-matsue/entry-2.html</link>
+      <description>これはサンプル記事2の内容です。</description>
+      <pubDate>Wed, 02 Jan 2024 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>サンプル記事3</title>
+      <link>https://ameblo.jp/familiar-matsue/entry-3.html</link>
+      <description>これはサンプル記事3の内容です。</description>
+      <pubDate>Wed, 03 Jan 2024 09:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss> 

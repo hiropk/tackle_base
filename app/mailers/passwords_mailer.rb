@@ -1,6 +1,10 @@
 class PasswordsMailer < ApplicationMailer
   def reset(user)
     @user = user
-    mail subject: "パスワードを再設定してください", to: user.email_address
+    mail(
+      to: user.email_address,
+      subject: "【Tackle Base】パスワード再設定のご案内",
+      from: %("Tackle Base" <familiar.slj@gmail.com>)
+    )
   end
 end

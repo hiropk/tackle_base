@@ -149,6 +149,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_30_073430) do
     t.string "activation_token"
     t.boolean "activated"
     t.datetime "activated_at"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 

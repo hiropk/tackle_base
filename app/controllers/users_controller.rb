@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  allow_unauthenticated_access only: %i[ new create activate ]
+  allow_unauthenticated_access only: %i[ new create activate restore_form restore ]
   def new
     @user = User.new
   end
@@ -46,6 +46,28 @@ class UsersController < ApplicationController
     UserMailer.activation_email(@current_user).deliver_later
     terminate_session
     redirect_to new_session_path, notice: "あなたのメールアドレス宛にメールを送りました。メールのリンクからアカウントを有効にしてください。"
+  end
+
+  def deactivate
+    @current_user.soft_delete
+    terminate_session
+    redirect_to new_session_path, notice: "退会処理が完了しました。退会後のログイン画面から復帰することが可能です。ご利用ありがとうございました。"
+  end
+
+  def restore_form
+  end
+
+  def restore
+    if user = User.authenticate_by(params.permit(:email_address, :password))
+      if user.deleted?
+        user.restore
+        redirect_to new_session_path, notice: "アカウントを復帰しました。ログインしてサービスをご利用ください。"
+      else
+        redirect_to new_session_path, alert: "このアカウントは退会していません。"
+      end
+    else
+      redirect_to restore_form_users_path, alert: "メールアドレスまたはパスワードが正しくありません。"
+    end
   end
 
   private

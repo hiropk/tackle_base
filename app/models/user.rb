@@ -20,8 +20,23 @@ class User < ApplicationRecord
     message: "は8文字以上で、アルファベットの大文字と数字を含めてください。"
   }, if: -> { password.present? }
 
+  scope :available, -> { where(deleted_at: nil) }
+  scope :deleted, -> { where.not(deleted_at: nil) }
+
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
+  end
+
+  def soft_delete
+    update_column(:deleted_at, Time.current)
+  end
+
+  def restore
+    update_column(:deleted_at, nil)
+  end
+
+  def deleted?
+    deleted_at.present?
   end
 
   private

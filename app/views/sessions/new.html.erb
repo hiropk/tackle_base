@@ -33,8 +33,13 @@
           <%= form.submit "ログイン", class: "w-auto sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
         </div>
 
-        <div class="mt-4 text-sm text-gray-500 sm:mt-0">
-          <%= link_to "パスワードをお忘れですか？", new_password_path, class: "text-gray-700 underline hover:no-underline" %>
+        <div class="mt-2 flex items-center justify-between">
+          <div class="text-sm">
+            <%= link_to "パスワードをお忘れですか？", new_password_path, class: "font-semibold text-indigo-600 hover:text-indigo-500" %>
+          </div>
+          <div class="text-sm">
+            <%= link_to "退会済みアカウントの復帰", restore_form_users_path, class: "font-semibold text-indigo-600 hover:text-indigo-500" %>
+          </div>
         </div>
       </div>
     <% end %>

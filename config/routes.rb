@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     resource :profile, only: [ :show, :edit, :update ]
     collection do
       get :manual_activation
+      post :deactivate
+      get :restore_form
+      post :restore
     end
   end
   resources :logs

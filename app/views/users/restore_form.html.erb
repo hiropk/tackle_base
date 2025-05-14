@@ -1,0 +1,42 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <% if alert = flash[:alert] %>
+    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+  <% end %>
+
+  <% if notice = flash[:notice] %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <section id="captain">
+    <br>
+    <div class="flex justify-center">
+      <%= image_tag "icon.png", class: "w-40 h-40 object-cover" %>
+    </div>
+    <br>
+
+    <div class="text-center mb-8">
+      <h1 class="text-2xl font-bold">アカウントの復帰</h1>
+      <p class="text-gray-600 mt-2">退会したアカウントを復帰させるには、以下の情報を入力してください。</p>
+    </div>
+
+    <%= form_with url: restore_users_path, method: :post, class: "contents" do |form| %>
+      <div class="my-5">
+        <%= form.label :email_address, "メールアドレス", class: "block text-gray-700" %>
+        <%= form.email_field :email_address, required: true, autofocus: true, placeholder: "メールアドレスを入力してください", class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :password, "パスワード", class: "block text-gray-700" %>
+        <%= form.password_field :password, required: true, placeholder: "パスワードを入力してください", class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+      </div>
+
+      <div class="mb-4 flex flex-col items-center gap-4">
+        <%= form.submit "アカウントを復帰する", class: "w-auto sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+        
+        <div class="text-sm">
+          <%= link_to "ログイン画面に戻る", new_session_path, class: "font-semibold text-gray-600 hover:text-gray-500" %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</div> 

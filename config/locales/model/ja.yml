@@ -8,6 +8,94 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
         less_than_or_equal_to: "は%{count}以下の値にしてください"
         greater_than_or_equal_to: "は%{count}以上の値にしてください"
+      models:
+        user:
+          attributes:
+            email_address:
+              blank: "を入力してください"
+              taken: "このメールアドレスはすでに登録されています"
+            password:
+              blank: "を入力してください"
+            password_confirmation:
+              blank: "を入力してください"
+              confirmation: "パスワードの値が入力と異なります"
+        log:
+          attributes:
+            fishing_date:
+              blank: "を入力してください"
+            start_time:
+              blank: "を入力してください"
+            end_time:
+              blank: "を入力してください"
+            area:
+              blank: "を入力してください"
+            fishing_guide_boat:
+              blank: "を入力してください"
+            menu:
+              blank: "を入力してください"
+            notes:
+              blank: "を入力してください"
+        tackle:
+          attributes:
+            name:
+              blank: "を入力してください"
+            brand:
+              blank: "を入力してください"
+            rod:
+              required: "を入力してください"
+            rod_id:
+              required: "を選択してください"
+              blank: "を入力してください"
+            reel_id:
+              required: "を選択してください"
+              blank: "を入力してください"
+            reel:
+              required: "を入力してください"
+            leader_id:
+              required: "を選択してください"
+              blank: "を入力してください"
+            leader:
+              required: "を入力してください"
+        rod:
+          attributes:
+            name:
+              blank: "を入力してください"
+            brand:
+              blank: "を入力してください"
+            length:
+              not_a_number: "は数値を入力してください"
+        reel:
+          attributes:
+            name:
+              blank: "を入力してください"
+            brand:
+              blank: "を入力してください"
+            line_id:
+              required: "を選択してください"
+            line:
+              required: "を入力してください"
+        line:
+          attributes:
+            name:
+              blank: "を入力してください"
+            brand:
+              blank: "を入力してください"
+            length:
+              not_a_number: "は数値を入力してください"
+            pe_rating:
+              blank: "を入力してください"
+              not_a_number: "は数値を入力してください"
+        leader:
+          attributes:
+            name:
+              blank: "を入力してください"
+            brand:
+              blank: "を入力してください"
+            length:
+              not_a_number: "は数値を入力してください"
+            leader_rating:
+              blank: "を入力してください"
+              not_a_number: "は数値を入力してください"
     models:
       rod: "ロッド"
       reel: "リール"
@@ -17,53 +105,6 @@ ja:
       user: "ユーザー"
       profile: "プロフィール"
     attributes:
-      rod:
-        name: "名前"
-        brand: "ブランド名"
-        length: "長さ(単位:ft)"
-        fishing_type: "釣法"
-        power: "硬さ"
-        reel_type: "リールタイプ"
-        min_weight: "最小ルアーウェイト"
-        max_weight: "最大ルアーウェイト"
-        purchase_date: "購入日"
-        notes: "ノート"
-        price: "価格"
-      reel:
-        name: "名前"
-        brand: "ブランド名"
-        reel_type: "リールタイプ"
-        gear_type: "ギアタイプ"
-        line: "ライン"
-        price: "価格"
-        purchase_date: "購入日"
-        notes: "ノート"
-      line:
-        name: "名前"
-        brand: "ブランド名"
-        pe_rating: "PEレーティング"
-        length: "長さ"
-        strand_count: "号数"
-        marker: "マーカー"
-        price: "価格"
-        purchase_date: "購入日"
-        notes: "ノート"
-      leader:
-        name: "名前"
-        brand: "ブランド名"
-        leader_rating: "強度"
-        length: "長さ"
-        material: "素材"
-        price: "価格"
-        purchase_date: "購入日"
-        notes: "ノート"
-      tackle:
-        name: "名前"
-        rod: "ロッド"
-        reel: "リール"
-        knot: "ノット"
-        leader: "リーダー"
-        notes: "ノート"
       user:
         email_address: "メールアドレス"
         password: "パスワード"
@@ -76,414 +117,317 @@ ja:
         residence: "居住地"
         fishing_areas: "よく釣りに行く場所"
         interest_fishings: "興味のある釣り"
-      user:
-        attributes:
-          email_address:
-            blank: "を入力してください"
-            taken: "このメールアドレスはすでに登録されています"
-          password:
-            blank: "を入力してください"
-          password_confirmation:
-            blank: "を入力してください"
-            confirmation: "パスワードの値が入力と異なります"
-      log:
-        attributes:
-          fishing_date:
-            blank: "を入力してください"
-          start_time:
-            blank: "を入力してください"
-          end_time:
-            blank: "を入力してください"
-          area:
-            blank: "を入力してください"
-          fishing_guide_boat:
-            blank: "を入力してください"
-          menu:
-            blank: "を入力してください"
-          notes:
-            blank: "を入力してください"
-      tackle:
-        attributes:
-          name:
-            blank: 入力してください
-          brand:
-            blank: 入力してください
-          rod:
-            required: 入力してください
-          rod_id:
-            required: 選択してください
-            blank: 入力してください
-          reel_id:
-            required: 選択してください
-            blank: 入力してください
-          reel:
-            required: 入力してください
-          leader_id:
-            required: 選択してください
-            blank: 入力してください
-          leader:
-            required: 入力してください
-
+        residence_values:
+          hokkaido: "北海道"
+          aomori: "青森県"
+          iwate: "岩手県"
+          miyagi: "宮城県"
+          akita: "秋田県"
+          yamagata: "山形県"
+          fukushima: "福島県"
+          ibaraki: "茨城県"
+          tochigi: "栃木県"
+          gunma: "群馬県"
+          saitama: "埼玉県"
+          chiba: "千葉県"
+          tokyo: "東京都"
+          kanagawa: "神奈川県"
+          niigata: "新潟県"
+          toyama: "富山県"
+          ishikawa: "石川県"
+          fukui: "福井県"
+          yamanashi: "山梨県"
+          nagano: "長野県"
+          gifu: "岐阜県"
+          shizuoka: "静岡県"
+          aichi: "愛知県"
+          mie: "三重県"
+          shiga: "滋賀県"
+          kyoto: "京都府"
+          osaka: "大阪府"
+          hyogo: "兵庫県"
+          nara: "奈良県"
+          wakayama: "和歌山県"
+          tottori: "鳥取県"
+          shimane: "島根県"
+          okayama: "岡山県"
+          hiroshima: "広島県"
+          yamaguchi: "山口県"
+          tokushima: "徳島県"
+          kagawa: "香川県"
+          ehime: "愛媛県"
+          kochi: "高知県"
+          fukuoka: "福岡県"
+          saga: "佐賀県"
+          nagasaki: "長崎県"
+          kumamoto: "熊本県"
+          oita: "大分県"
+          miyazaki: "宮崎県"
+          kagoshima: "鹿児島県"
+          okinawa: "沖縄県"
+        fishing_areas_values:
+          hokkaido: "北海道"
+          aomori: "青森県"
+          iwate: "岩手県"
+          miyagi: "宮城県"
+          akita: "秋田県"
+          yamagata: "山形県"
+          fukushima: "福島県"
+          ibaraki: "茨城県"
+          tochigi: "栃木県"
+          gunma: "群馬県"
+          saitama: "埼玉県"
+          chiba: "千葉県"
+          tokyo: "東京都"
+          kanagawa: "神奈川県"
+          niigata: "新潟県"
+          toyama: "富山県"
+          ishikawa: "石川県"
+          fukui: "福井県"
+          yamanashi: "山梨県"
+          nagano: "長野県"
+          gifu: "岐阜県"
+          shizuoka: "静岡県"
+          aichi: "愛知県"
+          mie: "三重県"
+          shiga: "滋賀県"
+          kyoto: "京都府"
+          osaka: "大阪府"
+          hyogo: "兵庫県"
+          nara: "奈良県"
+          wakayama: "和歌山県"
+          tottori: "鳥取県"
+          shimane: "島根県"
+          okayama: "岡山県"
+          hiroshima: "広島県"
+          yamaguchi: "山口県"
+          tokushima: "徳島県"
+          kagawa: "香川県"
+          ehime: "愛媛県"
+          kochi: "高知県"
+          fukuoka: "福岡県"
+          saga: "佐賀県"
+          nagasaki: "長崎県"
+          kumamoto: "熊本県"
+          oita: "大分県"
+          miyazaki: "宮崎県"
+          kagoshima: "鹿児島県"
+          okinawa: "沖縄県"
+        interest_fishings_values:
+          fishing_type_none: "指定なし"
+          jigging_offshore: "ジギング系 - オフショア"
+          light_jigging_slj: "ジギング系 - ライトジギング (SLJ)"
+          deep_jigging: "ジギング系 - ディープジギング"
+          shore_jigging: "ジギング系 - ショアジギング"
+          worm_fishing: "ソフトルアー系 - ワームフィッシング"
+          no_sinker: "ソフトルアー系 - ノーシンカー"
+          texas_rig: "ソフトルアー系 - テキサスリグ"
+          down_shot_rig: "ソフトルアー系 - ダウンショットリグ"
+          carolina_rig: "ソフトルアー系 - キャロライナリグ"
+          split_shot_rig: "ソフトルアー系 - スプリットショットリグ"
+          jig_head_rig: "ソフトルアー系 - ジグヘッドリグ"
+          pencil_bait: "トップウォーター系 - ペンシルベイト"
+          popper: "トップウォーター系 - ポッパー"
+          frog: "トップウォーター系 - フロッグ"
+          spisher: "トップウォーター系 - スイッシャー"
+          crankbait: "ハードルアー系 - クランクベイト"
+          minnow_floating: "ハードルアー系 - ミノー (フローティング)"
+          minnow_sinking: "ハードルアー系 - ミノー (シンキング)"
+          shad: "ハードルアー系 - シャッド"
+          vibration: "ハードルアー系 - バイブレーション"
+          spinnerbait: "ハードルアー系 - スピナーベイト"
+          chatterbait: "ハードルアー系 - チャターベイト"
+          swim_bait: "ハードルアー系 - スイムベイト"
+          sinking_pencil: "シーバス系 - シンキングペンシル"
+          sea_bass_vibration: "シーバス系 - バイブレーション"
+          sea_bass_minnow: "シーバス系 - ミノー"
+          sea_bass_worm: "シーバス系 - ワーム"
+          sea_bass_big_bait: "シーバス系 - ビッグベイト"
+          eging_aoiri: "エギング系 - アオリイカ"
+          light_eging: "エギング系 - ライトエギング（ヤリイカ・ヒイカ）"
+          ikametal: "エギング系 - イカメタル"
+          omorig: "エギング系 - オモリグ"
+          mebaru_fishing: "その他ターゲット別 - メバリング"
+          ajing: "その他ターゲット別 - アジング"
+          rockfish: "その他ターゲット別 - ロックフィッシュ（アイナメ・ソイ・カサゴ）"
+          chining: "その他ターゲット別 - チニング（クロダイ）"
+          bass_fishing: "その他ターゲット別 - バスフィッシング（ラージ・スモール）"
+          trout_fishing: "その他ターゲット別 - トラウト（エリア・ネイティブ）"
+          catfish_fishing: "その他ターゲット別 - ナマズゲーム"
+          gar_fishing: "その他ターゲット別 - 雷魚（ライギョ）フィッシング"
+          trolling: "海外・ビッグゲーム系 - トローリング"
+          gt_fishing: "海外・ビッグゲーム系 - GTフィッシング"
+          tuna_casting: "海外・ビッグゲーム系 - マグロキャスティング"
       rod:
-        attributes:
-          name:
-            blank: 入力してください
-          brand:
-            blank: 入力してください
-          length:
-            not_a_number: 値を入力してください
-      reel:
-        attributes:
-          name:
-            blank: 入力してください
-          brand:
-            blank: 入力してください
-          line_id:
-            required: 選択してください
-          line:
-            required: 入力してください
-      line:
-        attributes:
-          name:
-            blank: 入力してください
-          brand:
-            blank: 入力してください
-          length:
-            not_a_number: 値を入力してください
-          pe_rating:
-            blank: 入力してください
-            not_a_number: 値を入力してください
-      leader:
-        attributes:
-          name:
-            blank: 入力してください
-          brand:
-            blank: 入力してください
-          length:
-            not_a_number: 値を入力してください
-          leader_rating:
-            blank: 入力してください
-            not_a_number: 値を入力してください
-      attributes:
-        user:
-          email_address: メールアドレス
-          password: パスワード
-          password_confirmation: パスワード再確認
-        profile:
-          last_name: 姓
-          first_name: 名
-          residence: 居住地
-          residence_values:
-            hokkaido: "北海道"
-            aomori: "青森県"
-            iwate: "岩手県"
-            miyagi: "宮城県"
-            akita: "秋田県"
-            yamagata: "山形県"
-            fukushima: "福島県"
-            ibaraki: "茨城県"
-            tochigi: "栃木県"
-            gunma: "群馬県"
-            saitama: "埼玉県"
-            chiba: "千葉県"
-            tokyo: "東京都"
-            kanagawa: "神奈川県"
-            niigata: "新潟県"
-            toyama: "富山県"
-            ishikawa: "石川県"
-            fukui: "福井県"
-            yamanashi: "山梨県"
-            nagano: "長野県"
-            gifu: "岐阜県"
-            shizuoka: "静岡県"
-            aichi: "愛知県"
-            mie: "三重県"
-            shiga: "滋賀県"
-            kyoto: "京都府"
-            osaka: "大阪府"
-            hyogo: "兵庫県"
-            nara: "奈良県"
-            wakayama: "和歌山県"
-            tottori: "鳥取県"
-            shimane: "島根県"
-            okayama: "岡山県"
-            hiroshima: "広島県"
-            yamaguchi: "山口県"
-            tokushima: "徳島県"
-            kagawa: "香川県"
-            ehime: "愛媛県"
-            kochi: "高知県"
-            fukuoka: "福岡県"
-            saga: "佐賀県"
-            nagasaki: "長崎県"
-            kumamoto: "熊本県"
-            oita: "大分県"
-            miyazaki: "宮崎県"
-            kagoshima: "鹿児島県"
-            okinawa: "沖縄県"
-          fishing_areas: 釣行エリア
-          fishing_areas_values:
-            hokkaido: "北海道"
-            aomori: "青森県"
-            iwate: "岩手県"
-            miyagi: "宮城県"
-            akita: "秋田県"
-            yamagata: "山形県"
-            fukushima: "福島県"
-            ibaraki: "茨城県"
-            tochigi: "栃木県"
-            gunma: "群馬県"
-            saitama: "埼玉県"
-            chiba: "千葉県"
-            tokyo: "東京都"
-            kanagawa: "神奈川県"
-            niigata: "新潟県"
-            toyama: "富山県"
-            ishikawa: "石川県"
-            fukui: "福井県"
-            yamanashi: "山梨県"
-            nagano: "長野県"
-            gifu: "岐阜県"
-            shizuoka: "静岡県"
-            aichi: "愛知県"
-            mie: "三重県"
-            shiga: "滋賀県"
-            kyoto: "京都府"
-            osaka: "大阪府"
-            hyogo: "兵庫県"
-            nara: "奈良県"
-            wakayama: "和歌山県"
-            tottori: "鳥取県"
-            shimane: "島根県"
-            okayama: "岡山県"
-            hiroshima: "広島県"
-            yamaguchi: "山口県"
-            tokushima: "徳島県"
-            kagawa: "香川県"
-            ehime: "愛媛県"
-            kochi: "高知県"
-            fukuoka: "福岡県"
-            saga: "佐賀県"
-            nagasaki: "長崎県"
-            kumamoto: "熊本県"
-            oita: "大分県"
-            miyazaki: "宮崎県"
-            kagoshima: "鹿児島県"
-            okinawa: "沖縄県"
-          interest_fishings: 関心のある釣り
-          interest_fishings_values:
-            fishing_type_none: 指定なし
-            jigging_offshore: ジギング系 - オフショア
-            light_jigging_slj: ジギング系 - ライトジギング (SLJ)
-            deep_jigging: ジギング系 - ディープジギング
-            shore_jigging: ジギング系 - ショアジギング
-            worm_fishing: ソフトルアー系 - ワームフィッシング
-            no_sinker: ソフトルアー系 - ノーシンカー
-            texas_rig: ソフトルアー系 - テキサスリグ
-            down_shot_rig: ソフトルアー系 - ダウンショットリグ
-            carolina_rig: ソフトルアー系 - キャロライナリグ
-            split_shot_rig: ソフトルアー系 - スプリットショットリグ
-            jig_head_rig: ソフトルアー系 - ジグヘッドリグ
-            pencil_bait: トップウォーター系 - ペンシルベイト
-            popper: トップウォーター系 - ポッパー
-            frog: トップウォーター系 - フロッグ
-            spisher: トップウォーター系 - スイッシャー
-            crankbait: ハードルアー系 - クランクベイト
-            minnow_floating: ハードルアー系 - ミノー (フローティング)
-            minnow_sinking: ハードルアー系 - ミノー (シンキング)
-            shad: ハードルアー系 - シャッド
-            vibration: ハードルアー系 - バイブレーション
-            spinnerbait: ハードルアー系 - スピナーベイト
-            chatterbait: ハードルアー系 - チャターベイト
-            swim_bait: ハードルアー系 - スイムベイト
-            sinking_pencil: シーバス系 - シンキングペンシル
-            sea_bass_vibration: シーバス系 - バイブレーション
-            sea_bass_minnow: シーバス系 - ミノー
-            sea_bass_worm: シーバス系 - ワーム
-            sea_bass_big_bait: シーバス系 - ビッグベイト
-            eging_aoiri: エギング系 - アオリイカ
-            light_eging: エギング系 - ライトエギング（ヤリイカ・ヒイカ）
-            ikametal: エギング系 - イカメタル
-            omorig: エギング系 - オモリグ
-            mebaru_fishing: その他ターゲット別 - メバリング
-            ajing: その他ターゲット別 - アジング
-            rockfish: その他ターゲット別 - ロックフィッシュ（アイナメ・ソイ・カサゴ）
-            chining: その他ターゲット別 - チニング（クロダイ）
-            bass_fishing: その他ターゲット別 - バスフィッシング（ラージ・スモール）
-            trout_fishing: その他ターゲット別 - トラウト（エリア・ネイティブ）
-            catfish_fishing: その他ターゲット別 - ナマズゲーム
-            gar_fishing: その他ターゲット別 - 雷魚（ライギョ）フィッシング
-            trolling: 海外・ビッグゲーム系 - トローリング
-            gt_fishing: 海外・ビッグゲーム系 - GTフィッシング
-            tuna_casting: 海外・ビッグゲーム系 - マグロキャスティング
-      log:
-        fishing_date: 釣行日
-        start_time: 開始時刻
-        end_time: 終了時刻
-        area: エリア
-        fishing_guide_boat: 利用遊漁船
-        menu: メニュー
-        tackle_ids: 使用タックル
-        notes: 記録
-        other: 備考
-        tackles: 使用タックル
-      tackle:
-        name: 名前
-        rod_id: ロッド
-        reel_id: リール
-        knot: ノット
-        knot_values:
-          knot_none: 指定なし
-          uni_knot: ユニノット
-          improved_clinch_knot: インプルーブドクリンチノット
-          palomar_knot: パロマーノット
-          fg_knot: FGノット
-          albright_knot: アルブライトノット
-          double_uni_knot: ダブルユニノット
-          blood_knot: ブラッドノット
-          surgeon_knot: サージョンノット
-          loop_knot: ループノット
-          perfection_loop: パーフェクションループ
-          dropper_loop: ドロッパーループ
-          snell_knot: スネルノット
-          nail_knot: ネイルノット
-          davy_knot: デイビーノット
-          trilene_knot: トリリンノット
-          arbour_knot: アーバーノット
-          spider_hitch: スパイダーヒッチ
-          bimini_twist: ビミニツイスト
-          haywire_twist: ヘイワイヤーツイスト
-          san_diego_jam: サンディエゴジャムノット
-          rapala_knot: ラパラノット
-          yucatan_knot: ユカタンノット
-          king_sling: キングスリング
-          non_slip_loop: ノンスリップループノット
-          offshore_swivel_knot: オフショアスイベルノット
-          tokyo_rig_knot: 東京リグノット
-        leader_id: リーダー
-        notes: メモ
-      rod:
-        name: 名前
-        brand: ブランド
-        length: 長さ(単位:ft)
-        fishing_type: 釣法
+        name: "名前"
+        brand: "ブランド名"
+        length: "長さ(単位:ft)"
+        fishing_type: "釣法"
+        power: "硬さ"
+        reel_type: "リールタイプ"
+        min_weight: "最小ルアーウェイト(単位:g)"
+        max_weight: "最大ルアーウェイト(単位:g)"
+        purchase_date: "購入日"
+        price: "購入金額（単位:円）"
+        notes: "メモ"
         fishing_type_values:
-          one: fishing_type
-          fishing_type_none: 指定なし
-          jigging_offshore: ジギング系 - オフショア
-          light_jigging_slj: ジギング系 - ライトジギング (SLJ)
-          deep_jigging: ジギング系 - ディープジギング
-          shore_jigging: ジギング系 - ショアジギング
-          worm_fishing: ソフトルアー系 - ワームフィッシング
-          no_sinker: ソフトルアー系 - ノーシンカー
-          texas_rig: ソフトルアー系 - テキサスリグ
-          down_shot_rig: ソフトルアー系 - ダウンショットリグ
-          carolina_rig: ソフトルアー系 - キャロライナリグ
-          split_shot_rig: ソフトルアー系 - スプリットショットリグ
-          jig_head_rig: ソフトルアー系 - ジグヘッドリグ
-          pencil_bait: トップウォーター系 - ペンシルベイト
-          popper: トップウォーター系 - ポッパー
-          frog: トップウォーター系 - フロッグ
-          spisher: トップウォーター系 - スイッシャー
-          crankbait: ハードルアー系 - クランクベイト
-          minnow_floating: ハードルアー系 - ミノー (フローティング)
-          minnow_sinking: ハードルアー系 - ミノー (シンキング)
-          shad: ハードルアー系 - シャッド
-          vibration: ハードルアー系 - バイブレーション
-          spinnerbait: ハードルアー系 - スピナーベイト
-          chatterbait: ハードルアー系 - チャターベイト
-          swim_bait: ハードルアー系 - スイムベイト
-          sinking_pencil: シーバス系 - シンキングペンシル
-          sea_bass_vibration: シーバス系 - バイブレーション
-          sea_bass_minnow: シーバス系 - ミノー
-          sea_bass_worm: シーバス系 - ワーム
-          sea_bass_big_bait: シーバス系 - ビッグベイト
-          eging_aoiri: エギング系 - アオリイカ
-          light_eging: エギング系 - ライトエギング（ヤリイカ・ヒイカ）
-          ikametal: エギング系 - イカメタル
-          omorig: エギング系 - オモリグ
-          mebaru_fishing: その他ターゲット別 - メバリング
-          ajing: その他ターゲット別 - アジング
-          rockfish: その他ターゲット別 - ロックフィッシュ（アイナメ・ソイ・カサゴ）
-          chining: その他ターゲット別 - チニング（クロダイ）
-          bass_fishing: その他ターゲット別 - バスフィッシング（ラージ・スモール）
-          trout_fishing: その他ターゲット別 - トラウト（エリア・ネイティブ）
-          catfish_fishing: その他ターゲット別 - ナマズゲーム
-          gar_fishing: その他ターゲット別 - 雷魚（ライギョ）フィッシング
-          trolling: 海外・ビッグゲーム系 - トローリング
-          gt_fishing: 海外・ビッグゲーム系 - GTフィッシング
-          tuna_casting: 海外・ビッグゲーム系 - マグロキャスティング
-        power: 硬さ
+          fishing_type_none: "指定なし"
+          jigging_offshore: "ジギング系 - オフショア"
+          light_jigging_slj: "ジギング系 - ライトジギング (SLJ)"
+          deep_jigging: "ジギング系 - ディープジギング"
+          shore_jigging: "ジギング系 - ショアジギング"
+          worm_fishing: "ソフトルアー系 - ワームフィッシング"
+          no_sinker: "ソフトルアー系 - ノーシンカー"
+          texas_rig: "ソフトルアー系 - テキサスリグ"
+          down_shot_rig: "ソフトルアー系 - ダウンショットリグ"
+          carolina_rig: "ソフトルアー系 - キャロライナリグ"
+          split_shot_rig: "ソフトルアー系 - スプリットショットリグ"
+          jig_head_rig: "ソフトルアー系 - ジグヘッドリグ"
+          pencil_bait: "トップウォーター系 - ペンシルベイト"
+          popper: "トップウォーター系 - ポッパー"
+          frog: "トップウォーター系 - フロッグ"
+          spisher: "トップウォーター系 - スイッシャー"
+          crankbait: "ハードルアー系 - クランクベイト"
+          minnow_floating: "ハードルアー系 - ミノー (フローティング)"
+          minnow_sinking: "ハードルアー系 - ミノー (シンキング)"
+          shad: "ハードルアー系 - シャッド"
+          vibration: "ハードルアー系 - バイブレーション"
+          spinnerbait: "ハードルアー系 - スピナーベイト"
+          chatterbait: "ハードルアー系 - チャターベイト"
+          swim_bait: "ハードルアー系 - スイムベイト"
+          sinking_pencil: "シーバス系 - シンキングペンシル"
+          sea_bass_vibration: "シーバス系 - バイブレーション"
+          sea_bass_minnow: "シーバス系 - ミノー"
+          sea_bass_worm: "シーバス系 - ワーム"
+          sea_bass_big_bait: "シーバス系 - ビッグベイト"
+          eging_aoiri: "エギング系 - アオリイカ"
+          light_eging: "エギング系 - ライトエギング（ヤリイカ・ヒイカ）"
+          ikametal: "エギング系 - イカメタル"
+          omorig: "エギング系 - オモリグ"
+          mebaru_fishing: "その他ターゲット別 - メバリング"
+          ajing: "その他ターゲット別 - アジング"
+          rockfish: "その他ターゲット別 - ロックフィッシュ（アイナメ・ソイ・カサゴ）"
+          chining: "その他ターゲット別 - チニング（クロダイ）"
+          bass_fishing: "その他ターゲット別 - バスフィッシング（ラージ・スモール）"
+          trout_fishing: "その他ターゲット別 - トラウト（エリア・ネイティブ）"
+          catfish_fishing: "その他ターゲット別 - ナマズゲーム"
+          gar_fishing: "その他ターゲット別 - 雷魚（ライギョ）フィッシング"
+          trolling: "海外・ビッグゲーム系 - トローリング"
+          gt_fishing: "海外・ビッグゲーム系 - GTフィッシング"
+          tuna_casting: "海外・ビッグゲーム系 - マグロキャスティング"
+        power: "硬さ"
         power_values:
-          one: power
-          power_none: 指定無し
-          hevy: ヘビー
-          medium_hevy: ミディアムヘビー
-          medium: ミディアム
-          medium_light: ミディアムライト
-          light: ライト
-        reel_type: リールタイプ
+          power_none: "指定無し"
+          hevy: "ヘビー"
+          medium_hevy: "ミディアムヘビー"
+          medium: "ミディアム"
+          medium_light: "ミディアムライト"
+          light: "ライト"
+        reel_type: "リールタイプ"
         reel_type_values:
-          one: reel_type
-          reel_type_none: 指定無し
-          bait: ベイト
-          spining: スピニング
-          other: その他
-        min_weight: 最小ルアーウェイト(単位:g)
-        max_weight: 最大ルアーウェイト(単位:g)
-        purchase_date: 購入日
-        price: 購入金額（単位:円）
-        notes: メモ
+          reel_type_none: "指定無し"
+          bait: "ベイト"
+          spining: "スピニング"
+          other: "その他"
+        min_weight: "最小ルアーウェイト(単位:g)"
+        max_weight: "最大ルアーウェイト(単位:g)"
+        purchase_date: "購入日"
+        price: "購入金額（単位:円）"
+        notes: "メモ"
       reel:
-        name: 名前
-        brand: ブランド
-        reel_type: リールタイプ
+        name: "名前"
+        brand: "ブランド名"
+        reel_type: "リールタイプ"
+        gear_type: "ギヤタイプ"
+        line_id: "PEライン"
+        price: "購入金額（単位:円）"
+        purchase_date: "購入日"
+        notes: "メモ"
         reel_type_values:
-          one: reel_type
-          reel_type_none: 指定無し
-          bait: ベイト
-          spining: スピニング
-          reel_type_other: その他
-        gear_type: ギヤタイプ
+          reel_type_none: "指定無し"
+          bait: "ベイト"
+          spining: "スピニング"
+          reel_type_other: "その他"
         gear_type_values:
-          one: gear_type
-          gear_type_none: 指定なし
-          power_gear: パワーギヤ
-          normal_gear: ノーマルギヤ
-          high_gear: ハイギヤ
-          extra_high_gear: エクストラハイギヤ
-          gear_type_other: その他
-        line_id: PEライン
-        price: 購入金額（単位:円）
-        purchase_date: 購入日
-        notes: メモ
+          gear_type_none: "指定なし"
+          power_gear: "パワーギヤ"
+          normal_gear: "ノーマルギヤ"
+          high_gear: "ハイギヤ"
+          extra_high_gear: "エクストラハイギヤ"
+          gear_type_other: "その他"
       line:
-        name: 名前
-        brand: ブランド
-        pe_rating: 太さ(単位:号)
-        length: 長さ(単位:m)
-        strand_count: 編み数
+        name: "名前"
+        brand: "ブランド名"
+        pe_rating: "太さ(単位:号)"
+        length: "長さ(単位:m)"
+        strand_count: "編み数"
+        marker: "ラインマーキング"
+        price: "購入金額（単位:円）"
+        purchase_date: "購入日"
+        notes: "メモ"
         strand_count_values:
-          strand_count_none: 指定なし
-          four: ４つ編み
-          eight: 8つ編み
-          twelve: 12編み
-          other: その他
-        marker: ラインマーキング
-        price: 購入金額（単位:円）
-        purchase_date: 購入日
-        notes: メモ
+          strand_count_none: "指定なし"
+          four: "４つ編み"
+          eight: "8つ編み"
+          twelve: "12編み"
+          other: "その他"
       leader:
-        name: 名前
-        brand: ブランド
-        leader_rating: 太さ(単位:号)
-        length: 長さ(単位:m)
-        material: 素材
+        name: "名前"
+        brand: "ブランド名"
+        leader_rating: "太さ(単位:号)"
+        length: "長さ(単位:m)"
+        material: "素材"
+        price: "購入金額（単位:円）"
+        purchase_date: "購入日"
+        notes: "メモ"
         material_values:
-          material_none: 指定なし
-          fluorocarbon: フロロカーボン
-          nylon: ナイロン
-          other: その他
-        price: 購入金額（単位:円）
-        purchase_date: 購入日
-        notes: メモ
+          material_none: "指定なし"
+          fluorocarbon: "フロロカーボン"
+          nylon: "ナイロン"
+          other: "その他"
+      tackle:
+        name: "名前"
+        rod: "ロッド"
+        reel: "リール"
+        knot: "ノット"
+        leader: "リーダー"
+        notes: "メモ"
+        knot_values:
+          knot_none: "指定なし"
+          uni_knot: "ユニノット"
+          improved_clinch_knot: "インプルーブドクリンチノット"
+          palomar_knot: "パロマーノット"
+          fg_knot: "FGノット"
+          albright_knot: "アルブライトノット"
+          double_uni_knot: "ダブルユニノット"
+          blood_knot: "ブラッドノット"
+          surgeon_knot: "サージョンノット"
+          loop_knot: "ループノット"
+          perfection_loop: "パーフェクションループ"
+          dropper_loop: "ドロッパーループ"
+          snell_knot: "スネルノット"
+          nail_knot: "ネイルノット"
+          davy_knot: "デイビーノット"
+          trilene_knot: "トリリンノット"
+          arbour_knot: "アーバーノット"
+          spider_hitch: "スパイダーヒッチ"
+          bimini_twist: "ビミニツイスト"
+          haywire_twist: "ヘイワイヤーツイスト"
+          san_diego_jam: "サンディエゴジャムノット"
+          rapala_knot: "ラパラノット"
+          yucatan_knot: "ユカタンノット"
+          king_sling: "キングスリング"
+          non_slip_loop: "ノンスリップループノット"
+          offshore_swivel_knot: "オフショアスイベルノット"
+          tokyo_rig_knot: "東京リグノット"
+      log:
+        fishing_date: "釣行日"
+        start_time: "開始時刻"
+        end_time: "終了時刻"
+        area: "エリア"
+        fishing_guide_boat: "利用遊漁船"
+        menu: "メニュー"
+        tackle_ids: "使用タックル"
+        notes: "記録"
+        other: "備考"
+        tackles: "使用タックル"

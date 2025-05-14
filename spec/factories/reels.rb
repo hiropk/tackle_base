@@ -4,8 +4,8 @@ FactoryBot.define do
     association :line
     sequence(:name) { |n| "Reel #{n}" }
     brand { "SHIMANO" }
-    reel_type { 0 }  # enumで定義されている値を想定
-    gear_type { 0 }  # enumで定義されている値を想定
+    reel_type { "spining" }
+    gear_type { "normal_gear" }
     price { 25000 }
     purchase_date { Date.current }
     notes { "Factory generated reel" }

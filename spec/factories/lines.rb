@@ -5,7 +5,7 @@ FactoryBot.define do
     brand { "VARIVAS" }
     pe_rating { 0.8 }
     length { 150 }  # 150m
-    strand_count { 4 }
+    strand_count { "four" }
     marker { true }
     price { 3000 }
     purchase_date { Date.current }

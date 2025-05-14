@@ -24,14 +24,14 @@ class LogsController < ApplicationController
   def create
     @log = Log.new(log_params.merge({ user: @current_user }))
 
-    tackle_ids = params[:log][:tackle_ids].uniq
+    tackle_ids = params.dig(:log, :tackle_ids)&.uniq || []
     if tackle_ids.empty? || !all_tackles_exist?(tackle_ids)
       @log.errors.add(:base, "タックルの選択に不備があります。")
       flash[:alert] = @log.errors.full_messages.join(" / ")
     end
 
     respond_to do |format|
-      if !@log.errors.nil? && @log.save
+      if @log.errors.empty? && @log.save
         tackle_ids.each do |tackle_id|
           TackleSelection.create!(log: @log, tackle_id: tackle_id)
         end
@@ -69,12 +69,12 @@ class LogsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_log
-      @log = Log.find(params.expect(:id))
+      @log = Log.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def log_params
-      params.expect(log: [ :fishing_date, :start_time, :end_time, :area, :fishing_guide_boat, :menu, :notes, :other ])
+      params.require(:log).permit(:fishing_date, :start_time, :end_time, :area, :fishing_guide_boat, :menu, :notes, :other)
     end
 
     def all_tackles_exist?(ids)

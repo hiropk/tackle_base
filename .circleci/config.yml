@@ -3,7 +3,18 @@ version: 2.1
 executors:
   ruby-executor:
     docker:
-      - image: circleci/ruby:3.3.6
+      - image: cimg/ruby:3.3.6
+        environment:
+          BUNDLE_JOBS: 4
+          BUNDLE_RETRY: 3
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+      - image: cimg/postgres:14.10
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: app_test
+          POSTGRES_PASSWORD: ""
     working_directory: ~/app
 
 jobs:
@@ -11,10 +22,26 @@ jobs:
     executor: ruby-executor
     steps:
       - checkout
-      - run: gem install bundler
-      - run: bundle install --jobs=4 --retry=3
-      - run: bundle exec rails db:create db:schema:load RAILS_ENV=test
-      - run: bundle exec rspec
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: |
+            gem install bundler
+            bundle install --jobs=4 --retry=3
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Database setup
+          command: |
+            bundle exec rails db:create db:schema:load
+      - run:
+          name: Run tests
+          command: bundle exec rspec
 
 workflows:
   version: 2

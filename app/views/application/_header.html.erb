@@ -12,6 +12,9 @@
         <li><a href=<%= "#{root_path}#reel" %>>リール</a></li>
         <li><a href=<%= "#{root_path}#line" %>>ライン</a></li>
         <li><a href=<%= "#{root_path}#leader" %>>リーダー</a></li>
+        <% if @current_user&.is_admin %>
+          <li><a href="/admin">管理メニュー</a></li>
+        <% end %>
         <li><%= link_to "ログアウト", session_path, data: { "turbo-method": :delete} %></li>
       </ul>
     </nav>
@@ -39,6 +42,9 @@
       <li><a href=<%= "#{root_path}#reel" %>>リール</a></li>
       <li><a href=<%= "#{root_path}#line" %>>ライン</a></li>
       <li><a href=<%= "#{root_path}#leader" %>>リーダー</a></li>
+      <% if @current_user&.is_admin %>
+        <li><a href="/admin">管理メニュー</a></li>
+      <% end %>
       <li><%= link_to "ログアウト", session_path, data: { "turbo-method": :delete} %></li>
     </ul>
   </nav>

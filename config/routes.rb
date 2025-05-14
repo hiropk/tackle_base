@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # 管理者用ルーティング
+  get "admin", to: "admins#dashboard"
+
   resources :users do
     resource :profile, only: [ :show, :edit, :update ]
     collection do

@@ -53,3 +53,14 @@ workflows:
               only: /.*/
             tags:
               only: /.*/
+
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 22 * * *" # UTC 22:00 = JST 07:00
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - test

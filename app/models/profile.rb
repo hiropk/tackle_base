@@ -155,6 +155,18 @@ class Profile < ApplicationRecord
     okinawa: 46
   }
 
+  def setup_completed?
+    last_name.present? &&
+    first_name.present? &&
+    last_name != "ユーザ名" &&
+    first_name != "ユーザ名" &&
+    residence.present? &&
+    fishing_areas.present? &&
+    fishing_areas.reject(&:blank?).any? &&
+    interest_fishings.present? &&
+    interest_fishings.reject(&:blank?).any?
+  end
+
   def fishing_areas_cannot_be_empty
     if fishing_areas.blank? || fishing_areas.reject(&:blank?).empty?
       errors.add(:fishing_areas, "を選択してください")

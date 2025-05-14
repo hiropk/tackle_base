@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # 管理者用ルーティング
   get "admin", to: "admins#dashboard"
+  get "admin/mail", to: "admins#mail_form", as: :admin_mail
+  post "admin/mail", to: "admins#send_mail"
 
   resources :users do
     resource :profile, only: [ :show, :edit, :update ]

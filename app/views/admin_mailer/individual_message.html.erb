@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+      <p><%= @user.profile ? "#{@user.profile.last_name} #{@user.profile.first_name}" : @user.email_address %>様</p>
+
+      <div style="margin: 20px 0; white-space: pre-wrap;">
+        <%= @body %>
+      </div>
+
+      <div style="margin: 20px 0; padding: 15px; background-color: #f9fafb; border-radius: 8px;">
+        <p style="margin: 0 0 10px 0; font-size: 14px; color: #374151;">
+          遊漁船ファミリアの予約・お問い合わせは公式LINEから簡単にできます：
+        </p>
+        <a href="https://lin.ee/fipwyGn" style="display: inline-block; text-decoration: none;">
+          <img
+            src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"
+            alt="友だち追加"
+            width="121.2"
+            height="38"
+            style="border: none;"
+          />
+        </a>
+      </div>
+
+      <div style="margin: 20px 0; padding: 15px; background-color: #f9fafb; border-radius: 8px;">
+        <p style="margin: 0 0 10px 0; font-size: 14px; color: #374151;">
+          出船状況は以下のカレンダーでご確認いただけます：
+        </p>
+        <a href="https://tsurimaru-calendar-captain.web.app/16682/?scrolling=yes" 
+           style="display: inline-block; text-decoration: none; padding: 10px 20px; background-color: #2563eb; color: white; border-radius: 6px; font-size: 14px;">
+          出船カレンダーを確認する
+        </a>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+
+      <p style="color: #666; font-size: 14px;">
+        このメールはタックルベース管理者より送信されました。<br>
+      </p>
+
+      <div style="margin-top: 30px; color: #666; font-size: 14px;">
+        <p style="margin: 0;">--</p>
+        <p style="margin: 5px 0;">加納 寛之</p>
+        <p style="margin: 0;">遊漁船ファミリア 船長</p>
+        <p style="margin: 5px 0;">タックルベース 開発者</p>
+      </div>
+    </div>
+  </body>
+</html> 

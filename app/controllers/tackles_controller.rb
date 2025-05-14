@@ -60,11 +60,11 @@ class TacklesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tackle
-      @tackle = Tackle.find(params.expect(:id))
+      @tackle = Tackle.find(params.require(:id))
     end
 
     # Only allow a list of trusted parameters through.
     def tackle_params
-      params.expect(tackle: [ :user_id, :name, :rod_id, :reel_id, :knot, :leader_id, :notes ])
+      params.require(:tackle).permit(:name, :rod_id, :reel_id, :knot, :leader_id, :notes)
     end
 end

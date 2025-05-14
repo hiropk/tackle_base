@@ -30,17 +30,25 @@ ja:
       default: "%Y年%-m月%-d日 %H:%M"
       short: "%Y/%-m/%-d %H:%M"
   activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+        less_than_or_equal_to: "は%{count}以下の値にしてください"
+        greater_than_or_equal_to: "は%{count}以上の値にしてください"
     models:
-      cat: ロッド
+      rod: "ロッド"
     attributes:
-      cat:
-        name: 名前
-        brand: ブランド名
-        length: 長さ
-        fishing_type: 釣法
-        power: 硬さ
-        reel_type: リールタイプ
-        min_weight: 最大ルアーウェイト
-        max_weight: 最小ルアーウェイト
-        purchase_date: 購入日
-        notes: ノート
+      rod:
+        name: "名前"
+        brand: "ブランド名"
+        length: "長さ(単位:ft)"
+        fishing_type: "釣法"
+        power: "硬さ"
+        reel_type: "リールタイプ"
+        min_weight: "最小ルアーウェイト"
+        max_weight: "最大ルアーウェイト"
+        purchase_date: "購入日"
+        notes: "ノート"

@@ -37,12 +37,13 @@
                 <label class="block text-sm font-medium text-gray-700">居住地</label>
                 <div class="mt-1">
                   <%= f.select :residence,
-                      Profile.residences.keys.map { |k| [t("activerecord.attributes.profile.residence_values.#{k}"), Profile.residences[k]] },
-                      {},
+                      Profile.residences.keys.map { |k| [t("activerecord.attributes.profile.residence_values.#{k}"), Profile.residences[k]] }
+                            .sort_by { |name, _| name },
+                      { include_blank: "選択しない" },
                       {
                         multiple: true,
                         size: 5,
-                        selected: params[:residence],
+                        selected: params[:residence]&.map(&:to_i),
                         class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md shadow-sm"
                       }
                   %>
@@ -53,12 +54,13 @@
                 <label class="block text-sm font-medium text-gray-700">釣行エリア</label>
                 <div class="mt-1">
                   <%= f.select :fishing_area,
-                      Profile::FISHING_AREAS.map { |k, v| [t("activerecord.attributes.profile.fishing_areas_values.#{v}"), k] },
-                      {},
+                      Profile::FISHING_AREAS.map { |k, v| [t("activerecord.attributes.profile.fishing_areas_values.#{v}"), k] }
+                            .sort_by { |name, _| name },
+                      { include_blank: "選択しない" },
                       {
                         multiple: true,
                         size: 5,
-                        selected: params[:fishing_area],
+                        selected: params[:fishing_area]&.map(&:to_i),
                         class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md shadow-sm"
                       }
                   %>
@@ -70,11 +72,11 @@
                 <div class="mt-1">
                   <%= f.select :interest_fishing,
                       Profile::INTEREST_FISHING_TYPES.map { |k, v| [t("activerecord.attributes.profile.interest_fishings_values.#{v}"), k] },
-                      {},
+                      { include_blank: "選択しない" },
                       {
                         multiple: true,
                         size: 5,
-                        selected: params[:interest_fishing],
+                        selected: params[:interest_fishing]&.map(&:to_i),
                         class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md shadow-sm"
                       }
                   %>
@@ -82,8 +84,11 @@
               </div>
             </div>
 
-            <div class="flex justify-end">
-              <%= f.submit "検索", class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+            <div class="flex justify-end space-x-4">
+              <%= f.submit "検索",
+                  class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+              <%= link_to "条件をクリア", admin_mail_path,
+                  class: "inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
             </div>
           <% end %>
         </div>
@@ -93,14 +98,69 @@
       <div class="bg-white shadow sm:rounded-lg mb-6">
         <div class="px-4 py-5 sm:p-6">
           <h3 class="text-lg font-medium text-gray-900 mb-4">検索結果</h3>
-          
-          <!-- デフォルト値の説明 -->
+
+          <!-- 現在の検索条件 -->
           <div class="mb-4 bg-gray-50 p-4 rounded-lg">
-            <h4 class="text-sm font-medium text-gray-700 mb-2">デフォルトの検索条件</h4>
-            <div class="space-y-2 text-sm text-gray-600">
-              <p><span class="font-medium">居住地：</span>中国地方、兵庫県</p>
-              <p><span class="font-medium">釣行エリア：</span>島根県、鳥取県、山口県、福井県、京都府</p>
-              <p><span class="font-medium">興味のある釣り：</span>スロージギング、ライトジギング、タイラバ・オニカサゴ、イカ釣り、アオリイカ</p>
+            <h4 class="text-sm font-medium text-gray-700 mb-2">現在の検索条件</h4>
+            <div class="space-y-4">
+              <!-- 居住地 -->
+              <div>
+                <h5 class="text-sm font-medium text-gray-500">居住地</h5>
+                <div class="mt-1">
+                  <% if params[:residence].present? && params[:residence].reject(&:blank?).any? %>
+                    <div class="space-y-1">
+                      <% params[:residence].reject(&:blank?).each do |residence_code| %>
+                        <div class="text-sm text-gray-600">
+                          <%= t("activerecord.attributes.profile.residence_values.#{Profile.residences.key(residence_code.to_i)}") %>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <div class="text-sm text-gray-600">指定なし</div>
+                  <% end %>
+                </div>
+              </div>
+
+              <!-- 釣行エリア -->
+              <div>
+                <h5 class="text-sm font-medium text-gray-500">釣行エリア</h5>
+                <div class="mt-1">
+                  <% if params[:fishing_area].present? && params[:fishing_area].reject(&:blank?).any? %>
+                    <div class="space-y-1">
+                      <% params[:fishing_area].reject(&:blank?).each do |area_code| %>
+                        <div class="text-sm text-gray-600">
+                          <%= t("activerecord.attributes.profile.fishing_areas_values.#{Profile::FISHING_AREAS[area_code.to_i]}") %>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <div class="text-sm text-gray-600">指定なし</div>
+                  <% end %>
+                </div>
+              </div>
+
+              <!-- 興味のある釣り -->
+              <div>
+                <h5 class="text-sm font-medium text-gray-500">興味のある釣り</h5>
+                <div class="mt-1">
+                  <% if params[:interest_fishing].present? && params[:interest_fishing].reject(&:blank?).any? %>
+                    <div class="space-y-1">
+                      <% params[:interest_fishing].reject(&:blank?).each do |fishing_code| %>
+                        <div class="text-sm text-gray-600">
+                          <%= t("activerecord.attributes.profile.interest_fishings_values.#{Profile::INTEREST_FISHING_TYPES[fishing_code.to_i]}") %>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <div class="text-sm text-gray-600">指定なし</div>
+                  <% end %>
+                </div>
+              </div>
+
+              <!-- 検索結果件数 -->
+              <div class="mt-4 text-sm text-gray-600">
+                <strong>検索結果：<%= @users.count %>件</strong>
+              </div>
             </div>
           </div>
 

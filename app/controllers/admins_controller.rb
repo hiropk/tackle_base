@@ -31,21 +31,14 @@ class AdminsController < ApplicationController
   end
 
   def mail_form
-    # デフォルトで選択される値を設定
-    # 居住地のデフォルト値:
-    # - 中国地方
-    # - 兵庫県
     params[:residence] ||= [
-      Profile.residences["chugoku"],  # 中国地方
-      Profile.residences["hyogo"]     # 兵庫県
+      Profile.residences["tottori"],  # 鳥取県
+      Profile.residences["shimane"],  # 島根県
+      Profile.residences["okayama"],  # 岡山県
+      Profile.residences["hiroshima"], # 広島県
+      Profile.residences["yamaguchi"]  # 山口県
     ]
 
-    # 釣行エリアのデフォルト値:
-    # - 島根県
-    # - 鳥取県
-    # - 山口県
-    # - 福井県
-    # - 京都府
     params[:fishing_area] ||= [
       Profile::FISHING_AREAS.key("shimane"),   # 島根県
       Profile::FISHING_AREAS.key("tottori"),   # 鳥取県
@@ -54,20 +47,17 @@ class AdminsController < ApplicationController
       Profile::FISHING_AREAS.key("kyoto")      # 京都府
     ]
 
-    # 興味のある釣りのデフォルト値:
-    # ジギング系:
-    # - スロージギング
-    # - ライトジギング
-    # - タイラバ・オニカサゴ
-    # イカ系:
-    # - イカ釣り
-    # - アオリイカ
+    # 興味のある釣りのデフォルト値
     params[:interest_fishing] ||= [
-      Profile::INTEREST_FISHING_TYPES.key("slow_jigging"),      # スロージギング
-      Profile::INTEREST_FISHING_TYPES.key("light_jigging"),     # ライトジギング
-      Profile::INTEREST_FISHING_TYPES.key("vertical_jigging"),  # タイラバ・オニカサゴ
-      Profile::INTEREST_FISHING_TYPES.key("squid"),             # イカ釣り
-      Profile::INTEREST_FISHING_TYPES.key("bigfin_reef_squid")  # アオリイカ
+      Profile::INTEREST_FISHING_TYPES.key("fishing_type_none"),
+      Profile::INTEREST_FISHING_TYPES.key("jigging_offshore"),      # ジギング系 - オフショア
+      Profile::INTEREST_FISHING_TYPES.key("light_jigging_slj"),    # ジギング系 - ライトジギング (SLJ)
+      Profile::INTEREST_FISHING_TYPES.key("deep_jigging"),         # ジギング系 - ディープジギング
+      Profile::INTEREST_FISHING_TYPES.key("shore_jigging"),        # ジギング系 - ショアジギング
+      Profile::INTEREST_FISHING_TYPES.key("eging_aoiri"),          # エギング系 - アオリイカ
+      Profile::INTEREST_FISHING_TYPES.key("light_eging"),          # エギング系 - ライトエギング（ヤリイカ・ヒイカ）
+      Profile::INTEREST_FISHING_TYPES.key("ikametal"),             # エギング系 - イカメタル
+      Profile::INTEREST_FISHING_TYPES.key("omorig")                # エギング系 - オモリグ
     ]
 
     @users = User.where(activated: true)

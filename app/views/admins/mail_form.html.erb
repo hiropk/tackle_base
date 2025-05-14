@@ -207,7 +207,7 @@
             <h3 class="text-lg font-medium text-gray-900">メール作成</h3>
           </div>
 
-          <%= form_with url: admin_mail_path, method: :post, data: { turbo: false, confirm: "選択したユーザーにメールを送信してもよろしいですか？" } do |f| %>
+          <%= form_with url: admin_mail_path, method: :post, data: { turbo: false }, class: "contents" do |f| %>
             <div class="space-y-6">
               <div>
                 <label class="block text-sm font-medium text-gray-700">送信先</label>
@@ -244,6 +244,7 @@
                 <%= link_to "戻る", admin_path, 
                     class: "inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
                 <%= f.submit "送信",
+                    onclick: "return confirm('選択したユーザーにメールを送信してよろしいですか？\\n\\n※送信後は取り消しできません。');",
                     class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
               </div>
 

@@ -37,7 +37,7 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('turbo:load', function initializeModal() {
       const modal = document.getElementById('scheduleModal');
       const backdrop = document.getElementById('scheduleModalBackdrop');
       const openButton = document.getElementById('openScheduleModal');
@@ -53,9 +53,20 @@
         backdrop.classList.add('hidden');
       }
 
+      // イベントリスナーを登録
       openButton.addEventListener('click', openModal);
       closeButton.addEventListener('click', closeModal);
       backdrop.addEventListener('click', closeModal);
+
+      // クリーンアップ関数
+      function cleanup() {
+        openButton.removeEventListener('click', openModal);
+        closeButton.removeEventListener('click', closeModal);
+        backdrop.removeEventListener('click', closeModal);
+      }
+
+      // turbo:before-cache イベントでクリーンアップを実行
+      document.addEventListener('turbo:before-cache', cleanup, { once: true });
     });
   </script>
 

@@ -1,7 +1,159 @@
-<section id="schedule">
-  <h2>スケジュール</h2>
+<section id="schedule" class="bg-white rounded-lg shadow-sm">
+  <h2 class="text-xl sm:text-2xl font-bold mb-4 px-4 pt-4">スケジュール</h2>
   <%= render 'homes/buttons' %>
-  <%= month_calendar do |date| %>
-    <%= date.day %>
-  <% end %>
+  
+  <div class="calendar-header border-b">
+    <!-- 月選択ヘッダー -->
+    <div class="flex items-center justify-between p-3 bg-gray-50">
+      <button onclick="window.location='<%= root_path(year: @start_date.prev_month.year, month: @start_date.prev_month.month) %>'" class="p-2 hover:bg-gray-100 rounded-full">
+        <i class="fas fa-chevron-left text-gray-600"></i>
+      </button>
+      
+      <div class="text-center flex-1">
+        <button class="inline-flex items-center px-3 py-1.5 hover:bg-gray-100 rounded-full" 
+                onclick="document.getElementById('dateSelector').classList.toggle('hidden')">
+          <span class="text-base font-medium"><%= @start_date.year %>年 <%= @start_date.month %>月</span>
+          <i class="fas fa-chevron-down ml-1 text-gray-500 text-xs"></i>
+        </button>
+      </div>
+
+      <button onclick="window.location='<%= root_path(year: @start_date.next_month.year, month: @start_date.next_month.month) %>'" class="p-2 hover:bg-gray-100 rounded-full">
+        <i class="fas fa-chevron-right text-gray-600"></i>
+      </button>
+    </div>
+
+    <!-- 年月選択パネル（デフォルトで非表示） -->
+    <div id="dateSelector" class="hidden border-t">
+      <%= form_tag(root_path, method: :get, class: 'p-3 flex items-center justify-center gap-2 bg-white') do %>
+        <%= select_year(@start_date,
+            {start_year: 5.years.ago.year, end_year: 5.years.from_now.year},
+            {class: 'form-select rounded-md border-gray-200 text-sm py-1.5 w-20', name: 'year'}) %>
+        <%= select_month(@start_date,
+            {use_month_names: %w(1月 2月 3月 4月 5月 6月 7月 8月 9月 10月 11月 12月)},
+            {class: 'form-select rounded-md border-gray-200 text-sm py-1.5 w-16', name: 'month'}) %>
+        <%= submit_tag '移動', class: 'px-3 py-1.5 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="calendar-container p-2">
+    <%= month_calendar(start_date: @start_date) do |date| %>
+      <div class="day-content <%= 'current-day' if date == Date.current %> <%= 'other-month' if date.month != @start_date.month %>">
+        <%= date.day %>
+      </div>
+    <% end %>
+  </div>
 </section>
+
+<% content_for :styles do %>
+<style>
+.simple-calendar {
+  width: 100%;
+}
+
+.simple-calendar table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px;
+}
+
+.simple-calendar th {
+  text-align: center;
+  padding: 0.5rem 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.simple-calendar td {
+  vertical-align: top;
+  padding: 0;
+  height: 40px;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .simple-calendar td {
+    height: 50px;
+  }
+}
+
+.day-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: #374151;
+  border-radius: 4px;
+  position: relative;
+}
+
+.current-day {
+  background-color: #eff6ff;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.other-month {
+  color: #9ca3af;
+}
+
+/* 日曜日は赤、土曜日は青に */
+.simple-calendar td:nth-child(1) .day-content {
+  color: #dc2626;
+}
+
+.simple-calendar td:nth-child(7) .day-content {
+  color: #2563eb;
+}
+
+.simple-calendar td:nth-child(1) .day-content.other-month {
+  color: #fca5a5;
+}
+
+.simple-calendar td:nth-child(7) .day-content.other-month {
+  color: #93c5fd;
+}
+
+.calendar-heading {
+  display: none;
+}
+
+/* スマートフォン向けの曜日表示 */
+.simple-calendar th:nth-child(1):before { content: '日'; }
+.simple-calendar th:nth-child(2):before { content: '月'; }
+.simple-calendar th:nth-child(3):before { content: '火'; }
+.simple-calendar th:nth-child(4):before { content: '水'; }
+.simple-calendar th:nth-child(5):before { content: '木'; }
+.simple-calendar th:nth-child(6):before { content: '金'; }
+.simple-calendar th:nth-child(7):before { content: '土'; }
+
+.simple-calendar th span {
+  display: none;
+}
+
+/* ホバーエフェクト */
+.day-content:hover {
+  background-color: #f3f4f6;
+  cursor: pointer;
+}
+
+.current-day:hover {
+  background-color: #dbeafe;
+}
+</style>
+<% end %>
+
+<script>
+document.addEventListener('click', function(event) {
+  const dateSelector = document.getElementById('dateSelector');
+  const isClickInside = dateSelector.contains(event.target) || 
+                       event.target.closest('button')?.onclick?.toString().includes('dateSelector');
+  
+  if (!isClickInside && !dateSelector.classList.contains('hidden')) {
+    dateSelector.classList.add('hidden');
+  }
+});
+</script>

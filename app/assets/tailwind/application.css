@@ -70,6 +70,8 @@ header h1 {
   left: 0;
   right: 0;
   padding: 20px 0;
+  position: fixed;
+  z-index: 100;
 }
 
 .mobile-nav ul {

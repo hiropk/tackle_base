@@ -1,0 +1,70 @@
+<h2 class="text-2xl font-bold text-center mb-1 text-gray-800">遊漁船ファミリア</h2>
+
+<!-- Button to open modal -->
+<button type="button" id="openScheduleModal" class="mx-auto block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+  出船スケジュールを確認
+</button>
+
+<!-- Modal backdrop -->
+<div id="scheduleModalBackdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+<!-- Modal -->
+<div id="scheduleModal" class="fixed inset-0 flex items-start justify-center pt-10 hidden z-50 overflow-y-auto">
+  <div class="bg-white rounded-lg w-[95vw] max-w-[1400px] mb-10">
+    <div class="flex items-center justify-between p-4 border-b sticky top-0 bg-white z-10">
+      <h5 class="text-xl font-semibold">出船スケジュール</h5>
+      <button type="button" id="closeScheduleModal" class="px-4 py-2 bg-red-100 hover:bg-red-200 text-red-600 hover:text-red-700 rounded-lg transition-colors">
+        <span class="text-2xl font-bold">❌</span>
+      </button>
+    </div>
+    <div class="p-4">
+      <div class="text-center"><a class="text-lg font-semibold hover:underline" href="https://hiropk.github.io/familiar-sw/">ご予約はこちら💁</a></div>
+      <div class="iframe-container">
+        <iframe
+          id="iframe"
+          frameborder="no"
+          scrolling="yes"
+          loading="lazy"
+          allowfullscreen
+          src="https://tsurimaru-calendar-captain.web.app/16682/?scrolling=yes"
+          style="width: 100%; height: 600px;"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<script>
+  document.addEventListener('turbo:load', function initializeModal() {
+    const modal = document.getElementById('scheduleModal');
+    const backdrop = document.getElementById('scheduleModalBackdrop');
+    const openButton = document.getElementById('openScheduleModal');
+    const closeButton = document.getElementById('closeScheduleModal');
+
+    function openModal() {
+      modal.classList.remove('hidden');
+      backdrop.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      backdrop.classList.add('hidden');
+    }
+
+    // イベントリスナーを登録
+    openButton.addEventListener('click', openModal);
+    closeButton.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+
+    // クリーンアップ関数
+    function cleanup() {
+      openButton.removeEventListener('click', openModal);
+      closeButton.removeEventListener('click', closeModal);
+      backdrop.removeEventListener('click', closeModal);
+    }
+
+    // turbo:before-cache イベントでクリーンアップを実行
+    document.addEventListener('turbo:before-cache', cleanup, { once: true });
+  });
+</script>

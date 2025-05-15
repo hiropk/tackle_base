@@ -10,9 +10,6 @@ class HomesController < ApplicationController
   before_action :check_profile_setup, only: :index
 
   def index
-    url = "https://rssblog.ameba.jp/familiar-matsue/rss.html"
-    response = URI.open(url).read
-    @feed = Feedjira.parse(response).entries.first(3)
   end
 
   private

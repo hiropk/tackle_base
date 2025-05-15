@@ -1,9 +1,24 @@
-<h2 class="text-2xl font-bold text-center mb-1 text-gray-800">遊漁船ファミリア</h2>
+<div class="w-full flex justify-center items-center gap-6 mb-8">
+  <!-- 予約状況ボタン -->
+  <div class="relative">
+    <button type="button" id="openScheduleModal" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 shadow-lg" data-tooltip="遊漁船ファミリアの予約状況を確認いただけます">
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+      </svg>
+      予約状況
+    </button>
+  </div>
 
-<!-- Button to open modal -->
-<button type="button" id="openScheduleModal" class="mx-auto block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-  出船スケジュールを確認
-</button>
+  <!-- 釣行日誌一覧へのリンク -->
+  <div class="relative">
+    <%= link_to logs_path, class: "inline-flex items-center px-6 py-3 bg-white text-blue-600 text-lg font-semibold rounded-lg border-2 border-blue-600 hover:bg-blue-50 transition-all duration-200 transform hover:scale-105 shadow-lg", data: { tooltip: "ご自分の釣行日誌一覧をご確認いただけます" } do %>
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15"></path>
+      </svg>
+      釣行日誌一覧
+    <% end %>
+  </div>
+</div>
 
 <!-- Modal backdrop -->
 <div id="scheduleModalBackdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
@@ -33,7 +48,27 @@
     </div>
   </div>
 </div>
-<br>
+
+<style>
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:hover::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background: #1f2937;
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;
+  border-radius: 4px;
+  z-index: 10;
+}
+</style>
 
 <script>
   document.addEventListener('turbo:load', function initializeModal() {

@@ -2,50 +2,76 @@ require 'rails_helper'
 
 RSpec.describe HomesController, type: :controller do
   describe 'GET #index' do
-    let(:rss_feed) { File.read('spec/fixtures/rss_sample.xml') }
-    let(:feed_entries) { [ double('Entry1'), double('Entry2'), double('Entry3') ] }
     let(:user) { create(:user, activated: true) }
     let(:session) { create(:session, user: user) }
+    let(:profile) { create(:profile, user: user, last_name: "山田", first_name: "太郎", residence: :tokyo, fishing_areas: [ 13 ], interest_fishings: [ 1 ]) }
 
-    before do
-      # セッションを設定してログイン状態をシミュレート
-      cookies.signed[:session_id] = session.id
+    context 'when user is authenticated and activated with completed profile' do
+      before do
+        # セッションを設定してログイン状態をシミュレート
+        cookies.signed[:session_id] = session.id
 
-      # Current.userを設定
-      allow(Current).to receive(:session).and_return(session)
-      allow(Current).to receive(:user).and_return(user)
+        # Current.userを設定
+        allow(Current).to receive(:session).and_return(session)
+        allow(Current).to receive(:user).and_return(user)
 
-      # @current_userを設定
-      controller.instance_variable_set(:@current_user, user)
+        # @current_userを設定
+        controller.instance_variable_set(:@current_user, user)
 
-      # モックの設定
-      allow(URI).to receive(:open)
-        .with('https://rssblog.ameba.jp/familiar-matsue/rss.html')
-        .and_return(StringIO.new(rss_feed))
+        # プロフィールを作成
+        profile
 
-      allow(Feedjira).to receive(:parse).and_return(double(entries: feed_entries))
+        # before_actionのスタブ
+        allow(controller).to receive(:set_tackles)
+        allow(controller).to receive(:set_rods)
+        allow(controller).to receive(:set_reels)
+        allow(controller).to receive(:set_lines)
+        allow(controller).to receive(:set_leaders)
+      end
 
-      # before_actionのスタブ
-      allow(controller).to receive(:set_tackles)
-      allow(controller).to receive(:set_rods)
-      allow(controller).to receive(:set_reels)
-      allow(controller).to receive(:set_lines)
-      allow(controller).to receive(:set_leaders)
+      it 'リクエストが成功すること' do
+        get :index
+        expect(response).to have_http_status(:success)
+      end
+
+      it '正しいテンプレートがレンダリングされること' do
+        get :index
+        expect(response).to render_template :index
+      end
     end
 
-    it 'リクエストが成功すること' do
-      get :index
-      expect(response).to have_http_status(:success)
+    context 'when user is not activated' do
+      let(:inactive_user) { create(:user, activated: false) }
+      let(:inactive_session) { create(:session, user: inactive_user) }
+
+      before do
+        cookies.signed[:session_id] = inactive_session.id
+        allow(Current).to receive(:session).and_return(inactive_session)
+        allow(Current).to receive(:user).and_return(inactive_user)
+        controller.instance_variable_set(:@current_user, inactive_user)
+      end
+
+      it 'プロフィールページにリダイレクトされること' do
+        get :index
+        expect(response).to redirect_to(user_profile_path(inactive_user))
+      end
     end
 
-    it 'RSSフィードを取得すること' do
-      get :index
-      expect(assigns(:feed)).to eq(feed_entries.first(3))
-    end
+    context 'when profile setup is not completed' do
+      let(:incomplete_profile) { create(:profile, user: user, last_name: "ユーザ名", first_name: "ユーザ名", residence: :shimane, fishing_areas: [], interest_fishings: []) }
 
-    it '正しいテンプレートがレンダリングされること' do
-      get :index
-      expect(response).to render_template :index
+      before do
+        cookies.signed[:session_id] = session.id
+        allow(Current).to receive(:session).and_return(session)
+        allow(Current).to receive(:user).and_return(user)
+        controller.instance_variable_set(:@current_user, user)
+        incomplete_profile
+      end
+
+      it 'プロフィール編集ページにリダイレクトされること' do
+        get :index
+        expect(response).to redirect_to(edit_user_profile_path(user))
+      end
     end
   end
 end

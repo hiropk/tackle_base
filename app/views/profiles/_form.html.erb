@@ -32,7 +32,7 @@
   </div>
 
   <%= form.label :fishing_area, "釣行エリア", class: "flex items-center space-x-2" do %>
-    <span class="mr-1">釣行エリア</span>
+    <span class="mr-1">釣行エリア（※複数選択可）</span>
   <% end %>
   <div id="fishing-area-options" class="grid grid-cols-4 gap-2 mt-2 ml-10">
     <% Profile::FISHING_AREAS.each do |key, value| %>
@@ -45,7 +45,7 @@
 
   <br>
   <%= form.label :interest_fishing, "関心のある釣り", class: "flex items-center space-x-2" do %>
-    <span class="mr-1">関心のある釣り</span>
+    <span class="mr-1">関心のある釣り（※複数選択可）</span>
   <% end %>
   <div id="interest-fishing-options" class="grid grid-cols-2 gap-2 mt-2 ml-10">
     <% Profile::INTEREST_FISHING_TYPES.each do |key, value| %>

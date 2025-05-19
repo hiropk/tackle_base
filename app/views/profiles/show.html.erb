@@ -14,13 +14,13 @@
     <div class="text-center">
       <%= link_to "メールアドレス変更",
             edit_user_path(@current_user),
-            class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-300 hover:bg-green-100 inline-block font-medium" %>
+            class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-300 hover:bg-blue-100 inline-block font-medium" %>
       <%= button_to "パスワード変更",
             passwords_path(params: {email_address: @current_user.email_address}),
-            method: :post, class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-300 hover:bg-green-100 inline-block font-medium" %>
+            method: :post, class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-300 hover:bg-blue-100 inline-block font-medium" %>
       <%= link_to "アカウント有効化", 
             manual_activation_users_path, 
-            class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-300 hover:bg-green-100 inline-block font-medium #{'pointer-events-none opacity-50' if @current_user.activated?}"%>
+            class: "w-full mb-2 sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-300 hover:bg-blue-100 inline-block font-medium #{'pointer-events-none opacity-50' if @current_user.activated?}"%>
     </div>
 
     <br>

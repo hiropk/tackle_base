@@ -17,7 +17,7 @@
               <% unless Log.on_fishing_date(day, @current_user).empty? %>
                 <br>
                 <% year, month, date = day.to_s.split("-").map(&:to_i)[0..2] %>
-                <%= link_to '⚫︎', logs_path(params: { q: {"fishing_year_eq"=>year, "fishing_month_eq"=>month, "fishing_day_eq"=>date, "area_cont"=>"", "fishing_guide_boat_cont"=>"", "menu_eq"=>""} }), class: "text-green-500 hover:text-green-700" %>
+                <%= link_to '⚫︎', logs_path(params: { q: {"fishing_year_eq"=>year, "fishing_month_eq"=>month, "fishing_day_eq"=>date, "area_cont"=>"", "fishing_guide_boat_cont"=>"", "menu_eq"=>""} }), class: "text-blue-500 hover:text-green-700" %>
               <% end %>
             <% end %>
           <% end %>

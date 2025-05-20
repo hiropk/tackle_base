@@ -38,7 +38,7 @@ header h1 {
 }
 
 .desktop-nav ul li a {
-  color: blue;
+  color: #60a5fa;
   text-decoration: none;
   font-size: 1.1rem;
 }
@@ -65,7 +65,7 @@ header h1 {
 .mobile-nav {
   display: none;
   background-color: white;
-  color: blue;
+  color: #60a5fa;
   position: absolute;
   top: 0;
   left: 0;

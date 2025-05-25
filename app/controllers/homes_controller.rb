@@ -13,6 +13,9 @@ class HomesController < ApplicationController
   def index
   end
 
+  def help
+  end
+
   private
 
   def set_calendar_date

@@ -1,4 +1,5 @@
 <main>
+  <%= link_to "釣行記録およびタックルの作成方法はコチラ", homes_help_path, class: "inline-block text-sm text-glay-600 underline hover:no-underline hover:text-glay-800 transition" %>
   <%= render 'homes/schedule' %>
   <%= turbo_frame_tag "tackles_view" do %>
     <%= render 'tackles/index', search_tackles: @search_tackles, tackles: @tackles%>

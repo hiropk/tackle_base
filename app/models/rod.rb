@@ -1,5 +1,6 @@
 class Rod < ApplicationRecord
   belongs_to :user
+  has_many :tackles, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :brand, presence: true, length: { maximum: 50 }

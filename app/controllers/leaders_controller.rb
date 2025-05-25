@@ -50,7 +50,7 @@ class LeadersController < ApplicationController
     @leader.destroy!
 
     respond_to do |format|
-      format.html { redirect_to leaders_path, status: :see_other, notice: "Leader was successfully destroyed." }
+      format.html { redirect_to root_path, status: :see_other, notice: "リーダーを削除しました。" }
     end
   end
 

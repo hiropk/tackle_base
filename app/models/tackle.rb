@@ -11,6 +11,7 @@ class Tackle < ApplicationRecord
   validates :reel_id, presence: true
   validates :leader_id, presence: true
   validates :notes, length: { maximum: 1000 }
+  validate :not_use_empty_reel
 
   enum :knot, {
     knot_none: 0,
@@ -44,5 +45,11 @@ class Tackle < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     [ "created_at", "id", "knot", "leader_id", "name", "notes", "reel_id", "rod_id", "updated_at", "user_id" ]
+  end
+
+  def not_use_empty_reel
+    return if reel.line
+
+    errors.add(:reel_id, "ラインが巻かれてないリールが設定されています。他のリールを設定するか、リールにラインを設定してください。")
   end
 end

@@ -46,6 +46,7 @@ class LinesController < ApplicationController
 
   # DELETE /lines/1 or /lines/1.json
   def destroy
+    Reel.where(line_id: @line.id).update_all(line_id: nil)
     @line.destroy!
 
     respond_to do |format|

@@ -50,7 +50,7 @@ class ReelsController < ApplicationController
     @reel.destroy!
 
     respond_to do |format|
-      format.html { redirect_to reels_path, status: :see_other, notice: "リールを削除しました。" }
+      format.html { redirect_to root_path, status: :see_other, notice: "リールを削除しました。" }
     end
   end
 

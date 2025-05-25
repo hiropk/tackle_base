@@ -1,6 +1,7 @@
 class Reel < ApplicationRecord
   belongs_to :user
   belongs_to :line
+  has_many :tackles, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :brand, presence: true, length: { maximum: 50 }

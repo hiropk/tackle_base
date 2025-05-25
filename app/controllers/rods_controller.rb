@@ -50,7 +50,7 @@ class RodsController < ApplicationController
     @rod.destroy!
 
     respond_to do |format|
-      format.html { redirect_to rods_path, status: :see_other, notice: "ロッドを削除しました。" }
+      format.html { redirect_to root_path, status: :see_other, notice: "ロッドを削除しました。" }
     end
   end
 

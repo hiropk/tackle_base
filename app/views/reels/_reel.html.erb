@@ -24,7 +24,7 @@
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">PEライン</th>
-        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= link_to reel.line.name, line_path(reel.line), class: "hover:underline" %></td>
+        <td class="px-6 py-4 break-words whitespace-normal max-w-xs"><%= link_to reel.line ? reel.line.name : "指定なし", reel.line ? line_path(reel.line) : "", class: "hover:underline" %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white break-words whitespace-normal max-w-xs">購入日</th>

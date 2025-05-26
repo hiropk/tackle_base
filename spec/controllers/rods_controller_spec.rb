@@ -145,7 +145,7 @@ RSpec.describe RodsController, type: :controller do
     it "redirects to the rods list" do
       rod = create(:rod, user: user)
       delete :destroy, params: { id: rod.to_param }
-      expect(response).to redirect_to(rods_path)
+      expect(response).to redirect_to(root_path)
       expect(response).to have_http_status(:see_other)
     end
   end

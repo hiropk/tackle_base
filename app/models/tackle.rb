@@ -48,7 +48,7 @@ class Tackle < ApplicationRecord
   end
 
   def not_use_empty_reel
-    return if reel.line
+    return if reel && reel.line
 
     errors.add(:reel_id, "ラインが巻かれてないリールが設定されています。他のリールを設定するか、リールにラインを設定してください。")
   end

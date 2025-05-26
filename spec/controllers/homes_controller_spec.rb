@@ -58,7 +58,7 @@ RSpec.describe HomesController, type: :controller do
     end
 
     context 'when profile setup is not completed' do
-      let(:incomplete_profile) { create(:profile, user: user, last_name: "ユーザ名", first_name: "ユーザ名", residence: :shimane, fishing_areas: [], interest_fishings: []) }
+      let(:incomplete_profile) { create(:profile, user: user, last_name: "ユーザ名", first_name: "ユーザ名", residence: :shimane, fishing_areas: [ 0 ], interest_fishings: [ 0 ]) }
 
       before do
         cookies.signed[:session_id] = session.id

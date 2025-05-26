@@ -141,7 +141,7 @@ RSpec.describe LeadersController, type: :controller do
     it "redirects to the leaders list" do
       leader = create(:leader, user: user)
       delete :destroy, params: { id: leader.to_param }
-      expect(response).to redirect_to(leaders_path)
+      expect(response).to redirect_to(root_path)
       expect(response).to have_http_status(:see_other)
     end
   end

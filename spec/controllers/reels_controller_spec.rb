@@ -142,7 +142,7 @@ RSpec.describe ReelsController, type: :controller do
     it "redirects to the reels list" do
       reel = create(:reel, user: user)
       delete :destroy, params: { id: reel.to_param }
-      expect(response).to redirect_to(reels_path)
+      expect(response).to redirect_to(root_path)
       expect(response).to have_http_status(:see_other)
     end
   end

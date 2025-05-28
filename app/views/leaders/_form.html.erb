@@ -23,12 +23,12 @@
 
   <div class="my-5">
     <%= form.label :leader_rating %>
-    <%= form.text_field :leader_rating, placeholder: "例）5号", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": leader.errors[:leader_rating].none?, "border-red-400 focus:outline-red-600": leader.errors[:leader_rating].any?}] %>
+    <%= form.text_field :leader_rating, placeholder: "例）5", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": leader.errors[:leader_rating].none?, "border-red-400 focus:outline-red-600": leader.errors[:leader_rating].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :length %>
-    <%= form.number_field :length, placeholder: "例）30m", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": leader.errors[:length].none?, "border-red-400 focus:outline-red-600": leader.errors[:length].any?}] %>
+    <%= form.number_field :length, placeholder: "例）30", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": leader.errors[:length].none?, "border-red-400 focus:outline-red-600": leader.errors[:length].any?}] %>
   </div>
 
   <div class="my-5">

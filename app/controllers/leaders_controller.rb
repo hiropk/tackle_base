@@ -38,7 +38,7 @@ class LeadersController < ApplicationController
   def update
     respond_to do |format|
       if @leader.update(leader_params)
-        format.html { redirect_to @leader, notice: "Leader was successfully updated." }
+        format.html { redirect_to @leader, notice: "リーダーを更新しました。" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

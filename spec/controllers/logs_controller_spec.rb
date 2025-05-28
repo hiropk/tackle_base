@@ -7,8 +7,6 @@ RSpec.describe LogsController, type: :controller do
     {
       log: {
         fishing_date: Date.current,
-        start_time: Time.current,
-        end_time: Time.current + 4.hours,
         area: "Tokyo Bay",
         fishing_guide_boat: false,
         menu: "seabass",
@@ -23,8 +21,6 @@ RSpec.describe LogsController, type: :controller do
     {
       log: {
         fishing_date: nil,
-        start_time: nil,
-        end_time: nil,
         area: "",
         fishing_guide_boat: nil,
         menu: nil,

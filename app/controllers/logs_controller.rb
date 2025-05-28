@@ -44,8 +44,17 @@ class LogsController < ApplicationController
 
   # PATCH/PUT /logs/1 or /logs/1.json
   def update
+    tackle_ids = params.dig(:log, :tackle_ids)&.uniq || []
+    if tackle_ids.empty? || !all_tackles_exist?(tackle_ids)
+      @log.errors.add(:base, "タックルの選択に不備があります。")
+      flash[:alert] = @log.errors.full_messages.join(" / ")
+    end
+
     respond_to do |format|
-      if @log.update(log_params)
+      if @log.errors.empty? && @log.update(log_params)
+        tackle_ids.each do |tackle_id|
+          TackleSelection.create!(log: @log, tackle_id: tackle_id)
+        end
         format.html { redirect_to @log, notice: "釣行日誌を更新しました。" }
       else
         format.html { render :edit, status: :unprocessable_entity }

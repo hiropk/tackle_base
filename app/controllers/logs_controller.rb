@@ -25,7 +25,8 @@ class LogsController < ApplicationController
     @log = Log.new(log_params.merge({ user: @current_user }))
 
     tackle_ids = params.dig(:log, :tackle_ids)&.uniq || []
-    if tackle_ids.empty? || !all_tackles_exist?(tackle_ids)
+    tackle_ids.delete("") if tackle_ids.include?("")
+    if tackle_ids.present? && !all_tackles_exist?(tackle_ids)
       @log.errors.add(:base, "タックルの選択に不備があります。")
       flash[:alert] = @log.errors.full_messages.join(" / ")
     end
@@ -33,7 +34,7 @@ class LogsController < ApplicationController
     respond_to do |format|
       if @log.errors.empty? && @log.save
         tackle_ids.each do |tackle_id|
-          TackleSelection.create!(log: @log, tackle_id: tackle_id)
+          TackleSelection.find_or_create_by!(log: @log, tackle_id: tackle_id)
         end
         format.html { redirect_to @log, notice: "釣行日誌を作成しました。" }
       else
@@ -45,13 +46,15 @@ class LogsController < ApplicationController
   # PATCH/PUT /logs/1 or /logs/1.json
   def update
     tackle_ids = params.dig(:log, :tackle_ids)&.uniq || []
-    if tackle_ids.empty? || !all_tackles_exist?(tackle_ids)
+    tackle_ids.delete("") if tackle_ids.include?("")
+    if tackle_ids.present? && !all_tackles_exist?(tackle_ids)
       @log.errors.add(:base, "タックルの選択に不備があります。")
       flash[:alert] = @log.errors.full_messages.join(" / ")
     end
 
     respond_to do |format|
       if @log.errors.empty? && @log.update(log_params)
+        TackleSelection.where(log: @log).delete_all
         tackle_ids.each do |tackle_id|
           TackleSelection.create!(log: @log, tackle_id: tackle_id)
         end

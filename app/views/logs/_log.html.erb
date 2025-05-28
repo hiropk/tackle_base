@@ -1,6 +1,5 @@
 <div id="<%= dom_id log %>" class="w-full sm:w-auto my-5 space-y-5">
   <div class="mb-1">釣行日：<%= l(log.fishing_date) %></div>
-  <div class="mb-1">開始時刻：<%= log.start_time ? "#{l(log.start_time, format: :short)} + 　~　" : ""%></div>
   <div class="mb-1">エリア：<%= log.area %></div>
   <div class="mb-1">利用遊漁船：<%= log.fishing_guide_boat %></div>
   <div class="mb-1">メニュー：<%= log.menu %></div>

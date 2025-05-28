@@ -60,11 +60,6 @@
     <%= form.textarea :other, placeholder: "例）アシストフックが少なくなってきたので要補充", rows: 5, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": log.errors[:other].none?, "border-red-400 focus:outline-red-600": log.errors[:other].any?}] %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :start_time %>
-    <%= form.time_field :start_time, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-1/6", {"border-gray-400 focus:outline-blue-600": log.errors[:start_time].none?, "border-red-400 focus:outline-red-600": log.errors[:start_time].any?}] %>
-  </div>
-
   <div class="inline">
     <%= form.submit '作成', class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-400 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
   </div>

@@ -64,6 +64,6 @@ class Log < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "area", "created_at", "start_time", "fishing_year", "fishing_month", "fishing_day", "fishing_guide_boat", "id", "menu", "notes", "other", "updated_at" ]
+    [ "area", "created_at", "fishing_year", "fishing_month", "fishing_day", "fishing_guide_boat", "id", "menu", "notes", "other", "updated_at" ]
   end
 end

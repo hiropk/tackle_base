@@ -83,7 +83,7 @@ class LogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def log_params
-      params.require(:log).permit(:fishing_date, :start_time, :area, :fishing_guide_boat, :menu, :notes, :other)
+      params.require(:log).permit(:fishing_date, :area, :fishing_guide_boat, :menu, :notes, :other)
     end
 
     def all_tackles_exist?(ids)

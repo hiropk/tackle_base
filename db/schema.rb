@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_25_124951) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_28_044034) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -47,8 +47,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_25_124951) do
 
   create_table "logs", force: :cascade do |t|
     t.date "fishing_date", null: false
-    t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
     t.string "area", null: false
     t.string "fishing_guide_boat", null: false
     t.string "menu", null: false
@@ -57,6 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_25_124951) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.time "start_time"
     t.index ["user_id"], name: "index_logs_on_user_id"
   end
 

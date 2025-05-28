@@ -1,0 +1,5 @@
+class AddStartTimeToLogs < ActiveRecord::Migration[8.0]
+  def change
+    add_column :logs, :start_time, :time
+  end
+end

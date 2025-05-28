@@ -4,8 +4,6 @@ class Log < ApplicationRecord
   has_many :tackles, through: :tackle_selections
 
   validates :fishing_date, presence: true
-  validates :start_time, presence: true
-  validates :end_time, presence: true
   validates :area, presence: true
   validates :fishing_guide_boat, presence: true
   validates :notes, presence: true, length: { maximum: 10000 }
@@ -66,6 +64,6 @@ class Log < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "area", "created_at", "end_time", "fishing_year", "fishing_month", "fishing_day", "fishing_guide_boat", "id", "menu", "notes", "other", "start_time", "updated_at" ]
+    [ "area", "created_at", "start_time", "fishing_year", "fishing_month", "fishing_day", "fishing_guide_boat", "id", "menu", "notes", "other", "updated_at" ]
   end
 end
